@@ -30,7 +30,7 @@ export const getAdminPaths = (async () => {
 export const meta = {
 	readme: Readme,
 	displayName: 'Passport',
-	id: 'devprotocol:clubs:plugin:Passport',
+	id: 'devprotocol:clubs:plugin:passport',
 	category: ClubsPluginCategory.Uncategorized,
 } satisfies ClubsPluginMeta
 
