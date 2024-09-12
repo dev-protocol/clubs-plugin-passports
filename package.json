@@ -1,8 +1,8 @@
 {
-	"name": "@devprotocol/clubs-plugin-starter-kit",
+	"name": "@devprotocol/clubs-plugin-passport",
 	"version": "0.1.0",
 	"type": "module",
-	"description": "Template repository for using TypeScript",
+	"description": "Passport plugin for clubs",
 	"main": "dist/index.js",
 	"exports": {
 		".": {
@@ -35,6 +35,7 @@
 	"author": "",
 	"license": "MPL-2.0",
 	"dependencies": {
+		"@devprotocol/clubs-core": "^3.18.0",
 		"@devprotocol/dev-kit": "8.7.0",
 		"@devprotocol/util-ts": "4.0.0",
 		"bignumber.js": "9.1.2",
@@ -52,7 +53,6 @@
 		"@astrojs/svelte": "^5.0.0",
 		"@astrojs/tailwind": "^5.0.0",
 		"@astrojs/vue": "^4.0.0",
-		"@devprotocol/clubs-core": "3.17.5",
 		"@rollup/plugin-typescript": "11.1.6",
 		"@tailwindcss/typography": "^0.5.10",
 		"@types/dotenv": "8.2.0",
