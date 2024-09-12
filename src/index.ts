@@ -13,12 +13,12 @@ export const getPagePaths = (async () => {
 	return []
 }) satisfies ClubsFunctionGetPagePaths
 
-export const getApiPaths = (async (params) => {
+export const getApiPaths = (async (_options, config) => {
 	return [
 		{
 			paths: ['passport', 'add'],
 			method: 'POST',
-			handler: addPassportItem(params.config),
+			handler: addPassportItem(config),
 		},
 	]
 }) satisfies ClubsFunctionGetApiPaths

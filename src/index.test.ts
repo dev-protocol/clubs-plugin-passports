@@ -14,7 +14,7 @@ describe('Plugin default export', () => {
 
 describe('getPagePaths', () => {
 	it('should return empty array if options are not set', async () => {
-		const res = await getPagePaths([])
+		const res = await getPagePaths()
 		expect(res).toEqual([])
 	})
 })
