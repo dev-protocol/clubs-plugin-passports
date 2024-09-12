@@ -1,3 +1,7 @@
+import type { ReadonlyDeep } from 'type-fest'
+
+import type { getDefaultClient } from './db/redis'
+
 export type Option =
 	| Readonly<{ key: 'slug'; value?: string }>
 	| Readonly<{ key: 'rpc'; value?: string }>
@@ -7,6 +11,9 @@ export type TokenURIWithId = Readonly<{
 	id: number
 	image: string
 }>
+
+export type DefaultClient = Readonly<ReturnType<typeof getDefaultClient>>
+export type AwaitedDefaultClient = ReadonlyDeep<Awaited<DefaultClient>>
 
 export const ERROR = {
 	$400: {
