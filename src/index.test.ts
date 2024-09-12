@@ -1,12 +1,13 @@
 import { describe, it, expect } from 'vitest'
-import plugin, { getPagePaths, getAdminPaths, meta } from './index'
+import plugin, { getPagePaths, getApiPaths, getAdminPaths, meta } from './index'
 
-describe('plugin default export', () => {
-	it('should have getPagePaths, getAdminPaths and meta', async () => {
+describe('Plugin default export', () => {
+	it('should have getPagePaths, getApiPaths, getAdminPaths and meta', async () => {
 		expect(plugin).toEqual({
 			getPagePaths,
 			getAdminPaths,
 			meta,
+			getApiPaths
 		})
 	})
 })
