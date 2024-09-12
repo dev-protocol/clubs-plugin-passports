@@ -1,0 +1,10 @@
+---
+import type { TokenURIWithId } from '../types'
+import Page_ from '../components/Page/Page.vue'
+
+type Props = {
+	token: TokenURIWithId
+}
+---
+
+<Page_ client:load {...Astro.props} />

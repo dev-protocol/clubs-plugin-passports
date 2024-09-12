@@ -1,0 +1,82 @@
+{
+	"name": "@devprotocol/clubs-plugin-starter-kit",
+	"version": "0.1.0",
+	"type": "module",
+	"description": "Template repository for using TypeScript",
+	"main": "dist/index.js",
+	"exports": {
+		".": {
+			"default": "./dist/index.js"
+		}
+	},
+	"types": "./dist/src/index.d.ts",
+	"files": [
+		"dist/**/*.d.ts",
+		"dist/**/*.js",
+		"!**/*.test.*",
+		"src"
+	],
+	"keywords": [
+		"clubs-plugin"
+	],
+	"scripts": {
+		"test": "vitest",
+		"preview": "astro --root .preview/preview.ssr dev",
+		"preview:static": "astro --root .preview/preview.static dev",
+		"build": "rollup -c",
+		"prebuild": "rimraf dist",
+		"lint": "yarn lint:eslint && yarn lint:format",
+		"lint:eslint": "eslint . --ext .ts,.js --fix",
+		"lint:format": "prettier --write '**/*.{ts,js,tsx,jsx,astro,vue,svelte,json,md,yml}'",
+		"prepack": "yarn test && yarn build",
+		"prepare": "husky install",
+		"typecheck": "astro check && tsc --noEmit && svelte-check && vue-tsc --noEmit --p tsconfig.vue.json"
+	},
+	"author": "",
+	"license": "MPL-2.0",
+	"dependencies": {
+		"@devprotocol/dev-kit": "8.7.0",
+		"@devprotocol/util-ts": "4.0.0",
+		"bignumber.js": "9.1.2",
+		"ramda": "0.30.1",
+		"sass": "1.78.0"
+	},
+	"peerDependencies": {
+		"@devprotocol/clubs-core": "^2.1.1 || ^3.0.0",
+		"ethers": "^6.0.0"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.0",
+		"@astrojs/svelte": "^5.0.0",
+		"@astrojs/tailwind": "^5.0.0",
+		"@astrojs/vue": "^4.0.0",
+		"@devprotocol/clubs-core": "3.17.5",
+		"@rollup/plugin-typescript": "11.1.6",
+		"@tailwindcss/typography": "^0.5.10",
+		"@types/dotenv": "8.2.0",
+		"@types/node": "20.16.5",
+		"@types/ramda": "0.30.2",
+		"@typescript-eslint/eslint-plugin": "8.5.0",
+		"@typescript-eslint/parser": "8.5.0",
+		"astro": "^4.0.0",
+		"dotenv": "16.4.5",
+		"eslint": "8.57.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-functional": "6.6.3",
+		"ethers": "6.13.2",
+		"husky": "9.1.6",
+		"prettier": "3.3.3",
+		"prettier-plugin-astro": "^0.14.0",
+		"prettier-plugin-svelte": "^3.0.0",
+		"prettier-plugin-tailwindcss": "^0.6.0",
+		"rimraf": "5.0.10",
+		"rollup": "4.21.2",
+		"svelte": "^4.2.3",
+		"svelte-check": "^3.6.0",
+		"tailwindcss": "3.4.11",
+		"typescript": "5.6.2",
+		"vitest": "^2.0.0",
+		"vue": "3.5.4",
+		"vue-tsc": "^2.0.0"
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"outDir": "dist",
+		"declaration": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"jsx": "preserve",
+		"verbatimModuleSyntax": true
+	},
+	"include": [
+		"src",
+		"preview",
+		"config.js",
+		"rollup.config.js",
+		"tailwind.config.mjs",
+		"vitest.config.ts"
+	]
+}
