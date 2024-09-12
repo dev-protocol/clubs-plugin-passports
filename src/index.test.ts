@@ -7,7 +7,7 @@ describe('Plugin default export', () => {
 			getPagePaths,
 			getAdminPaths,
 			meta,
-			getApiPaths
+			getApiPaths,
 		})
 	})
 })
