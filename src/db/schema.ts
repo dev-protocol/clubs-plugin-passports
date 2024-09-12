@@ -9,10 +9,10 @@ export const id = {
 	},
 } satisfies RediSearchSchema
 
-export const itemId = {
-	'$.itemId': {
+export const sTokenId = {
+	'$.sTokenId': {
 		type: SchemaFieldTypes.TAG,
-		AS: 'itemId',
+		AS: 'sTokenId',
 	},
 } satisfies RediSearchSchema
 
@@ -56,7 +56,7 @@ export type PassportItemAssetType =
 
 export type PassportItemDocument = Readonly<{
 	id: string
-	itemId: string
+	sTokenId?: string
 	sTokenPayload: string
 	clubsUrl: string
 	itemAssetType: PassportItemAssetType
@@ -65,14 +65,14 @@ export type PassportItemDocument = Readonly<{
 
 export const passportItemDocument = (doc: {
 	id: string | bigint | number
-	itemId: string | bigint | number
+	sTokenId?: string | bigint | number
 	sTokenPayload: string
 	clubsUrl: string
 	itemAssetType: PassportItemAssetType
 	itemAssetValue: string
 }): PassportItemDocument => ({
 	id: doc.id.toString(),
-	itemId: doc.itemId.toString(),
+	sTokenId: doc.sTokenId?.toString() ?? undefined,
 	sTokenPayload: doc.sTokenPayload,
 	clubsUrl: doc.clubsUrl,
 	itemAssetType: doc.itemAssetType,
@@ -81,7 +81,7 @@ export const passportItemDocument = (doc: {
 
 export const PASSPORTITEM_SCHEMA = {
 	...id,
-	...itemId,
+	...sTokenId,
 	...sTokenPayload,
 	...clubsUrl,
 	...itemAssetType,
