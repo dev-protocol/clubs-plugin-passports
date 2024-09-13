@@ -1,4 +1,4 @@
-# Clubs Plugin Starter Kit
+# Clubs Plugin Passport
 
 - ### [🔰 Plugin basics](https://docs.devprotocol.xyz/clubs/basics/plugins)
 - ### [⏩ Check all interfaces](https://docs.devprotocol.xyz/clubs/guides/plugin)
