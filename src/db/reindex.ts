@@ -1,6 +1,11 @@
 /* eslint-disable functional/no-expression-statements */
 import type { AsyncReturnType } from 'type-fest'
-import { whenDefined, whenNotError } from '@devprotocol/util-ts'
+import {
+	isNotError,
+	whenDefined,
+	whenNotError,
+	whenNotErrorAll,
+} from '@devprotocol/util-ts'
 
 import { getDefaultClient } from '../db/redis'
 import { ERROR, Index, Prefix, SchemaKey } from '../types'
@@ -17,44 +22,78 @@ export const reindex = async (
 			whenDefined(c, (_c) =>
 				_c
 					.get(SchemaKey.PassportItem)
-					.then((res) => (res ? res : new Error(ERROR.$500.DBERROR)))
+					.then((res) => res)
 					.catch((err: Error) => err),
 			) ?? new Error(ERROR.$500.DBERROR),
 	)
 
-	const index = whenNotError(PassportItemScm, (schemaId) =>
-		schemaId === PASSPORTITEM_SCHEMA_ID ? true : new Error(ERROR.$500.DBERROR),
+	const shouldIndex = whenNotError(PassportItemScm, (schemaId) =>
+		schemaId === PASSPORTITEM_SCHEMA_ID ? false : true,
 	)
 
-	console.log({ PassportItemScm, index })
+	console.log({ PassportItemScm, shouldIndex })
 
-	await whenNotError(index, () =>
-		Promise.all([
-			PassportItemScm === PASSPORTITEM_SCHEMA_ID
-				? Promise.resolve()
-				: client.ft
+	const droppedIndex = await whenNotErrorAll(
+		[shouldIndex, client],
+		([_shouldIndex, _client]) => {
+			return _shouldIndex
+				? _client.ft
 						.dropIndex(Index.PassportItem)
-						.catch(() => null)
-						.then(() =>
-							client.ft
-								.create(Index.PassportItem, PASSPORTITEM_SCHEMA, {
-									ON: 'JSON',
-									PREFIX: Prefix.PassportItem,
-								})
-								.then(() =>
-									client.set(SchemaKey.PassportItem, PASSPORTITEM_SCHEMA_ID),
-								)
-								.then(() => {
-									console.log('###')
-									return null
-								}),
-						)
-						.then(() =>
-							Promise.all([
-								client.set(SchemaKey.PassportItem, PASSPORTITEM_SCHEMA_ID),
-							]),
-						),
-		]),
+						.then(() => {
+							console.log(`### Dropped old index: ${Index.PassportItem}`)
+							return true
+						})
+						.catch((err: Error) => {
+							console.log(`### Error dropping old index: ${Index.PassportItem}`)
+							return err
+						})
+				: false
+		},
+	)
+
+	const createdUpdatedIndex = await whenNotErrorAll(
+		[droppedIndex, client],
+		([_droppedIndex, _client]) => {
+			return _droppedIndex
+				? _client.ft
+						.create(Index.PassportItem, PASSPORTITEM_SCHEMA, {
+							ON: 'JSON',
+							PREFIX: Prefix.PassportItem,
+						})
+						.then(() => {
+							console.log(`### Created new index: ${Index.PassportItem}`)
+							return true
+						})
+						.catch((err: Error) => {
+							console.log(
+								`!!! Error creating new index: ${Index.PassportItem}`,
+								err,
+							)
+							return err
+						})
+				: false
+		},
+	)
+
+	const setNewSchemaKey = await whenNotErrorAll(
+		[createdUpdatedIndex, client],
+		([_createdUpdatedIndex, _client]) => {
+			return _createdUpdatedIndex
+				? _client
+						.set(SchemaKey.PassportItem, PASSPORTITEM_SCHEMA_ID)
+						.then(() => {
+							console.log(`### Set new schema key: ${SchemaKey.PassportItem}`)
+							return true
+						})
+						.catch((err: Error) => {
+							console.log(
+								`!!! Error setting new schema key: ${SchemaKey.PassportItem}`,
+								err,
+							)
+							return err
+						})
+				: false
+		},
 	)
 
 	// If default client is not present then
@@ -65,7 +104,7 @@ export const reindex = async (
 		async (defaultClient) => !defaultClient && (await client.quit()),
 	)
 
-	return index ? true : false
+	return setNewSchemaKey
 }
 
 /**
@@ -77,13 +116,10 @@ export const withCheckingIndex = async <
 	T extends typeof getDefaultClient = typeof getDefaultClient,
 >(
 	getClient: T,
-): Promise<AsyncReturnType<T>> => {
+): Promise<AsyncReturnType<T> | Error> => {
 	const client = (await getClient()) as AsyncReturnType<T>
-	await reindex(client).catch(() => {
-		console.log('Error while reindexing')
-		return null
-	})
-	return client
+	const reIndexed = await reindex(client)
+	return isNotError(reIndexed) ? client : reIndexed
 }
 
 export default reindex

@@ -88,7 +88,7 @@ export const handler =
 		// 3. Authenticate for only admin's allowed to add achievements.
 		const config = encode(conf)
 		const authenticationRes = await whenNotErrorAll(
-			[props, conf, config],
+			[props, conf, config, client],
 			([{ message, signature }, _conf, previousConfiguration]) =>
 				authenticate({
 					message,
