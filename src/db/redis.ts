@@ -18,5 +18,5 @@ export const defaultClient = () =>
 
 export const getDefaultClient = async () => {
 	const redis = defaultClient()
-	return redis.isOpen ? await redis.connect() : redis
+	return !redis.isOpen ? await redis.connect() : redis
 }
