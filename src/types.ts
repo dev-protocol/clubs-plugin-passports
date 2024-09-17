@@ -2,6 +2,18 @@ import type { ReadonlyDeep } from 'type-fest'
 
 import type { getDefaultClient } from './db/redis'
 
+export enum Index {
+	PassportItem = 'idx::clubs:passportitem',
+}
+
+export enum Prefix {
+	PassportItem = 'doc::clubs:passportitem',
+}
+
+export enum SchemaKey {
+	PassportItem = 'scm::clubs:passportitem',
+}
+
 export type Option =
 	| Readonly<{ key: 'slug'; value?: string }>
 	| Readonly<{ key: 'rpc'; value?: string }>

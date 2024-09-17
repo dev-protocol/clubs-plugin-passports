@@ -9,7 +9,7 @@ import { ClubsPluginCategory } from '@devprotocol/clubs-core'
 import Readme from './readme.astro'
 import addPassportItem from './handlers/addPassportItem'
 
-import { Index } from './db/redis'
+import { Index } from './types'
 import { sTokenPayload } from './db/schema'
 
 export const getPagePaths = (async () => {

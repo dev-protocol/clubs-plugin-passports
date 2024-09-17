@@ -2,8 +2,8 @@
 import type { AsyncReturnType } from 'type-fest'
 import { whenDefined, whenNotError } from '@devprotocol/util-ts'
 
-import { ERROR } from '../types'
-import { getDefaultClient, Index, Prefix, SchemaKey } from '../db/redis'
+import { getDefaultClient } from '../db/redis'
+import { ERROR, Index, Prefix, SchemaKey } from '../types'
 import { PASSPORTITEM_SCHEMA, PASSPORTITEM_SCHEMA_ID } from '../db/schema'
 
 export const reindex = async (

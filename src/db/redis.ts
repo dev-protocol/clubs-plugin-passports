@@ -1,16 +1,6 @@
 import { createClient } from 'redis'
 
-export enum Index {
-	PassportItem = 'idx::clubs:passportitem',
-}
-
-export enum Prefix {
-	PassportItem = 'doc::clubs:passportitem',
-}
-
-export enum SchemaKey {
-	PassportItem = 'scm::clubs:passportitem',
-}
+import { Prefix } from '../types'
 
 export const generatePassportItemKey = (sTokenPayload: string) =>
 	`${Prefix.PassportItem}::${sTokenPayload}`
