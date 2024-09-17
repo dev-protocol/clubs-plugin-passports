@@ -57,7 +57,13 @@ export const reindex = async (
 		]),
 	)
 
-	await client.quit()
+	// If default client is not present then
+	// we are connecting and using client in reindex() function.
+	// hence we close it since it was initialized and connected in the function itself.
+	await whenDefined(
+		defaultClient,
+		async (defaultClient) => !defaultClient && (await client.quit()),
+	)
 
 	return index ? true : false
 }
