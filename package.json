@@ -1,6 +1,6 @@
 {
 	"name": "@devprotocol/clubs-plugin-passport",
-	"version": "0.1.0-beta.1",
+	"version": "0.1.0-beta.2",
 	"type": "module",
 	"description": "Passport plugin for clubs",
 	"main": "dist/index.js",
@@ -32,8 +32,8 @@
 		"prepare": "husky install",
 		"typecheck": "astro check && tsc --noEmit && svelte-check && vue-tsc --noEmit --p tsconfig.vue.json"
 	},
-	"author": "",
-	"license": "MPL-2.0",
+	"author": "Dev Protocol",
+	"license": "PolyForm Perimeter License 1.0.0",
 	"dependencies": {
 		"@devprotocol/clubs-core": "^3.18.0",
 		"@devprotocol/dev-kit": "8.7.0",
