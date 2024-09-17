@@ -34,9 +34,9 @@ export const reindex = async (
 	console.log({ PassportItemScm, shouldIndex })
 
 	const droppedIndex = await whenNotErrorAll(
-		[shouldIndex, client],
-		([_shouldIndex, _client]) => {
-			return _shouldIndex
+		[shouldIndex, client, PassportItemScm],
+		([_shouldIndex, _client, _isSchemaPresentEvenifOutdated]) => {
+			return _shouldIndex && _isSchemaPresentEvenifOutdated
 				? _client.ft
 						.dropIndex(Index.PassportItem)
 						.then(() => {
@@ -44,10 +44,15 @@ export const reindex = async (
 							return true
 						})
 						.catch((err: Error) => {
-							console.log(`### Error dropping old index: ${Index.PassportItem}`)
+							console.log(
+								`### Error dropping old index: ${Index.PassportItem}`,
+								err,
+							)
 							return err
 						})
-				: false
+				: _shouldIndex && !_isSchemaPresentEvenifOutdated
+					? true
+					: false
 		},
 	)
 
