@@ -9,6 +9,9 @@ import { ClubsPluginCategory } from '@devprotocol/clubs-core'
 import Readme from './readme.astro'
 import addPassportItem from './handlers/addPassportItem'
 
+import { Index } from './db/redis'
+import { sTokenPayload } from './db/schema'
+
 export const getPagePaths = (async () => {
 	return []
 }) satisfies ClubsFunctionGetPagePaths
@@ -33,6 +36,8 @@ export const meta = {
 	id: 'devprotocol:clubs:plugin:passport',
 	category: ClubsPluginCategory.Uncategorized,
 } satisfies ClubsPluginMeta
+
+export { Index, sTokenPayload }
 
 export default {
 	meta,
