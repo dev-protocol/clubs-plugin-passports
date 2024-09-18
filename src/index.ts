@@ -9,6 +9,7 @@ import { ClubsPluginCategory } from '@devprotocol/clubs-core'
 
 import Readme from './readme.astro'
 import { sTokenPayload } from './db/schema'
+import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
 import {
 	Index,
@@ -52,6 +53,7 @@ export {
 	sTokenPayload,
 	type PassportItemAssetType,
 	type PassportItemDocument,
+	generatePassportItemKey,
 }
 
 export default {
