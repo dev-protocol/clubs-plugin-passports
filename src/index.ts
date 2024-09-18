@@ -6,11 +6,11 @@ import type {
 	ClubsFunctionGetPagePaths,
 } from '@devprotocol/clubs-core'
 import { ClubsPluginCategory } from '@devprotocol/clubs-core'
-import Readme from './readme.astro'
-import addPassportItem from './handlers/addPassportItem'
 
 import { Index } from './types'
+import Readme from './readme.astro'
 import { sTokenPayload } from './db/schema'
+import addPassportItem from './handlers/addPassportItem'
 
 export const getPagePaths = (async () => {
 	return []

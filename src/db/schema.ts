@@ -2,6 +2,8 @@ import { keccak256, toUtf8Bytes } from 'ethers'
 import { encode } from '@devprotocol/clubs-core'
 import { SchemaFieldTypes, type RediSearchSchema } from 'redis'
 
+import type { PassportItemAssetType, PassportItemDocument } from '../types'
+
 export const id = {
 	'$.id': {
 		type: SchemaFieldTypes.TAG,
@@ -43,25 +45,6 @@ export const itemAssetValue = {
 		AS: 'itemAssetValue',
 	},
 } satisfies RediSearchSchema
-
-export type PassportItemAssetType =
-	| 'css'
-	| 'stylesheet-link'
-	| 'image'
-	| 'image-link'
-	| 'video'
-	| 'video-link'
-	| 'bgm'
-	| 'bgm-link'
-
-export type PassportItemDocument = Readonly<{
-	id: string
-	sTokenId?: string
-	sTokenPayload: string
-	clubsUrl: string
-	itemAssetType: PassportItemAssetType
-	itemAssetValue: string
-}>
 
 export const passportItemDocument = (doc: {
 	id: string | bigint | number

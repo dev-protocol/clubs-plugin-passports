@@ -7,22 +7,19 @@ import {
 } from '@devprotocol/clubs-core'
 
 import { withCheckingIndex } from '../db/reindex'
-import { ERROR, type AwaitedDefaultClient } from '../types'
-import { passportItemDocument, type PassportItemDocument } from '../db/schema'
+import { passportItemDocument } from '../db/schema'
 import { generatePassportItemKey, getDefaultClient } from '../db/redis'
+import {
+	ERROR,
+	type AwaitedDefaultClient,
+	type CreatePassportItemReq,
+} from '../types'
 import {
 	isNotError,
 	whenDefinedAll,
 	whenNotError,
 	whenNotErrorAll,
 } from '@devprotocol/util-ts'
-
-export type CreatePassportItemReq = Readonly<{
-	site: string
-	message: string
-	signature: string
-	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
-}>
 
 export const setter = async ({
 	client,

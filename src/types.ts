@@ -41,3 +41,29 @@ export const ERROR = {
 		DBERROR: 'Passport item db error',
 	},
 }
+
+export type PassportItemAssetType =
+	| 'css'
+	| 'stylesheet-link'
+	| 'image'
+	| 'image-link'
+	| 'video'
+	| 'video-link'
+	| 'bgm'
+	| 'bgm-link'
+
+export type PassportItemDocument = Readonly<{
+	id: string
+	sTokenId?: string
+	sTokenPayload: string
+	clubsUrl: string
+	itemAssetType: PassportItemAssetType
+	itemAssetValue: string
+}>
+
+export type CreatePassportItemReq = ReadonlyDeep<{
+	site: string
+	message: string
+	signature: string
+	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
+}>
