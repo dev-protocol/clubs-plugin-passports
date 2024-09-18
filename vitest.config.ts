@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { getViteConfig } from 'astro/config'
 import vue from '@vitejs/plugin-vue'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
