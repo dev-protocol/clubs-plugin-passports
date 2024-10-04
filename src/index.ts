@@ -12,7 +12,10 @@ import { sTokenPayload } from './db/schema'
 import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
 import getPassportItemForPayload from './handlers/getPassportItemForPayload'
-import { getPassportItemForPayload as getPassportItemFromPayload } from './utils'
+import {
+	getPassportItemForPayload as getPassportItemFromPayload,
+	PLUGIN_ID,
+} from './utils'
 
 import {
 	Index,
@@ -49,7 +52,7 @@ export const getAdminPaths = (async () => {
 export const meta = {
 	readme: Readme,
 	displayName: 'Passport',
-	id: 'devprotocol:clubs:plugin:passport',
+	id: PLUGIN_ID,
 	category: ClubsPluginCategory.Uncategorized,
 } satisfies ClubsPluginMeta
 
@@ -57,6 +60,7 @@ export {
 	Index,
 	Prefix,
 	SchemaKey,
+	PLUGIN_ID,
 	type CreatePassportItemReq,
 	sTokenPayload,
 	type PassportItemAssetType,

@@ -3,6 +3,8 @@ import { aperture } from 'ramda'
 import headers from './headers'
 import { getPassportItemForPayload } from './passportItem'
 
+export const PLUGIN_ID = 'devprotocol:clubs:plugin:passport'
+
 /**
  * Returns sToken payload from the url
  * @param payload - the url of the request
