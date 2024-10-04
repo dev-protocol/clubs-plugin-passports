@@ -1,3 +1,4 @@
+import dts from 'rollup-plugin-dts'
 import { dirname, relative, resolve } from 'path'
 import typescript from '@rollup/plugin-typescript'
 
@@ -32,5 +33,10 @@ export default [
 			typescript(),
 			useSrc({ ext: ['.astro', '.svelte', '.vue', '.scss', '.css'], dir }),
 		],
+	},
+	{
+		input: 'dist/src/index.d.ts',
+		output: [{ file: 'dist/clubs-plugin-passport.d.ts', format: 'es' }],
+		plugins: [dts()],
 	},
 ]
