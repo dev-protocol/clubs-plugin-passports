@@ -5,12 +5,14 @@ import type {
 	ClubsFunctionGetAdminPaths,
 	ClubsFunctionGetPagePaths,
 } from '@devprotocol/clubs-core'
-import { ClubsPluginCategory } from '@devprotocol/clubs-core'
+import { ClubsPluginCategory, SinglePath } from '@devprotocol/clubs-core'
 
 import Readme from './readme.astro'
 import { sTokenPayload } from './db/schema'
 import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
+import getPassportItemForPayload from './handlers/getPassportItemForPayload'
+
 import {
 	Index,
 	Prefix,
@@ -26,6 +28,11 @@ export const getPagePaths = (async () => {
 
 export const getApiPaths = (async (_options, config) => {
 	return [
+		{
+			paths: ['passport', 'payload', SinglePath],
+			method: 'GET',
+			handler: getPassportItemForPayload(),
+		},
 		{
 			paths: ['passport', 'add'],
 			method: 'POST',
