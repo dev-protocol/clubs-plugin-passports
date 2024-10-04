@@ -12,6 +12,7 @@ import { sTokenPayload } from './db/schema'
 import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
 import getPassportItemForPayload from './handlers/getPassportItemForPayload'
+import { getPassportItemForPayload as getPassportItemFromPayload } from './utils'
 
 import {
 	Index,
@@ -61,6 +62,7 @@ export {
 	type PassportItemAssetType,
 	type PassportItemDocument,
 	generatePassportItemKey,
+	getPassportItemFromPayload,
 }
 
 export default {
