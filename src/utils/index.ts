@@ -1,7 +1,7 @@
 import { aperture } from 'ramda'
 
 import headers from './headers'
-import { getPassportItemForPayload } from './passportItem'
+import { getPassportItemForPayload, addPassportItemSetter } from './passportItem'
 
 export const PLUGIN_ID = 'devprotocol:clubs:plugin:passport'
 
@@ -19,7 +19,7 @@ export const getPayloadFromURL = (url: URL, prepath: string = 'payload') => {
 	return payload ?? ''
 }
 
-export { headers, getPassportItemForPayload }
+export { headers, getPassportItemForPayload, addPassportItemSetter }
 
 export default {
 	headers,

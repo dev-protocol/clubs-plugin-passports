@@ -13,6 +13,7 @@ import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
 import getPassportItemForPayload from './handlers/getPassportItemForPayload'
 import {
+	addPassportItemSetter,
 	getPassportItemForPayload as getPassportItemFromPayload,
 	PLUGIN_ID,
 } from './utils'
@@ -67,6 +68,7 @@ export {
 	type PassportItemDocument,
 	generatePassportItemKey,
 	getPassportItemFromPayload,
+	addPassportItemSetter
 }
 
 export default {

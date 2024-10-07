@@ -1,11 +1,40 @@
 import { whenNotError, whenNotErrorAll } from '@devprotocol/util-ts'
 import { always } from 'ramda'
 import { createClient } from 'redis'
+import { nanoid } from 'nanoid'
 
-import { Index, PassportItemDocument } from '../types'
-import { sTokenPayload as sTokenPayloadSchema } from '../db/schema'
+import { AwaitedDefaultClient, CreatePassportItemReq, Index, PassportItemDocument } from '../types'
+import { passportItemDocument, sTokenPayload as sTokenPayloadSchema } from '../db/schema'
+import { generatePassportItemKey } from '../db/redis'
 
 const { REDIS_URL, REDIS_USERNAME, REDIS_PASSWORD } = import.meta.env
+
+export const addPassportItemSetter = async ({
+	client,
+	data,
+	url,
+}: {
+	client: AwaitedDefaultClient
+	data: CreatePassportItemReq
+	url: string
+}) => {
+	// 1. Create passport skin document.
+	const passportSkinDoc = passportItemDocument({
+		id: nanoid(),
+		clubsUrl: url,
+		...data.passportItem,
+	})
+
+	const passportSkinCreationStatus = await whenNotErrorAll(
+		[passportSkinDoc, client],
+		([info, redis]) =>
+			redis.json
+				.set(generatePassportItemKey(info.sTokenPayload), '$', info)
+				.catch((err: Error) => err),
+	)
+
+	return passportSkinCreationStatus
+}
 
 export const getPassportItemForPayload = async (props: {
 	sTokenPayload: string

@@ -1,19 +1,9 @@
-import { nanoid } from 'nanoid'
 import { getDefaultProvider } from 'ethers'
 import {
 	authenticate,
 	type ClubsConfiguration,
 	encode,
 } from '@devprotocol/clubs-core'
-
-import { withCheckingIndex } from '../db/reindex'
-import { passportItemDocument } from '../db/schema'
-import { generatePassportItemKey, getDefaultClient } from '../db/redis'
-import {
-	ERROR,
-	type AwaitedDefaultClient,
-	type CreatePassportItemReq,
-} from '../types'
 import {
 	isNotError,
 	whenDefinedAll,
@@ -21,32 +11,13 @@ import {
 	whenNotErrorAll,
 } from '@devprotocol/util-ts'
 
-export const setter = async ({
-	client,
-	data,
-	url,
-}: {
-	client: AwaitedDefaultClient
-	data: CreatePassportItemReq
-	url: string
-}) => {
-	// 1. Create passport skin document.
-	const passportSkinDoc = passportItemDocument({
-		id: nanoid(),
-		clubsUrl: url,
-		...data.passportItem,
-	})
-
-	const passportSkinCreationStatus = await whenNotErrorAll(
-		[passportSkinDoc, client],
-		([info, redis]) =>
-			redis.json
-				.set(generatePassportItemKey(info.sTokenPayload), '$', info)
-				.catch((err: Error) => err),
-	)
-
-	return passportSkinCreationStatus
-}
+import { getDefaultClient } from '../db/redis'
+import { withCheckingIndex } from '../db/reindex'
+import { addPassportItemSetter } from '../utils/passportItem'
+import {
+	ERROR,
+	type CreatePassportItemReq,
+} from '../types'
 
 export const handler =
 	(conf: ClubsConfiguration) =>
@@ -103,7 +74,7 @@ export const handler =
 			([set, redis, data, conf]) => {
 				return !set
 					? new Error(ERROR.$500.DBERROR)
-					: setter({ client: redis, data, url: conf.url })
+					: addPassportItemSetter({ client: redis, data, url: conf.url })
 			},
 		)
 
