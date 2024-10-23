@@ -58,7 +58,7 @@
 		"@devprotocol/clubs-core": "^3.18.0",
 		"@rollup/plugin-typescript": "12.1.1",
 		"@tailwindcss/typography": "^0.5.10",
-		"@types/dotenv": "8.2.0",
+		"@types/dotenv": "8.2.3",
 		"@types/node": "20.16.14",
 		"@types/ramda": "0.30.2",
 		"@typescript-eslint/eslint-plugin": "8.11.0",
