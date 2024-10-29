@@ -3,8 +3,16 @@ import { always } from 'ramda'
 import { createClient } from 'redis'
 import { nanoid } from 'nanoid'
 
-import { AwaitedDefaultClient, CreatePassportItemReq, Index, PassportItemDocument } from '../types'
-import { passportItemDocument, sTokenPayload as sTokenPayloadSchema } from '../db/schema'
+import {
+	AwaitedDefaultClient,
+	CreatePassportItemReq,
+	Index,
+	PassportItemDocument,
+} from '../types'
+import {
+	passportItemDocument,
+	sTokenPayload as sTokenPayloadSchema,
+} from '../db/schema'
 import { generatePassportItemKey } from '../db/redis'
 
 const { REDIS_URL, REDIS_USERNAME, REDIS_PASSWORD } = import.meta.env

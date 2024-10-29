@@ -14,10 +14,7 @@ import {
 import { getDefaultClient } from '../db/redis'
 import { withCheckingIndex } from '../db/reindex'
 import { addPassportItemSetter } from '../utils/passportItem'
-import {
-	ERROR,
-	type CreatePassportItemReq,
-} from '../types'
+import { ERROR, type CreatePassportItemReq } from '../types'
 
 export const handler =
 	(conf: ClubsConfiguration) =>

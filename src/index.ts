@@ -68,7 +68,7 @@ export {
 	type PassportItemDocument,
 	generatePassportItemKey,
 	getPassportItemFromPayload,
-	addPassportItemSetter
+	addPassportItemSetter,
 }
 
 export default {
