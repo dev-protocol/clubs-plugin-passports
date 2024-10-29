@@ -45,6 +45,8 @@ export const ERROR = {
 export type PassportItemAssetType =
 	| 'css'
 	| 'stylesheet-link'
+	| 'short-video'
+	| 'short-video-link'
 	| 'image'
 	| 'image-link'
 	| 'video'
