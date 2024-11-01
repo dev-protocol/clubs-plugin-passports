@@ -6,6 +6,8 @@ import {
 	addPassportItemSetter,
 } from './passportItem'
 
+import {composableCheckout} from './composableCheckout'
+
 export const PLUGIN_ID = 'devprotocol:clubs:plugin:passport'
 
 /**
@@ -22,7 +24,7 @@ export const getPayloadFromURL = (url: URL, prepath: string = 'payload') => {
 	return payload ?? ''
 }
 
-export { headers, getPassportItemForPayload, addPassportItemSetter }
+export { headers, getPassportItemForPayload, addPassportItemSetter, composableCheckout }
 
 export default {
 	headers,

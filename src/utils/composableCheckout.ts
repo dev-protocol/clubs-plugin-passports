@@ -23,7 +23,7 @@ export type CheckoutFromPassportOffering = Readonly<
 		props: CheckoutOptions
 	}[]
 >
-export const checkout = async (
+export const composableCheckout = async (
 	config: ClubsConfiguration,
 	fiatCurrency?: string,
 ) => {
