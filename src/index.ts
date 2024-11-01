@@ -16,7 +16,7 @@ import {
 	addPassportItemSetter,
 	getPassportItemForPayload as getPassportItemFromPayload,
 	PLUGIN_ID,
-	composableCheckout
+	composableCheckout,
 } from './utils'
 
 import {
