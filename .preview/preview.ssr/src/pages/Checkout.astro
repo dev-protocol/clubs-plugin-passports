@@ -4,15 +4,13 @@ import type { PassportItemDocument } from '../../../../src'
 import Layout from '../../../theme/Default.astro'
 import ComposedCheckout from '../../../../src/components/Checkout/ComposedCheckout.vue'
 
-const checkoutProps: ComposedItem & PassportItemDocument  = {
+const checkoutProps: ComposedItem & PassportItemDocument = {
 	price: {
 		yen: 100,
 	},
 }
-
-
-
 ---
+
 <Layout>
 	<ComposedCheckout client:load checkoutProps={checkoutProps} />
 </Layout>
