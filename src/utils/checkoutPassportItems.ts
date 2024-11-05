@@ -53,29 +53,27 @@ export const checkoutPassportItems = async (
 	// 	props: {...}
 	//   }
 
-	const returnObject =
-		passportOfferingWithItemData?.map((offering) => ({
+	const returnObject = (passportOfferingWithItemData?.map((offering) => ({
+		payload: offering.payload,
+		component: Checkout,
+		props: {
+			passportItem: offering.passportItem,
+			amount: offering.price,
+			propertyAddress: config.propertyAddress,
+			currency: offering.currency,
+			fiatCurrency: fiatCurrency,
+			rpcUrl: config.rpcUrl,
 			payload: offering.payload,
-			component: Checkout,
-			props: {
-				...offering,
-				amount: offering.price,
-				propertyAddress: config.propertyAddress,
-				currency: offering.currency,
-				fiatCurrency: fiatCurrency,
-				rpcUrl: config.rpcUrl,
-				payload: offering.payload,
-				description: offering.description,
-				itemImageSrc: offering.imageSrc,
-				itemName: offering.name,
-				feePercentage: offering.fee?.percentage,
-				feeBeneficiary: offering.fee?.beneficiary,
-				accessControlUrl: offering.accessControl?.url,
-				accessControlDescription: offering.accessControl?.description,
-				// useDiscretePaymentFlow: ,
-				useInjectedTransactionForm: true,
-			},
-		})) ?? ([] as CheckoutFromPassportOffering)
+			description: offering.description,
+			itemImageSrc: offering.imageSrc,
+			itemName: offering.name,
+			feePercentage: offering.fee?.percentage,
+			feeBeneficiary: offering.fee?.beneficiary,
+			accessControlUrl: offering.accessControl?.url,
+			accessControlDescription: offering.accessControl?.description,
+			fiatAmount: 1,
+		},
+	})) ?? []) as CheckoutFromPassportOffering
 
 	return returnObject
 }
