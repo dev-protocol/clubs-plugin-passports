@@ -1,0 +1,18 @@
+---
+import type { ComposedItem } from '@devprotocol/clubs-plugin-payments'
+import type { PassportItemDocument } from '../../../../src'
+import Layout from '../../../theme/Default.astro'
+import ComposedCheckout from '../../../../src/components/Checkout/ComposedCheckout.vue'
+
+const checkoutProps: ComposedItem & PassportItemDocument  = {
+	price: {
+		yen: 100,
+	},
+}
+
+
+
+---
+<Layout>
+	<ComposedCheckout client:load checkoutProps={checkoutProps} />
+</Layout>
