@@ -6,6 +6,8 @@ import {
 	addPassportItemSetter,
 } from './passportItem'
 
+import { checkoutPassportItems } from './checkoutPassportItems'
+
 export const PLUGIN_ID = 'devprotocol:clubs:plugin:passport'
 
 /**
@@ -22,7 +24,12 @@ export const getPayloadFromURL = (url: URL, prepath: string = 'payload') => {
 	return payload ?? ''
 }
 
-export { headers, getPassportItemForPayload, addPassportItemSetter }
+export {
+	headers,
+	getPassportItemForPayload,
+	addPassportItemSetter,
+	checkoutPassportItems,
+}
 
 export default {
 	headers,
