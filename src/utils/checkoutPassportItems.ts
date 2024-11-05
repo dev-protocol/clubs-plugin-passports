@@ -72,6 +72,7 @@ export const checkoutPassportItems = async (
 			accessControlUrl: offering.accessControl?.url,
 			accessControlDescription: offering.accessControl?.description,
 			fiatAmount: 1,
+			chainId: config.chainId,
 		},
 	})) ?? []) as CheckoutFromPassportOffering
 
