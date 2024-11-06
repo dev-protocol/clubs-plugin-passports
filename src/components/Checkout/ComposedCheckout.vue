@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Checkout } from '@devprotocol/clubs-core/ui/vue'
 import { TransactionForm } from '@devprotocol/clubs-plugin-payments'
-import {loadLibrary} from '@devprotocol/clubs-plugin-payments/utils'
+import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
@@ -41,8 +41,8 @@ const isUsingCreditCard = ref(true)
 // Payment Gateway
 const { PUBLIC_POP_CLIENT_KEY } = import.meta.env
 
-onMounted(()=>{
-	loadLibrary({clientKey: PUBLIC_POP_CLIENT_KEY})
+onMounted(() => {
+	loadLibrary({ clientKey: PUBLIC_POP_CLIENT_KEY })
 })
 </script>
 
