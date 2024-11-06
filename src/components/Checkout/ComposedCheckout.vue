@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Checkout } from '@devprotocol/clubs-core/ui/vue'
-import { TransactionForm } from '@devprotocol/clubs-plugin-payments'
+import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { onMounted, ref } from 'vue'
 
