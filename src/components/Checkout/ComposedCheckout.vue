@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { Checkout } from '@devprotocol/clubs-core/ui/vue'
-import { TempCheckoutProps } from '../../types.ts'
-
 import { TransactionForm } from '@devprotocol/clubs-plugin-payments'
-import { ref } from 'vue'
+import {loadLibrary} from '@devprotocol/clubs-plugin-payments/utils'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
 	checkoutProps: {
@@ -38,6 +37,13 @@ const props = defineProps<{
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)
+
+// Payment Gateway
+const { PUBLIC_POP_CLIENT_KEY } = import.meta.env
+
+onMounted(()=>{
+	loadLibrary({clientKey: PUBLIC_POP_CLIENT_KEY})
+})
 </script>
 
 <template>
