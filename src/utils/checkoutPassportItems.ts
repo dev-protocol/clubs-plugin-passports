@@ -1,7 +1,4 @@
-import {
-	Checkout,
-	type CheckoutOptions,
-} from '@devprotocol/clubs-core/ui/components'
+import { Checkout } from '@devprotocol/clubs-core/ui/components'
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
@@ -10,6 +7,7 @@ import type {
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import passportPlugin, { getPassportItemFromPayload } from '../index'
 import type { PassportItemDocument } from '../index'
+import { ComposedCheckoutOptions } from '../types'
 export type PassportItemData = ClubsOffering<Membership> &
 	Readonly<{
 		passportItem: PassportItemDocument
@@ -20,7 +18,7 @@ export type CheckoutFromPassportOffering = Readonly<
 	{
 		payload: string
 		component: typeof Checkout
-		props: CheckoutOptions
+		props: ComposedCheckoutOptions
 	}[]
 >
 export const checkoutPassportItems = async (
@@ -58,6 +56,15 @@ export const checkoutPassportItems = async (
 		component: Checkout,
 		props: {
 			passportItem: offering.passportItem,
+			override: {
+				id: offering.id,
+				importFrom: '',
+				key: '',
+				payload: offering.payload,
+				price: {
+					yen: 1,
+				},
+			},
 			amount: offering.price,
 			propertyAddress: config.propertyAddress,
 			currency: offering.currency,
