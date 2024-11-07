@@ -2,6 +2,7 @@ import { Checkout } from '@devprotocol/clubs-core/ui/components'
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
+	ClubsPluginOptions,
 	Membership,
 } from '@devprotocol/clubs-core'
 import { bytes32Hex } from '@devprotocol/clubs-core'
@@ -23,7 +24,8 @@ export type CheckoutFromPassportOffering = Readonly<
 >
 export const checkoutPassportItems = async (
 	config: ClubsConfiguration,
-	fiatCurrency?: string,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	options: ClubsPluginOptions,
 ) => {
 	const _passportOfferings = (
 		config?.offerings ?? ([] as ClubsOffering<Membership>[])
@@ -56,11 +58,7 @@ export const checkoutPassportItems = async (
 		component: Checkout,
 		props: {
 			passportItem: offering.passportItem,
-			override: {
-				id: offering.id,
-				importFrom: '',
-				key: '',
-				payload: offering.payload,
+			fiat: {
 				price: {
 					yen: 1,
 				},
@@ -68,7 +66,6 @@ export const checkoutPassportItems = async (
 			amount: offering.price,
 			propertyAddress: config.propertyAddress,
 			currency: offering.currency,
-			fiatCurrency: fiatCurrency,
 			rpcUrl: config.rpcUrl,
 			payload: offering.payload,
 			description: offering.description,
@@ -78,7 +75,6 @@ export const checkoutPassportItems = async (
 			feeBeneficiary: offering.fee?.beneficiary,
 			accessControlUrl: offering.accessControl?.url,
 			accessControlDescription: offering.accessControl?.description,
-			fiatAmount: 1,
 			chainId: config.chainId,
 		},
 	})) ?? []) as CheckoutFromPassportOffering

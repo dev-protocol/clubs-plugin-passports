@@ -76,5 +76,5 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
 		passportItem: PassportItemDocument
-		override: Override
+		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
 	}>
