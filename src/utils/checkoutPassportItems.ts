@@ -1,6 +1,4 @@
-import {
-	type CheckoutOptions,
-} from '@devprotocol/clubs-core/ui/components'
+import { type CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 import ComponentCheckout from '../components/Checkout/ComposedCheckout.vue'
 import type {
 	ClubsConfiguration,

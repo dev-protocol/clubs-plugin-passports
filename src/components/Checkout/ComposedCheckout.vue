@@ -20,7 +20,9 @@ const {
 	accessControlUrl,
 	accessControlDescription,
 	chainId,
-} = defineProps<CheckoutOptions & PassportItemData & Pick<ClubsConfiguration, "chainId">>()
+} = defineProps<
+	CheckoutOptions & PassportItemData & Pick<ClubsConfiguration, 'chainId'>
+>()
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)
@@ -43,7 +45,7 @@ const computedProps = computed(() => {
 			accessControlDescription,
 			useDiscretePaymentFlow: isUsingCreditCard,
 			useInjectedTransactionForm: isUsingCreditCard,
-			uiMode: 'embed'
+			uiMode: 'embed',
 		}
 	} else {
 		return {
@@ -56,15 +58,14 @@ const computedProps = computed(() => {
 			itemName,
 			accessControlUrl,
 			accessControlDescription,
-			uiMode: 'embed'
-		};
+			uiMode: 'embed',
+		}
 	}
 })
 
 onMounted(() => {
 	loadLibrary({ clientKey: PUBLIC_POP_CLIENT_KEY })
 })
-
 </script>
 
 <template>
