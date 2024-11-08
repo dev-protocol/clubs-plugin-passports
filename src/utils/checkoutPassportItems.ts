@@ -1,7 +1,7 @@
 import {
-	Checkout,
 	type CheckoutOptions,
 } from '@devprotocol/clubs-core/ui/components'
+import ComponentCheckout from '../components/Checkout/ComposedCheckout.vue'
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
@@ -19,7 +19,7 @@ export type PassportItemData = ClubsOffering<Membership> &
 export type CheckoutFromPassportOffering = Readonly<
 	{
 		payload: string
-		component: typeof Checkout
+		component: typeof ComponentCheckout
 		props: CheckoutOptions
 	}[]
 >
@@ -55,7 +55,7 @@ export const checkoutPassportItems = async (
 
 	const returnObject = (passportOfferingWithItemData?.map((offering) => ({
 		payload: offering.payload,
-		component: Checkout,
+		component: ComponentCheckout,
 		props: {
 			passportItem: offering.passportItem,
 			amount: offering.price,

@@ -2,38 +2,25 @@
 import { Checkout } from '@devprotocol/clubs-core/ui/vue'
 import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
+import { PassportItemData } from '../../utils/checkoutPassportItems.ts'
+import { ClubsConfiguration } from '@devprotocol/clubs-core'
 
-const props = defineProps<{
-	checkoutProps: {
-		payload: string
-		props: {
-			passportItem: {
-				id: string
-				sTokenId: string
-				sTokenPayload: string
-				clubsUrl: string
-				itemAssetType: string
-				itemAssetValue: string
-			}
-			amount: number
-			propertyAddress: string
-			currency: string
-			fiatCurrency: string
-			rpcUrl: string
-			payload: string
-			description: string
-			itemImageSrc: string
-			itemName: string
-			feePercentage: number
-			feeBeneficiary: string
-			accessControlUrl: string
-			accessControlDescription: string
-			fiatAmount: number
-			chainId: number
-		}
-	}
-}>()
+const {
+	passportItem,
+	amount,
+	propertyAddress,
+	fiatCurrency,
+	rpcUrl,
+	payload,
+	description,
+	itemImageSrc,
+	itemName,
+	accessControlUrl,
+	accessControlDescription,
+	chainId,
+} = defineProps<CheckoutOptions & PassportItemData & Pick<ClubsConfiguration, "chainId">>()
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)
@@ -41,18 +28,47 @@ const isUsingCreditCard = ref(true)
 // Payment Gateway
 const { PUBLIC_POP_CLIENT_KEY } = import.meta.env
 
+const computedProps = computed(() => {
+	if (isUsingCreditCard.value) {
+		return {
+			amount,
+			propertyAddress,
+			fiatCurrency,
+			rpcUrl,
+			payload,
+			description,
+			itemImageSrc,
+			itemName,
+			accessControlUrl,
+			accessControlDescription,
+			useDiscretePaymentFlow: isUsingCreditCard,
+			useInjectedTransactionForm: isUsingCreditCard,
+			uiMode: 'embed'
+		}
+	} else {
+		return {
+			amount,
+			propertyAddress,
+			rpcUrl,
+			payload,
+			description,
+			itemImageSrc,
+			itemName,
+			accessControlUrl,
+			accessControlDescription,
+			uiMode: 'embed'
+		};
+	}
+})
+
 onMounted(() => {
 	loadLibrary({ clientKey: PUBLIC_POP_CLIENT_KEY })
 })
+
 </script>
 
 <template>
-	<Checkout
-		v-bind="checkoutProps.props"
-		:useDiscretePaymentFlow="isUsingCreditCard"
-		:useInjectedTransactionForm="isUsingCreditCard"
-		uiMode="embed"
-	>
+	<Checkout v-bind="computedProps">
 		<template #after:transaction-form>
 			<div>
 				<div class="w-full text-right">
@@ -74,9 +90,9 @@ onMounted(() => {
 				</div>
 				<TransactionForm
 					v-if="isUsingCreditCard"
-					:item="checkoutProps.props.passportItem"
-					:chainId="checkoutProps.props.chainId"
-					:rpcUrl="checkoutProps.props.rpcUrl"
+					:item="passportItem"
+					:chainId="chainId"
+					:rpcUrl="rpcUrl"
 					:debugMode="true"
 				/>
 			</div>
