@@ -3,9 +3,8 @@ import { Checkout } from '@devprotocol/clubs-core/ui/vue'
 import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
-import { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
-import { PassportItemData } from '../../utils/checkoutPassportItems.ts'
 import { ClubsConfiguration } from '@devprotocol/clubs-core'
+import { ComposedCheckoutOptions } from '../../types.ts'
 
 const {
 	passportItem,
@@ -20,9 +19,7 @@ const {
 	accessControlUrl,
 	accessControlDescription,
 	chainId,
-} = defineProps<
-	CheckoutOptions & PassportItemData & Pick<ClubsConfiguration, 'chainId'>
->()
+} = defineProps<ComposedCheckoutOptions & Pick<ClubsConfiguration, 'chainId'>>()
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)
