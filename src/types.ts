@@ -74,7 +74,6 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
 }>
 
- 
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
 		passportItem: PassportItemDocument
