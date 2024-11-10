@@ -51,6 +51,8 @@ export type PassportItemAssetType =
 	| 'short-video-link'
 	| 'image'
 	| 'image-link'
+	| 'image-playable'
+	| 'image-playable-link'
 	| 'video'
 	| 'video-link'
 	| 'bgm'
@@ -72,7 +74,7 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
 }>
 
-// eslint-disable-next-line functional/type-declaration-immutability
+ 
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
 		passportItem: PassportItemDocument

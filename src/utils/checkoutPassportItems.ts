@@ -14,7 +14,6 @@ export type PassportItemData = ClubsOffering<Membership> &
 		passportItem: PassportItemDocument
 	}>
 
-// eslint-disable-next-line functional/type-declaration-immutability
 export type CheckoutFromPassportOffering = Readonly<
 	{
 		payload: string

@@ -1,4 +1,4 @@
-/* eslint-disable functional/type-declaration-immutability */
+ 
 /// <reference types="astro/client" />
 
 interface ImportMetaEnv {
