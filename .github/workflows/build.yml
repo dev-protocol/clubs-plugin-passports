@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: use yarn
+        run: corepack enable
+
       - name: install deps
         run: yarn
 
