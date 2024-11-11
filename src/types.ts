@@ -74,7 +74,6 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
 }>
 
-// eslint-disable-next-line functional/type-declaration-immutability
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
 		passportItem: PassportItemDocument
