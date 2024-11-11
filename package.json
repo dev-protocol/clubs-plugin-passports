@@ -37,7 +37,8 @@
 	"author": "Dev Protocol",
 	"license": "PolyForm Perimeter License 1.0.0",
 	"dependencies": {
-		"@devprotocol/clubs-core": "^3.18.0",
+		"@devprotocol/clubs-core": "^3.22.1",
+		"@devprotocol/clubs-plugin-payments": "0.1.0",
 		"@devprotocol/dev-kit": "8.7.0",
 		"@devprotocol/util-ts": "4.0.0",
 		"bignumber.js": "9.1.2",
@@ -47,7 +48,7 @@
 		"sass": "1.80.6"
 	},
 	"peerDependencies": {
-		"@devprotocol/clubs-core": "^3.18.0",
+		"@devprotocol/clubs-core": "^3.22.1",
 		"ethers": "^6.0.0"
 	},
 	"devDependencies": {

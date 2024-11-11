@@ -1,6 +1,8 @@
 import type { ReadonlyDeep } from 'type-fest'
 
 import type { getDefaultClient } from './db/redis'
+import { Override } from '@devprotocol/clubs-plugin-payments'
+import { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 
 export enum Index {
 	PassportItem = 'idx::clubs:passportitem',
@@ -71,3 +73,9 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 	signature: string
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
 }>
+
+export type ComposedCheckoutOptions = CheckoutOptions &
+	Readonly<{
+		passportItem: PassportItemDocument
+		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
+	}>
