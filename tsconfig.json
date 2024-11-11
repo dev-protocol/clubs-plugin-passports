@@ -11,7 +11,7 @@
 	},
 	"include": [
 		"src",
-		"preview",
+		".preview/**/*",
 		"config.js",
 		"rollup.config.js",
 		"tailwind.config.mjs",

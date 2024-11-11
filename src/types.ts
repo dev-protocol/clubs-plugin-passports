@@ -51,6 +51,8 @@ export type PassportItemAssetType =
 	| 'short-video-link'
 	| 'image'
 	| 'image-link'
+	| 'image-playable'
+	| 'image-playable-link'
 	| 'video'
 	| 'video-link'
 	| 'bgm'

@@ -21,7 +21,9 @@ jobs:
         run: corepack enable
 
       - name: install deps
-        run: yarn
+        run: |
+          corepack enable
+          yarn
 
       - name: lint
         run: yarn lint
