@@ -1,0 +1,36 @@
+---
+import ComponentCheckout from './ComposedCheckout.vue'
+
+const {
+	passportItem,
+	fiat,
+	amount,
+	propertyAddress,
+	fiatCurrency,
+	rpcUrl,
+	payload,
+	description,
+	itemImageSrc,
+	itemName,
+	accessControlUrl,
+	accessControlDescription,
+	chainId,
+} = Astro.props
+---
+
+<ComponentCheckout
+	client:load
+	passportItem={passportItem}
+	fiat={fiat}
+	amount={amount}
+	propertyAddress={propertyAddress}
+	fiatCurrency={fiatCurrency}
+	rpcUrl={rpcUrl}
+	payload={payload}
+	description={description}
+	itemImageSrc={itemImageSrc}
+	itemName={itemName}
+	accessControlUrl={accessControlUrl}
+	accessControlDescription={accessControlDescription}
+	chainId={chainId}
+/>

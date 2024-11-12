@@ -1,15 +1,14 @@
-import {
-	Checkout,
-	type CheckoutOptions,
-} from '@devprotocol/clubs-core/ui/components'
+import ComponentCheckout from '../components/Checkout/ComposedCheckout.vue'
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
+	ClubsPluginOptions,
 	Membership,
 } from '@devprotocol/clubs-core'
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import passportPlugin, { getPassportItemFromPayload } from '../index'
 import type { PassportItemDocument } from '../index'
+import { ComposedCheckoutOptions } from '../types'
 export type PassportItemData = ClubsOffering<Membership> &
 	Readonly<{
 		passportItem: PassportItemDocument
@@ -18,13 +17,14 @@ export type PassportItemData = ClubsOffering<Membership> &
 export type CheckoutFromPassportOffering = Readonly<
 	{
 		payload: string
-		component: typeof Checkout
-		props: CheckoutOptions
+		component: typeof ComponentCheckout
+		props: ComposedCheckoutOptions
 	}[]
 >
 export const checkoutPassportItems = async (
 	config: ClubsConfiguration,
-	fiatCurrency?: string,
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	options: ClubsPluginOptions,
 ) => {
 	const _passportOfferings = (
 		config?.offerings ?? ([] as ClubsOffering<Membership>[])
@@ -54,13 +54,17 @@ export const checkoutPassportItems = async (
 
 	const returnObject = (passportOfferingWithItemData?.map((offering) => ({
 		payload: offering.payload,
-		component: Checkout,
+		component: ComponentCheckout,
 		props: {
 			passportItem: offering.passportItem,
+			fiat: {
+				price: {
+					yen: 1,
+				},
+			},
 			amount: offering.price,
 			propertyAddress: config.propertyAddress,
 			currency: offering.currency,
-			fiatCurrency: fiatCurrency,
 			rpcUrl: config.rpcUrl,
 			payload: offering.payload,
 			description: offering.description,
@@ -70,7 +74,6 @@ export const checkoutPassportItems = async (
 			feeBeneficiary: offering.fee?.beneficiary,
 			accessControlUrl: offering.accessControl?.url,
 			accessControlDescription: offering.accessControl?.description,
-			fiatAmount: 1,
 			chainId: config.chainId,
 		},
 	})) ?? []) as CheckoutFromPassportOffering
