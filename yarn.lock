@@ -635,6 +635,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:8.14.0"
     astro: "npm:^4.0.0"
     bignumber.js: "npm:9.1.2"
+    dayjs: "npm:^1.11.13"
     dotenv: "npm:16.4.5"
     eslint: "npm:^9.14.0"
     eslint-config-prettier: "npm:^9.1.0"
@@ -3844,6 +3845,13 @@ __metadata:
     whatwg-mimetype: "npm:^4.0.0"
     whatwg-url: "npm:^14.0.0"
   checksum: 10c0/1b894d7d41c861f3a4ed2ae9b1c3f0909d4575ada02e36d3d3bc584bdd84278e20709070c79c3b3bff7ac98598cb191eb3e86a89a79ea4ee1ef360e1694f92ad
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.11.13":
+  version: 1.11.13
+  resolution: "dayjs@npm:1.11.13"
+  checksum: 10c0/a3caf6ac8363c7dade9d1ee797848ddcf25c1ace68d9fe8678ecf8ba0675825430de5d793672ec87b24a69bf04a1544b176547b2539982275d5542a7955f35b7
   languageName: node
   linkType: hard
 
