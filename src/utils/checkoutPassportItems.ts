@@ -8,7 +8,15 @@ import type {
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import passportPlugin, { getPassportItemFromPayload } from '../index'
 import type { PassportItemDocument } from '../index'
-import { ComposedCheckoutOptions } from '../types'
+import { ComposedCheckoutOptions, PassportOptionsDiscounts } from '../types'
+import { prices } from '../constants/price'
+import { whenDefined } from '@devprotocol/util-ts'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+// eslint-disable-next-line functional/no-expression-statements
+dayjs.extend(utc)
+
 export type PassportItemData = ClubsOffering<Membership> &
 	Readonly<{
 		passportItem: PassportItemDocument
@@ -23,7 +31,7 @@ export type CheckoutFromPassportOffering = Readonly<
 >
 export const checkoutPassportItems = async (
 	config: ClubsConfiguration,
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 	options: ClubsPluginOptions,
 ) => {
 	const _passportOfferings = (
@@ -52,31 +60,47 @@ export const checkoutPassportItems = async (
 	// 	props: {...}
 	//   }
 
-	const returnObject = (passportOfferingWithItemData?.map((offering) => ({
-		payload: offering.payload,
-		component: ComponentCheckout,
-		props: {
-			passportItem: offering.passportItem,
-			fiat: {
-				price: {
-					yen: 1,
-				},
-			},
-			amount: offering.price,
-			propertyAddress: config.propertyAddress,
-			currency: offering.currency,
-			rpcUrl: config.rpcUrl,
+	const discounts = (options.find(({ key }) => key === 'discounts')?.value ??
+		[]) as PassportOptionsDiscounts
+	const now = dayjs().utc().toDate().getTime()
+
+	const returnObject = (passportOfferingWithItemData?.map((offering) => {
+		const price = prices[offering.passportItem.itemAssetType]
+		const discount = discounts.find(
+			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
+		)
+		const underDiscount =
+			whenDefined(discount, (dis) => {
+				return now >= dis.start_utc && now <= dis.end_utc
+			}) ?? false
+
+		return {
 			payload: offering.payload,
-			description: offering.description,
-			itemImageSrc: offering.imageSrc,
-			itemName: offering.name,
-			feePercentage: offering.fee?.percentage,
-			feeBeneficiary: offering.fee?.beneficiary,
-			accessControlUrl: offering.accessControl?.url,
-			accessControlDescription: offering.accessControl?.description,
-			chainId: config.chainId,
-		},
-	})) ?? []) as CheckoutFromPassportOffering
+			component: ComponentCheckout,
+			props: {
+				passportItem: offering.passportItem,
+				fiat: {
+					price: {
+						yen: price.yen,
+					},
+				},
+				amount: offering.price,
+				propertyAddress: config.propertyAddress,
+				currency: offering.currency,
+				rpcUrl: config.rpcUrl,
+				payload: offering.payload,
+				description: offering.description,
+				itemImageSrc: offering.imageSrc,
+				itemName: offering.name,
+				feePercentage: offering.fee?.percentage,
+				feeBeneficiary: offering.fee?.beneficiary,
+				accessControlUrl: offering.accessControl?.url,
+				accessControlDescription: offering.accessControl?.description,
+				chainId: config.chainId,
+				discount: underDiscount && discount ? discount : undefined,
+			},
+		}
+	}) ?? []) as CheckoutFromPassportOffering
 
 	return returnObject
 }
