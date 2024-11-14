@@ -6,8 +6,11 @@ import { computed, onMounted, ref } from 'vue'
 import { ClubsConfiguration } from '@devprotocol/clubs-core'
 import { ComposedCheckoutOptions } from '../../types.ts'
 
+const props = defineProps({
+	checkoutProps: Object,
+})
+
 const {
-	passportItem,
 	amount,
 	propertyAddress,
 	fiatCurrency,
@@ -19,7 +22,10 @@ const {
 	accessControlUrl,
 	accessControlDescription,
 	chainId,
-} = defineProps<ComposedCheckoutOptions & Pick<ClubsConfiguration, 'chainId'>>()
+	passportItem,
+} = props.checkoutProps as ComposedCheckoutOptions & {
+	passportItem: ClubsConfiguration
+} & Pick<ClubsConfiguration, 'chainId'>
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)

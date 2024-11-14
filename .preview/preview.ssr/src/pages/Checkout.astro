@@ -3,37 +3,31 @@ import Layout from '../../../theme/Default.astro'
 import ComposedCheckout from '../../../../src/components/Checkout/ComposedCheckout.vue'
 
 const checkoutProps = {
-	payload: 'payloadpayloadpayload',
-	component: {},
-	props: {
-		passportItem: {
-			id: 'xxxxxxxxx',
-			sTokenId: 'xxxxxxxxx',
-			sTokenPayload: 'xxxxxxxxx',
-			clubsUrl: 'https://www.clubs.place/',
-			itemAssetType: 'stylesheet-link',
-			itemAssetValue: 'https://picsum.photos/600',
-		},
-		amount: 10,
-		propertyAddress: '0x000000000000000',
-		currency: 'MATIC',
-		fiatCurrency: '¥',
-		rpcUrl: 'https://rpc.devprotocol.xyz',
-		payload: 'payloadpayloadpayload',
-		description: 'descriptiondescriptiondescription',
-		itemImageSrc: 'https://picsum.photos/600',
-		itemName: 'itemNameitemNameitemName',
-		feePercentage: 1,
-		feeBeneficiary: '0x000000000000000',
-		accessControlUrl: 'https://www.clubs.place/',
-		accessControlDescription:
-			'accessControlDescriptionaccessControlDescriptionaccessControlDescription',
-		fiatAmount: 1000,
-		chainId: 100,
+	passportItem: {
+		id: 'xxxxxxxxx',
+		sTokenId: 'xxxxxxxxx',
+		sTokenPayload: 'xxxxxxxxx',
+		clubsUrl: 'https://www.clubs.place/',
+		itemAssetType: 'stylesheet-link',
+		itemAssetValue: 'https://picsum.photos/600',
 	},
+	amount: 1000,
+	propertyAddress: '0x000000000000000',
+	currency: 'MATIC',
+	fiatCurrency: '¥',
+	rpcUrl: 'https://rpc.devprotocol.xyz',
+	payload: 'payloadpayloadpayload',
+	description: 'descriptiondescriptiondescription',
+	itemImageSrc: 'https://picsum.photos/600',
+	itemName: 'itemNameitemNameitemName',
+	accessControlUrl: 'https://www.clubs.place/',
+	accessControlDescription:
+		'accessControlDescriptionaccessControlDescriptionaccessControlDescription',
+	fiatAmount: 1000,
+	chainId: 100,
 }
 ---
 
 <Layout>
-	<div>foo</div>
+	<ComposedCheckout client:load checkoutProps={checkoutProps} />
 </Layout>
