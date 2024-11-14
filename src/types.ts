@@ -1,9 +1,10 @@
 import type { ReadonlyDeep } from 'type-fest'
 
 import type { getDefaultClient } from './db/redis'
-import { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
-import { Override } from '@devprotocol/clubs-plugin-payments'
-import { Price } from './constants/price'
+import type { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
+import type { Override } from '@devprotocol/clubs-plugin-payments'
+import type { Price } from './constants/price'
+import type { ClubsOffering, Membership } from '@devprotocol/clubs-core'
 
 export enum Index {
 	PassportItem = 'idx::clubs:passportitem',
@@ -90,3 +91,7 @@ export type PassportOptionsDiscount = {
 }
 
 export type PassportOptionsDiscounts = ReadonlyArray<PassportOptionsDiscount>
+
+export type PassportOffering = ClubsOffering<
+	Membership & { previewImageSrc?: string }
+>

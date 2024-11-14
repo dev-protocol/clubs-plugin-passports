@@ -1,14 +1,16 @@
 import ComponentCheckout from '../components/Checkout/ComposedCheckout.vue'
 import type {
 	ClubsConfiguration,
-	ClubsOffering,
 	ClubsPluginOptions,
-	Membership,
 } from '@devprotocol/clubs-core'
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import passportPlugin, { getPassportItemFromPayload } from '../index'
 import type { PassportItemDocument } from '../index'
-import { ComposedCheckoutOptions, PassportOptionsDiscounts } from '../types'
+import {
+	ComposedCheckoutOptions,
+	PassportOffering,
+	PassportOptionsDiscounts,
+} from '../types'
 import { prices } from '../constants/price'
 import { whenDefined } from '@devprotocol/util-ts'
 import dayjs from 'dayjs'
@@ -17,7 +19,7 @@ import utc from 'dayjs/plugin/utc'
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
 
-export type PassportItemData = ClubsOffering<Membership> &
+export type PassportItemData = PassportOffering &
 	Readonly<{
 		passportItem: PassportItemDocument
 	}>
@@ -35,7 +37,7 @@ export const checkoutPassportItems = async (
 	options: ClubsPluginOptions,
 ) => {
 	const _passportOfferings = (
-		config?.offerings ?? ([] as ClubsOffering<Membership>[])
+		config?.offerings ?? ([] as PassportOffering[])
 	)?.filter((offering) => offering.managedBy === passportPlugin.meta.id)
 	const passportOfferingWithItemData = await Promise.all(
 		_passportOfferings?.map((offering) =>
@@ -90,7 +92,7 @@ export const checkoutPassportItems = async (
 				rpcUrl: config.rpcUrl,
 				payload: offering.payload,
 				description: offering.description,
-				itemImageSrc: offering.imageSrc,
+				itemImageSrc: offering.previewImageSrc ?? offering.imageSrc,
 				itemName: offering.name,
 				feePercentage: offering.fee?.percentage,
 				feeBeneficiary: offering.fee?.beneficiary,
