@@ -8,7 +8,7 @@ import {
 
 import { checkoutPassportItems } from './checkoutPassportItems'
 
-export const PLUGIN_ID = 'devprotocol:clubs:plugin:passport'
+export const PLUGIN_ID = 'devprotocol:clubs:plugin:passports'
 
 /**
  * Returns sToken payload from the url
