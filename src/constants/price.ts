@@ -30,7 +30,7 @@ const tiers = {
 	},
 } satisfies Record<string, Price>
 
-export const prices: Record<PassportItemAssetType, Price> = {
+export const Prices: Record<PassportItemAssetType, Price> = {
 	image: tiers.t_static_clip,
 	'image-link': tiers.t_static_clip,
 	'image-playable': tiers.t_playable_clip,

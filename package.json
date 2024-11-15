@@ -38,7 +38,7 @@
 		"lint:format": "prettier --write '**/*.{ts,js,tsx,jsx,astro,vue,svelte,json,md,yml}'",
 		"prepack": "yarn test --run && yarn prebuild && yarn build",
 		"prepare": "husky",
-		"typecheck": "astro check --root ./src && vue-tsc --noEmit --p tsconfig.vue.json"
+		"typecheck": "astro check && tsc --noEmit && vue-tsc --noEmit --p tsconfig.vue.json"
 	},
 	"author": "Dev Protocol",
 	"license": "PolyForm Perimeter License 1.0.0",
