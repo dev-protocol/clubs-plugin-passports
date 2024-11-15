@@ -1,8 +1,8 @@
 {
-	"name": "@devprotocol/clubs-plugin-passport",
-	"version": "0.1.0-beta.19",
+	"name": "@devprotocol/clubs-plugin-passports",
+	"version": "0.1.0-beta.20",
 	"type": "module",
-	"description": "Passport plugin for clubs",
+	"description": "Passports plugin for clubs",
 	"main": "dist/index.js",
 	"types": "./dist/index.d.ts",
 	"files": [

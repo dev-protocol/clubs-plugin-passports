@@ -611,9 +611,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devprotocol/clubs-plugin-passport@workspace:.":
+"@devprotocol/clubs-plugin-passports@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@devprotocol/clubs-plugin-passport@workspace:."
+  resolution: "@devprotocol/clubs-plugin-passports@workspace:."
   dependencies:
     "@astrojs/check": "npm:^0.9.0"
     "@astrojs/svelte": "npm:^5.0.0"
