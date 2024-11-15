@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../theme/Default.astro'
 import ComposedCheckout from '../../../../src/components/Checkout/ComposedCheckout.vue'
+import type { ComposedCheckoutOptions } from '../../../../src/types'
 
 const checkoutProps = {
 	passportItem: {
@@ -23,11 +24,15 @@ const checkoutProps = {
 	accessControlUrl: 'https://www.clubs.place/',
 	accessControlDescription:
 		'accessControlDescriptionaccessControlDescriptionaccessControlDescription',
-	fiatAmount: 1000,
 	chainId: 100,
-}
+	fiat: {
+		price: {
+			yen: 100,
+		},
+	},
+} satisfies ComposedCheckoutOptions
 ---
 
 <Layout>
-	<ComposedCheckout client:load checkoutProps={checkoutProps} />
+	<ComposedCheckout client:load {...checkoutProps} />
 </Layout>

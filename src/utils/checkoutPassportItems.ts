@@ -14,6 +14,7 @@ import { Prices } from '../constants/price'
 import { whenDefined } from '@devprotocol/util-ts'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import paymentsplg from '@devprotocol/clubs-plugin-payments'
 
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
@@ -60,6 +61,12 @@ export const checkoutPassportItems = async (
 	// 	props: {...}
 	//   }
 
+	const paymentsDebugMode = Boolean(
+		config.plugins
+			.find((p) => p.id === paymentsplg.meta.id)
+			?.options?.find((o) => o.key === 'debug')?.value,
+	)
+
 	const discounts = (options.find(({ key }) => key === 'discounts')?.value ??
 		[]) as PassportOptionsDiscounts
 	const now = dayjs().utc().toDate().getTime()
@@ -97,6 +104,7 @@ export const checkoutPassportItems = async (
 				accessControlDescription: offering.accessControl?.description,
 				chainId: config.chainId,
 				discount: underDiscount && discount ? discount : undefined,
+				debugMode: paymentsDebugMode,
 			},
 		}
 	}) ?? []) as CheckoutFromPassportOffering
