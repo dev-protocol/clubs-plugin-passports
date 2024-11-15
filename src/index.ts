@@ -28,6 +28,8 @@ import {
 	type PassportItemDocument,
 } from './types'
 
+import { Prices } from './constants/price'
+
 export const getPagePaths = (async () => {
 	return []
 }) satisfies ClubsFunctionGetPagePaths
@@ -71,6 +73,7 @@ export {
 	generatePassportItemKey,
 	getPassportItemFromPayload,
 	addPassportItemSetter,
+	Prices,
 }
 
 export default {

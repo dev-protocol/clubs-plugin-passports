@@ -4,7 +4,11 @@ import type { getDefaultClient } from './db/redis'
 import type { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 import type { Override } from '@devprotocol/clubs-plugin-payments'
 import type { Price } from './constants/price'
-import type { ClubsOffering, Membership } from '@devprotocol/clubs-core'
+import type {
+	ClubsConfiguration,
+	ClubsOffering,
+	Membership,
+} from '@devprotocol/clubs-core'
 
 export enum Index {
 	PassportItem = 'idx::clubs:passportitem',
@@ -81,6 +85,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		passportItem: PassportItemDocument
 		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
+		chainId: ClubsConfiguration['chainId']
 	}>
 
 export type PassportOptionsDiscount = {

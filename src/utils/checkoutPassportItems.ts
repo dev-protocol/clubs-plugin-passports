@@ -10,7 +10,7 @@ import {
 	PassportOffering,
 	PassportOptionsDiscounts,
 } from '../types'
-import { prices } from '../constants/price'
+import { Prices } from '../constants/price'
 import { whenDefined } from '@devprotocol/util-ts'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
@@ -65,7 +65,7 @@ export const checkoutPassportItems = async (
 	const now = dayjs().utc().toDate().getTime()
 
 	const returnObject = (passportOfferingWithItemData?.map((offering) => {
-		const price = prices[offering.passportItem.itemAssetType]
+		const price = Prices[offering.passportItem.itemAssetType]
 		const discount = discounts.find(
 			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
 		)

@@ -1,5 +1,8 @@
 ---
+import { ComposedCheckoutOptions } from '../../types'
 import ComponentCheckout from './ComposedCheckout.vue'
+
+type Props = ComposedCheckoutOptions
 
 const {
 	passportItem,
@@ -20,17 +23,19 @@ const {
 
 <ComponentCheckout
 	client:load
-	passportItem={passportItem}
-	fiat={fiat}
-	amount={amount}
-	propertyAddress={propertyAddress}
-	fiatCurrency={fiatCurrency}
-	rpcUrl={rpcUrl}
-	payload={payload}
-	description={description}
-	itemImageSrc={itemImageSrc}
-	itemName={itemName}
-	accessControlUrl={accessControlUrl}
-	accessControlDescription={accessControlDescription}
-	chainId={chainId}
+	checkoutProps={{
+		passportItem,
+		fiat,
+		amount,
+		propertyAddress,
+		fiatCurrency,
+		rpcUrl,
+		payload,
+		description,
+		itemImageSrc,
+		itemName,
+		accessControlUrl,
+		accessControlDescription,
+		chainId,
+	}}
 />
