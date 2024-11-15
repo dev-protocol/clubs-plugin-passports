@@ -1,4 +1,3 @@
-import ComponentCheckout from '../components/Checkout/ComposedCheckout.vue'
 import type {
 	ClubsConfiguration,
 	ClubsPluginOptions,
@@ -27,7 +26,6 @@ export type PassportItemData = PassportOffering &
 export type CheckoutFromPassportOffering = Readonly<
 	{
 		payload: string
-		component: typeof ComponentCheckout
 		props: ComposedCheckoutOptions
 	}[]
 >
@@ -78,7 +76,6 @@ export const checkoutPassportItems = async (
 
 		return {
 			payload: offering.payload,
-			component: ComponentCheckout,
 			props: {
 				passportItem: offering.passportItem,
 				fiat: {

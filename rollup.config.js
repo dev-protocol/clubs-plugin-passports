@@ -56,4 +56,33 @@ export default [
 			}),
 		],
 	},
+	{
+		input: 'src/components/index.ts',
+		output: [
+			{
+				file: 'dist/components.js',
+				format: 'es',
+			},
+		],
+		plugins: [
+			typescript(),
+			useSrc({
+				ext: ['.astro', '.vue'],
+				dir,
+				out: (path) => path.replace('src/components', 'dist'),
+			}),
+		],
+	},
+	{
+		input: 'dist/src/components/index.d.ts',
+		output: [{ file: 'components.d.ts', format: 'es' }],
+		plugins: [
+			dts(),
+			useSrc({
+				ext: ['.astro', '.vue'],
+				dir,
+				out: (path) => path.replace('dist/src/components', ''),
+			}),
+		],
+	},
 ]

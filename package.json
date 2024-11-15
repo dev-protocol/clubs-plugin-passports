@@ -8,6 +8,7 @@
 	"files": [
 		"dist/*.d.ts",
 		"dist/*.js",
+		"./*.d.ts",
 		"!**/*.test.*",
 		"!dist/vitest.*",
 		"src"
@@ -16,6 +17,10 @@
 		".": {
 			"import": "./dist/index.js",
 			"types": "./dist/index.d.ts"
+		},
+		"./components": {
+			"default": "./dist/components.js",
+			"types": "./components.d.ts"
 		},
 		"./package.json": "./package.json"
 	},
@@ -27,7 +32,7 @@
 		"preview": "astro --root .preview/preview.ssr dev",
 		"preview:static": "astro --root .preview/preview.static dev",
 		"build": "rollup -c",
-		"prebuild": "rimraf dist",
+		"prebuild": "rimraf dist ./*.d.ts",
 		"lint": "yarn lint:eslint && yarn lint:format",
 		"lint:eslint": "eslint . --fix",
 		"lint:format": "prettier --write '**/*.{ts,js,tsx,jsx,astro,vue,svelte,json,md,yml}'",
