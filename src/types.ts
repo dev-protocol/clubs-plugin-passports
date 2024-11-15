@@ -86,6 +86,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
 		chainId: ClubsConfiguration['chainId']
+		debugMode?: boolean
 	}>
 
 export type PassportOptionsDiscount = {

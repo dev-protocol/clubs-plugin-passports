@@ -5,9 +5,7 @@ import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
 import { ComposedCheckoutOptions } from '../../types.ts'
 
-const props = defineProps({
-	checkoutProps: Object,
-})
+const props = defineProps<ComposedCheckoutOptions>()
 
 const {
 	amount,
@@ -22,7 +20,9 @@ const {
 	accessControlDescription,
 	chainId,
 	passportItem,
-} = props.checkoutProps as ComposedCheckoutOptions
+	debugMode,
+	fiat,
+} = props
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)
@@ -33,7 +33,7 @@ const { PUBLIC_POP_CLIENT_KEY } = import.meta.env
 const computedProps = computed(() => {
 	if (isUsingCreditCard.value) {
 		return {
-			amount,
+			amount: fiat.price.yen,
 			propertyAddress,
 			fiatCurrency,
 			rpcUrl,
@@ -94,7 +94,7 @@ onMounted(() => {
 					:item="passportItem"
 					:chainId="chainId"
 					:rpcUrl="rpcUrl"
-					:debugMode="true"
+					:debugMode="debugMode"
 				/>
 			</div>
 		</template>
