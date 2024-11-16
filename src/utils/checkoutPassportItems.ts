@@ -24,13 +24,11 @@ export type PassportItemData = PassportOffering &
 		passportItem: PassportItemDocument
 	}>
 
-export type CheckoutFromPassportOfferingSingle = {
-	payload: string
-	props: ComposedCheckoutOptions
-}
-
 export type CheckoutFromPassportOffering = Readonly<
-	CheckoutFromPassportOfferingSingle[]
+	{
+		payload: string
+		props: ComposedCheckoutOptions
+	}[]
 >
 
 export const checkoutPassportItems = async (

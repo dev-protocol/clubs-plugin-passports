@@ -20,6 +20,7 @@ import {
 } from './utils'
 
 import {
+	ComposedCheckoutOptions,
 	Index,
 	Prefix,
 	SchemaKey,
@@ -29,7 +30,6 @@ import {
 } from './types'
 import type {
 	PassportItemData,
-	CheckoutFromPassportOfferingSingle,
 	CheckoutFromPassportOffering,
 } from './utils/checkoutPassportItems'
 
@@ -80,7 +80,7 @@ export {
 	addPassportItemSetter,
 	Prices,
 	type CheckoutFromPassportOffering,
-	type CheckoutFromPassportOfferingSingle,
+	type ComposedCheckoutOptions,
 	type PassportItemData,
 }
 
