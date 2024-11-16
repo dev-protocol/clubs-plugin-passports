@@ -5,7 +5,7 @@ import type {
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import passportPlugin, { getPassportItemFromPayload } from '../index'
 import type { PassportItemDocument } from '../index'
-import {
+import type {
 	ComposedCheckoutOptions,
 	PassportOffering,
 	PassportOptionsDiscounts,
