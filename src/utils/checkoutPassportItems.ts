@@ -24,20 +24,23 @@ export type PassportItemData = PassportOffering &
 		passportItem: PassportItemDocument
 	}>
 
+export type CheckoutFromPassportOfferingSingle = {
+	payload: string
+	props: ComposedCheckoutOptions
+}
+
 export type CheckoutFromPassportOffering = Readonly<
-	{
-		payload: string
-		props: ComposedCheckoutOptions
-	}[]
+	CheckoutFromPassportOfferingSingle[]
 >
+
 export const checkoutPassportItems = async (
 	config: ClubsConfiguration,
-
 	options: ClubsPluginOptions,
 ) => {
 	const _passportOfferings = (
 		config?.offerings ?? ([] as PassportOffering[])
 	)?.filter((offering) => offering.managedBy === passportPlugin.meta.id)
+
 	const passportOfferingWithItemData = await Promise.all(
 		_passportOfferings?.map((offering) =>
 			getPassportItemFromPayload({
@@ -54,12 +57,6 @@ export const checkoutPassportItems = async (
 		.then((items) => items.filter((items) => !!items))
 		.then((items) => (items.length ? items : undefined))
 		.catch(() => undefined)
-
-	// {
-	// 	payload: '...',
-	// 	component: Checkout, // the composed Checkout vue component
-	// 	props: {...}
-	//   }
 
 	const paymentsDebugMode = Boolean(
 		config.plugins

@@ -27,6 +27,11 @@ import {
 	type PassportItemAssetType,
 	type PassportItemDocument,
 } from './types'
+import type {
+	PassportItemData,
+	CheckoutFromPassportOfferingSingle,
+	CheckoutFromPassportOffering,
+} from './utils/checkoutPassportItems'
 
 import { Prices } from './constants/price'
 
@@ -74,6 +79,9 @@ export {
 	getPassportItemFromPayload,
 	addPassportItemSetter,
 	Prices,
+	type CheckoutFromPassportOffering,
+	type CheckoutFromPassportOfferingSingle,
+	type PassportItemData,
 }
 
 export default {
