@@ -1,4 +1,4 @@
-import { PassportItemAssetType } from '../types'
+import type { PassportItemAssetType } from '../types'
 
 export enum PassportCurrency {
 	Yen = 'yen',
