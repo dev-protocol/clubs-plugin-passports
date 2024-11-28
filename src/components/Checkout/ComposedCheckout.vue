@@ -14,12 +14,7 @@ const composedItem: ComposedItem = {
 	source: props.offering,
 }
 
-const {
-	rpcUrl,
-	chainId,
-	debugMode,
-	fiat,
-} = props
+const { rpcUrl, chainId, debugMode, fiat } = props
 
 // for the credit card toggle
 const isUsingCreditCard = ref(true)

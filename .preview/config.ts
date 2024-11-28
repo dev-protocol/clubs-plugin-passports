@@ -25,7 +25,7 @@ export default () =>
 			},
 			{
 				id: 'devprotocol:clubs:plugin:clubs-payments',
-				options: []
-			}
+				options: [],
+			},
 		],
 	})

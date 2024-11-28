@@ -88,7 +88,7 @@ export const checkoutPassportItems = async (
 				},
 				amount: offering.price,
 				propertyAddress: config.propertyAddress,
-				destination:config.propertyAddress,
+				destination: config.propertyAddress,
 				currency: offering.currency,
 				rpcUrl: config.rpcUrl,
 				payload: offering.payload,
