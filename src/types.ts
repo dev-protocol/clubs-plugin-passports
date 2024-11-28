@@ -82,6 +82,8 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
+		offering: ClubsOffering
+		destination: string
 		passportItem: PassportItemDocument
 		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
 		discount?: Omit<PassportOptionsDiscount, 'payload'>

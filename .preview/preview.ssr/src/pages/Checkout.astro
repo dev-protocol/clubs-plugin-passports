@@ -4,6 +4,14 @@ import ComposedCheckout from '../../../../src/components/Checkout/ComposedChecko
 import type { ComposedCheckoutOptions } from '../../../../src/types'
 
 const checkoutProps = {
+	offering: {
+		id: 'xxxxxxxxx',
+		name: 'xxxxxxxxx',
+		description: 'xxxxxxxxx',
+		imageSrc: 'https://picsum.photos/600',
+		payload: new Uint8Array([235, 38, 15, 156, 87, 195, 242, 73]),
+		managedBy: 'xxxxxxxxx',
+	},
 	passportItem: {
 		id: 'xxxxxxxxx',
 		sTokenId: 'xxxxxxxxx',
@@ -12,19 +20,18 @@ const checkoutProps = {
 		itemAssetType: 'stylesheet-link',
 		itemAssetValue: 'https://picsum.photos/600',
 	},
-	amount: 1000,
-	propertyAddress: '0x000000000000000',
-	currency: 'MATIC',
-	fiatCurrency: '¥',
-	rpcUrl: 'https://rpc.devprotocol.xyz',
-	payload: 'payloadpayloadpayload',
+	amount: 0.00001,
+	propertyAddress: '0xFF768Ef97f34314c79755C0F085fE784a9C6F575',
+	destination: '0xFF768Ef97f34314c79755C0F085fE784a9C6F575',
+	currency: 'matic',
+	rpcUrl: 'https://polygon-rpc.com',
+	payload: new Uint8Array([235, 38, 15, 156, 87, 195, 242, 73]),
 	description: 'descriptiondescriptiondescription',
 	itemImageSrc: 'https://picsum.photos/600',
 	itemName: 'itemNameitemNameitemName',
-	accessControlUrl: 'https://www.clubs.place/',
 	accessControlDescription:
 		'accessControlDescriptionaccessControlDescriptionaccessControlDescription',
-	chainId: 100,
+	chainId: 137,
 	fiat: {
 		price: {
 			yen: 100,

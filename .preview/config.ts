@@ -23,5 +23,9 @@ export default () =>
 					{ key: 'maxpage', value: 30 },
 				],
 			},
+			{
+				id: 'devprotocol:clubs:plugin:clubs-payments',
+				options: []
+			}
 		],
 	})

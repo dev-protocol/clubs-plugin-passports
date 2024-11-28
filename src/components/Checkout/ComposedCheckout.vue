@@ -4,22 +4,19 @@ import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
 import { ComposedCheckoutOptions } from '../../types.ts'
+import { ComposedItem } from '@devprotocol/clubs-plugin-payments'
 
 const props = defineProps<ComposedCheckoutOptions>()
 
+const composedItem: ComposedItem = {
+	payload: props.payload ?? '',
+	price: props.fiat.price,
+	source: props.offering,
+}
+
 const {
-	amount,
-	propertyAddress,
-	fiatCurrency,
 	rpcUrl,
-	payload,
-	description,
-	itemImageSrc,
-	itemName,
-	accessControlUrl,
-	accessControlDescription,
 	chainId,
-	passportItem,
 	debugMode,
 	fiat,
 } = props
@@ -33,31 +30,16 @@ const { PUBLIC_POP_CLIENT_KEY } = import.meta.env
 const computedProps = computed(() => {
 	if (isUsingCreditCard.value) {
 		return {
+			...props,
 			amount: fiat.price.yen,
-			propertyAddress,
-			fiatCurrency,
-			rpcUrl,
-			payload,
-			description,
-			itemImageSrc,
-			itemName,
-			accessControlUrl,
-			accessControlDescription,
+			fiatCurrency: '¥',
 			useDiscretePaymentFlow: isUsingCreditCard,
 			useInjectedTransactionForm: isUsingCreditCard,
 			uiMode: 'embed',
 		}
 	} else {
 		return {
-			amount,
-			propertyAddress,
-			rpcUrl,
-			payload,
-			description,
-			itemImageSrc,
-			itemName,
-			accessControlUrl,
-			accessControlDescription,
+			...props,
 			uiMode: 'embed',
 		}
 	}
@@ -91,7 +73,7 @@ onMounted(() => {
 				</div>
 				<TransactionForm
 					v-if="isUsingCreditCard"
-					:item="passportItem"
+					:item="composedItem"
 					:chainId="chainId"
 					:rpcUrl="rpcUrl"
 					:debugMode="debugMode"
