@@ -46,6 +46,27 @@ export const itemAssetValue = {
 	},
 } satisfies RediSearchSchema
 
+export const itemAssetValueSrc = {
+	'$.itemAssetValueSrc': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueSrc',
+	},
+} satisfies RediSearchSchema
+
+export const createdOnTimestamp = {
+	'$.createdOnTimestamp': {
+		type: SchemaFieldTypes.NUMERIC,
+		AS: 'createdOnTimestamp',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueMimeType = {
+	'$.itemAssetValueMimeType': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueMimeType',
+	},
+} satisfies RediSearchSchema
+
 export const passportItemDocument = (doc: {
 	id: string | bigint | number
 	sTokenId?: string | bigint | number
@@ -62,6 +83,15 @@ export const passportItemDocument = (doc: {
 	itemAssetValue: doc.itemAssetValue,
 })
 
+export const PASSPORTITEMSRC_SCHEMA = {
+	...id,
+	...sTokenId,
+	...sTokenPayload,
+	...itemAssetValueSrc,
+	...createdOnTimestamp,
+	...itemAssetValueMimeType,
+}
+
 export const PASSPORTITEM_SCHEMA = {
 	...id,
 	...sTokenId,
@@ -70,6 +100,10 @@ export const PASSPORTITEM_SCHEMA = {
 	...itemAssetType,
 	...itemAssetValue,
 }
+
+export const PASSPORTITEMSRC_SCHEMA_ID = keccak256(
+	toUtf8Bytes(encode(PASSPORTITEMSRC_SCHEMA)),
+)
 
 export const PASSPORTITEM_SCHEMA_ID = keccak256(
 	toUtf8Bytes(encode(PASSPORTITEM_SCHEMA)),

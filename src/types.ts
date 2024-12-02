@@ -1,25 +1,28 @@
 import type { ReadonlyDeep } from 'type-fest'
-
-import type { getDefaultClient } from './db/redis'
-import type { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 import type { Override } from '@devprotocol/clubs-plugin-payments'
-import type { Price } from './constants/price'
+import type { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
 	Membership,
 } from '@devprotocol/clubs-core'
 
+import type { Price } from './constants/price'
+import type { getDefaultClient } from './db/redis'
+
 export enum Index {
 	PassportItem = 'idx::clubs:passportitem',
+	PassportItemSrc = 'idx::clubs::passportitem:src',
 }
 
 export enum Prefix {
 	PassportItem = 'doc::clubs:passportitem',
+	PassportItemSrc = 'doc::clubs::passportitem:src',
 }
 
 export enum SchemaKey {
 	PassportItem = 'scm::clubs:passportitem',
+	PassportItemSrc = 'scm::clubs::passportitem:src',
 }
 
 export type Option =
