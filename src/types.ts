@@ -76,11 +76,27 @@ export type PassportItemDocument = Readonly<{
 	itemAssetValue: string
 }>
 
+export type PassportItemSrcDocument = Readonly<{
+	id: string
+	sTokenId?: string
+	sTokenPayload: string
+	itemAssetValueSrc: string
+	createdOnTimestamp: number
+	itemAssetValueMimeType: string
+}>
+
 export type CreatePassportItemReq = ReadonlyDeep<{
 	site: string
 	message: string
 	signature: string
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
+}>
+
+export type CreatePassportItemSrcReq = ReadonlyDeep<{
+	site: string
+	message: string
+	signature: string
+	passportItemSrc: Omit<PassportItemSrcDocument, 'id' | 'createdOnTimestamp'>
 }>
 
 export type ComposedCheckoutOptions = CheckoutOptions &

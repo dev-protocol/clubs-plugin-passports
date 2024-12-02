@@ -2,7 +2,11 @@ import { keccak256, toUtf8Bytes } from 'ethers'
 import { encode } from '@devprotocol/clubs-core'
 import { SchemaFieldTypes, type RediSearchSchema } from 'redis'
 
-import type { PassportItemAssetType, PassportItemDocument } from '../types'
+import type {
+	PassportItemAssetType,
+	PassportItemDocument,
+	PassportItemSrcDocument,
+} from '../types'
 
 export const id = {
 	'$.id': {
@@ -81,6 +85,21 @@ export const passportItemDocument = (doc: {
 	clubsUrl: doc.clubsUrl,
 	itemAssetType: doc.itemAssetType,
 	itemAssetValue: doc.itemAssetValue,
+})
+
+export const passportItemSrcDocument = (doc: {
+	id: string | bigint | number
+	sTokenId?: string | bigint | number
+	sTokenPayload: string
+	itemAssetValueSrc: string
+	itemAssetValueMimeType: string
+}): PassportItemSrcDocument => ({
+	id: doc.id.toString(),
+	sTokenId: doc.sTokenId?.toString() ?? undefined,
+	sTokenPayload: doc.sTokenPayload,
+	itemAssetValueSrc: doc.itemAssetValueSrc,
+	createdOnTimestamp: Date.now(),
+	itemAssetValueMimeType: doc.itemAssetValueMimeType,
 })
 
 export const PASSPORTITEMSRC_SCHEMA = {

@@ -6,14 +6,19 @@ import { nanoid } from 'nanoid'
 import {
 	AwaitedDefaultClient,
 	CreatePassportItemReq,
+	CreatePassportItemSrcReq,
 	Index,
 	PassportItemDocument,
 } from '../types'
 import {
 	passportItemDocument,
+	passportItemSrcDocument,
 	sTokenPayload as sTokenPayloadSchema,
 } from '../db/schema'
-import { generatePassportItemKey } from '../db/redis'
+import {
+	generatePassportItemKey,
+	generatePassportItemSrcKey,
+} from '../db/redis'
 
 const { REDIS_URL, REDIS_USERNAME, REDIS_PASSWORD } = import.meta.env
 
@@ -90,4 +95,28 @@ export const getPassportItemForPayload = async (props: {
 	)
 
 	return result
+}
+
+export const addPassportItemSrcSetter = async ({
+	client,
+	data,
+}: {
+	client: AwaitedDefaultClient
+	data: CreatePassportItemSrcReq
+}) => {
+	// 1. Create passport skin src document.
+	const passportSkinSrcDoc = passportItemSrcDocument({
+		id: nanoid(),
+		...data.passportItemSrc,
+	})
+
+	const passportSkinSrcCreationStatus = await whenNotErrorAll(
+		[passportSkinSrcDoc, client],
+		([info, redis]) =>
+			redis.json
+				.set(generatePassportItemSrcKey(info.sTokenPayload), '$', info)
+				.catch((err: Error) => err),
+	)
+
+	return passportSkinSrcCreationStatus
 }
