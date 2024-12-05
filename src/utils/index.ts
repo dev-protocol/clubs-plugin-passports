@@ -2,6 +2,7 @@ import { aperture } from 'ramda'
 
 import headers from './headers'
 import {
+	addPassportItemSrcSetter,
 	getPassportItemForPayload,
 	addPassportItemSetter,
 } from './passportItem'
@@ -29,6 +30,7 @@ export {
 	getPassportItemForPayload,
 	addPassportItemSetter,
 	checkoutPassportItems,
+	addPassportItemSrcSetter,
 }
 
 export default {

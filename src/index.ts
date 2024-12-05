@@ -13,6 +13,7 @@ import { generatePassportItemKey } from './db/redis'
 import addPassportItem from './handlers/addPassportItem'
 import getPassportItemForPayload from './handlers/getPassportItemForPayload'
 import {
+	addPassportItemSrcSetter,
 	addPassportItemSetter,
 	getPassportItemForPayload as getPassportItemFromPayload,
 	PLUGIN_ID,
@@ -21,12 +22,14 @@ import {
 
 import {
 	ComposedCheckoutOptions,
+	CreatePassportItemSrcReq,
 	Index,
 	Prefix,
 	SchemaKey,
 	type CreatePassportItemReq,
 	type PassportItemAssetType,
 	type PassportItemDocument,
+	type PassportItemSrcDocument,
 } from './types'
 import type {
 	PassportItemData,
@@ -72,12 +75,15 @@ export {
 	PLUGIN_ID,
 	checkoutPassportItems,
 	type CreatePassportItemReq,
+	type CreatePassportItemSrcReq,
 	sTokenPayload,
 	type PassportItemAssetType,
 	type PassportItemDocument,
+	type PassportItemSrcDocument,
 	generatePassportItemKey,
 	getPassportItemFromPayload,
 	addPassportItemSetter,
+	addPassportItemSrcSetter,
 	Prices,
 	type CheckoutFromPassportOffering,
 	type ComposedCheckoutOptions,
