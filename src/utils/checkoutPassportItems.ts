@@ -86,6 +86,7 @@ export const checkoutPassportItems = async (
 						yen: price.yen,
 					},
 				},
+				fiatCurrency: 'YEN',
 				amount: offering.price,
 				propertyAddress: config.propertyAddress,
 				destination: config.propertyAddress,
