@@ -35,6 +35,7 @@ const computedProps = computed(() => {
 	} else {
 		return {
 			...props,
+			fiatCurrency: undefined,
 			uiMode: 'embed',
 		}
 	}
