@@ -69,7 +69,7 @@ export const checkoutPassportItemForPayload = async (
 	)
 
 	// eslint-disable-next-line functional/no-expression-statements
-	await whenDefined(client, (r) => r.quit())
+	whenDefined(client, (r) => r.quit())
 
 	const paymentsDebugMode = Boolean(
 		config.plugins
@@ -149,7 +149,7 @@ export const checkoutPassportItems = async (
 	)) as CheckoutFromPassportOffering
 
 	// eslint-disable-next-line functional/no-expression-statements
-	await whenDefined(client, (r) => r.quit())
+	whenDefined(client, (r) => r.quit())
 
 	return returnObject
 }
