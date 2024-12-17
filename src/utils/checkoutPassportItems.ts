@@ -1,9 +1,6 @@
-import type {
-	ClubsConfiguration,
-	ClubsPluginOptions,
-} from '@devprotocol/clubs-core'
+import type { ClubsConfiguration } from '@devprotocol/clubs-core'
 import { bytes32Hex } from '@devprotocol/clubs-core'
-import passportPlugin, { getPassportItemFromPayload } from '../index'
+import passportPlugin, { getPassportItemFromPayload, PLUGIN_ID } from '../index'
 import type { PassportItemDocument } from '../index'
 import type {
 	ComposedCheckoutOptions,
@@ -15,6 +12,7 @@ import { whenDefined } from '@devprotocol/util-ts'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import paymentsplg from '@devprotocol/clubs-plugin-payments'
+import { getDefaultClient } from '../db/redis'
 
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
@@ -31,30 +29,47 @@ export type CheckoutFromPassportOffering = Readonly<
 	}[]
 >
 
-export const checkoutPassportItems = async (
-	config: ClubsConfiguration,
-	options: ClubsPluginOptions,
+export const checkoutPassportItemForPayload = async (
+	payload: Uint8Array | string,
+	{
+		config,
+		client,
+		currentTime,
+	}: {
+		config: ClubsConfiguration
+		client?: Awaited<ReturnType<typeof getDefaultClient>>
+		currentTime?: number
+	},
 ) => {
 	const _passportOfferings = (
 		config?.offerings ?? ([] as PassportOffering[])
-	)?.filter((offering) => offering.managedBy === passportPlugin.meta.id)
+	)?.find(
+		(offering) =>
+			offering.managedBy === passportPlugin.meta.id &&
+			bytes32Hex(payload) === bytes32Hex(offering.payload),
+	)
+	const redis = client ? client : await getDefaultClient()
 
-	const passportOfferingWithItemData = await Promise.all(
-		_passportOfferings?.map((offering) =>
+	const passportOfferingWithItemData = await whenDefined(
+		_passportOfferings,
+		(offering) =>
 			getPassportItemFromPayload({
 				sTokenPayload: bytes32Hex(offering.payload ?? '') ?? '',
+				client: redis,
 			})
 				.then((item) =>
 					item instanceof Error || !item
 						? undefined
-						: ({ ...offering, passportItem: item } as PassportItemData),
+						: ({
+								...offering,
+								passportItem: item,
+							} as PassportItemData),
 				)
 				.catch(undefined),
-		) ?? ([] as Array<PassportItemData | undefined>),
 	)
-		.then((items) => items.filter((items) => !!items))
-		.then((items) => (items.length ? items : undefined))
-		.catch(() => undefined)
+
+	// eslint-disable-next-line functional/no-expression-statements
+	await whenDefined(client, (r) => r.quit())
 
 	const paymentsDebugMode = Boolean(
 		config.plugins
@@ -62,11 +77,13 @@ export const checkoutPassportItems = async (
 			?.options?.find((o) => o.key === 'debug')?.value,
 	)
 
-	const discounts = (options.find(({ key }) => key === 'discounts')?.value ??
+	const discounts = (config.plugins
+		.find((p) => p.id === PLUGIN_ID)
+		?.options.find(({ key }) => key === 'discounts')?.value ??
 		[]) as PassportOptionsDiscounts
-	const now = dayjs().utc().toDate().getTime()
+	const now = currentTime ? currentTime : dayjs().utc().toDate().getTime()
 
-	const returnObject = (passportOfferingWithItemData?.map((offering) => {
+	const returnObject = whenDefined(passportOfferingWithItemData, (offering) => {
 		const price = Prices[offering.passportItem.itemAssetType]
 		const discount = discounts.find(
 			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
@@ -103,9 +120,36 @@ export const checkoutPassportItems = async (
 				chainId: config.chainId,
 				discount: underDiscount && discount ? discount : undefined,
 				debugMode: paymentsDebugMode,
-			},
+			} satisfies ComposedCheckoutOptions,
 		}
-	}) ?? []) as CheckoutFromPassportOffering
+	})
+
+	return returnObject
+}
+
+export const checkoutPassportItems = async (
+	config: ClubsConfiguration,
+	client?: Awaited<ReturnType<typeof getDefaultClient>>,
+) => {
+	const _passportOfferings = (
+		config?.offerings ?? ([] as PassportOffering[])
+	)?.filter((offering) => offering.managedBy === passportPlugin.meta.id)
+	const redis = client ? client : await getDefaultClient()
+
+	const now = dayjs().utc().toDate().getTime()
+
+	const returnObject = (await Promise.all(
+		_passportOfferings.map((p) =>
+			checkoutPassportItemForPayload(p.payload, {
+				config,
+				client: redis,
+				currentTime: now,
+			}),
+		),
+	)) as CheckoutFromPassportOffering
+
+	// eslint-disable-next-line functional/no-expression-statements
+	await whenDefined(client, (r) => r.quit())
 
 	return returnObject
 }
