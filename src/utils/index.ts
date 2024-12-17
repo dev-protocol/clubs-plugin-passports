@@ -6,7 +6,10 @@ import {
 	addPassportItemSetter,
 } from './passportItem'
 
-import { checkoutPassportItems } from './checkoutPassportItems'
+import {
+	checkoutPassportItems,
+	checkoutPassportItemForPayload,
+} from './checkoutPassportItems'
 
 export const PLUGIN_ID = 'devprotocol:clubs:plugin:passports'
 
@@ -29,6 +32,7 @@ export {
 	getPassportItemForPayload,
 	addPassportItemSetter,
 	checkoutPassportItems,
+	checkoutPassportItemForPayload,
 }
 
 export default {

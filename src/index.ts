@@ -17,6 +17,7 @@ import {
 	getPassportItemForPayload as getPassportItemFromPayload,
 	PLUGIN_ID,
 	checkoutPassportItems,
+	checkoutPassportItemForPayload,
 } from './utils'
 
 import {
@@ -71,6 +72,7 @@ export {
 	SchemaKey,
 	PLUGIN_ID,
 	checkoutPassportItems,
+	checkoutPassportItemForPayload,
 	type CreatePassportItemReq,
 	sTokenPayload,
 	type PassportItemAssetType,
