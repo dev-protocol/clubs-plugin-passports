@@ -48,7 +48,11 @@ export const checkoutPassportItemForPayload = async (
 			offering.managedBy === passportPlugin.meta.id &&
 			bytes32Hex(payload) === bytes32Hex(offering.payload),
 	)
-	const redis = client ? client : await getDefaultClient()
+	const redis = client
+		? client.isOpen
+			? client
+			: await client.connect()
+		: await getDefaultClient()
 
 	const passportOfferingWithItemData = await whenDefined(
 		_passportOfferings,
@@ -134,7 +138,11 @@ export const checkoutPassportItems = async (
 	const _passportOfferings = (
 		config?.offerings ?? ([] as PassportOffering[])
 	)?.filter((offering) => offering.managedBy === passportPlugin.meta.id)
-	const redis = client ? client : await getDefaultClient()
+	const redis = client
+		? client.isOpen
+			? client
+			: await client.connect()
+		: await getDefaultClient()
 
 	const now = dayjs().utc().toDate().getTime()
 
