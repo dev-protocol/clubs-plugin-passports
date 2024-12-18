@@ -13,6 +13,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import paymentsplg from '@devprotocol/clubs-plugin-payments'
 import { getDefaultClient } from '../db/redis'
+import { isNil } from 'ramda'
 
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
@@ -72,8 +73,8 @@ export const checkoutPassportItemForPayload = async (
 				.catch(undefined),
 	)
 
-	// eslint-disable-next-line functional/no-expression-statements
-	whenDefined(client, (r) => (r.isOpen ? r.quit() : undefined))
+	// eslint-disable-next-line functional/no-expression-statements, functional/no-conditional-statements
+	if (isNil(client) && redis.isOpen) redis.quit()
 
 	const paymentsDebugMode = Boolean(
 		config.plugins
@@ -156,8 +157,8 @@ export const checkoutPassportItems = async (
 		),
 	)) as CheckoutFromPassportOffering
 
-	// eslint-disable-next-line functional/no-expression-statements
-	whenDefined(client, (r) => (r.isOpen ? r.quit() : undefined))
+	// eslint-disable-next-line functional/no-expression-statements, functional/no-conditional-statements
+	if (isNil(client) && redis.isOpen) redis.quit()
 
 	return returnObject
 }
