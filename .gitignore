@@ -96,6 +96,7 @@ typings/
 # Rollup output
 dist
 components.d.ts
+utils.d.ts
 
 # Azure Functions artifacts
 bin

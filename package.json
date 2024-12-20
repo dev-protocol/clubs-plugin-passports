@@ -22,6 +22,10 @@
 			"default": "./dist/components.js",
 			"types": "./components.d.ts"
 		},
+		"./utils": {
+			"default": "./dist/utils.js",
+			"types": "./utils.d.ts"
+		},
 		"./package.json": "./package.json"
 	},
 	"keywords": [

@@ -74,6 +74,16 @@ export default [
 		],
 	},
 	{
+		input: 'src/utils/index.ts',
+		output: [
+			{
+				file: 'dist/utils.js',
+				format: 'es',
+			},
+		],
+		plugins: [typescript()],
+	},
+	{
 		input: 'dist/src/components/index.d.ts',
 		output: [{ file: 'components.d.ts', format: 'es' }],
 		plugins: [
@@ -84,5 +94,10 @@ export default [
 				out: (path) => path.replace('dist/src/components', ''),
 			}),
 		],
+	},
+	{
+		input: 'dist/src/utils/index.d.ts',
+		output: [{ file: 'utils.d.ts', format: 'es' }],
+		plugins: [dts()],
 	},
 ]
