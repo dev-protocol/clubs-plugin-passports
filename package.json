@@ -67,7 +67,7 @@
 		"@astrojs/tailwind": "^5.0.0",
 		"@astrojs/vue": "^4.0.0",
 		"@devprotocol/clubs-core": "^3.22.1",
-		"@devprotocol/clubs-plugin-payments": "0.3.2",
+		"@devprotocol/clubs-plugin-payments": "0.3.4",
 		"@eslint/js": "^9.14.0",
 		"@rollup/plugin-typescript": "12.1.2",
 		"@tailwindcss/typography": "^0.5.10",

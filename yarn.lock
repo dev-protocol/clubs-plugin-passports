@@ -561,8 +561,8 @@ __metadata:
   linkType: hard
 
 "@devprotocol/clubs-core@npm:^3.22.1":
-  version: 3.22.2
-  resolution: "@devprotocol/clubs-core@npm:3.22.2"
+  version: 3.22.6
+  resolution: "@devprotocol/clubs-core@npm:3.22.6"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/elements": "npm:1.5.3"
@@ -574,7 +574,7 @@ __metadata:
     "@vercel/blob": "npm:^0.26.0"
     axios: "npm:^1.6.7"
     bignumber.js: "npm:^9.1.2"
-    isomorphic-dompurify: "npm:2.16.0"
+    isomorphic-dompurify: "npm:2.18.0"
     js-base64: "npm:^3.7.2"
     lit: "npm:^3.0.0"
     marked: "npm:^10.0.0"
@@ -585,11 +585,11 @@ __metadata:
     rxjs: "npm:^7.8.1"
     svelte: "npm:^5.0.0"
     vue: "npm:^3.2.0"
-    yaml: "npm:2.6.0"
+    yaml: "npm:2.6.1"
   peerDependencies:
     "@astrojs/lit": ^1.0.1 || ^2.0.0 || ^3.0.0 || ^4.0.0
     "@astrojs/react": ^1.2.2 || ^2.0.0 || ^3.0.0
-    "@astrojs/svelte": ^1.0.2 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+    "@astrojs/svelte": ^1.0.2 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
     "@astrojs/tailwind": ^2.1.3 || ^3.0.0 || ^4.0.0 || ^5.0.0
     "@astrojs/vue": ^1.2.2 || ^2.0.0 || ^3.0.0 || ^4.0.0
     astro: ^3.0.0 || ^4.0.0
@@ -609,7 +609,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10c0/c18f40197bcfa55f2f31b43437f3046ff77e1ac5376d67bb686a5e093c0aa08bd3c214ea8586ce00f6a9a4a2d99d8a7210d3a141841098491b6af195096f5676
+  checksum: 10c0/55c7f3ff5d8f0dab869ed97fc15051681e0b1e6abc1bf2eb035388a23e910439a9dacc7a9d70f64c7b4477f7b432de4715292e7dde7321f6a0e81b9029b1d9c2
   languageName: node
   linkType: hard
 
@@ -622,7 +622,7 @@ __metadata:
     "@astrojs/tailwind": "npm:^5.0.0"
     "@astrojs/vue": "npm:^4.0.0"
     "@devprotocol/clubs-core": "npm:^3.22.1"
-    "@devprotocol/clubs-plugin-payments": "npm:0.3.2"
+    "@devprotocol/clubs-plugin-payments": "npm:0.3.4"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@eslint/js": "npm:^9.14.0"
@@ -671,9 +671,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devprotocol/clubs-plugin-payments@npm:0.3.2":
-  version: 0.3.2
-  resolution: "@devprotocol/clubs-plugin-payments@npm:0.3.2"
+"@devprotocol/clubs-plugin-payments@npm:0.3.4":
+  version: 0.3.4
+  resolution: "@devprotocol/clubs-plugin-payments@npm:0.3.4"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
@@ -690,7 +690,7 @@ __metadata:
     "@devprotocol/clubs-core": ^3.22.1
     "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36
     ethers: ^6.0.0
-  checksum: 10c0/26610f1cd8fd51c21389f1a98a63de121cddb18ea2b989c6b542942b256efc67d89681ec1597df6fec91a6b65c0a790a3433b821f536110fea3b26bf32143543
+  checksum: 10c0/e36b6b248953c1abaa1bb6beb384f179a9d4deb0c5cfb8ce0a02bd5cb7a78a94ac903b59fd3837a2131b01f886ddb60abfdddd9ff6d56dd2bdf020c2e981ccc7
   languageName: node
   linkType: hard
 
@@ -2299,15 +2299,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dompurify@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@types/dompurify@npm:3.0.5"
-  dependencies:
-    "@types/trusted-types": "npm:*"
-  checksum: 10c0/a34dcc4498ca250815ccf9aecbe82df96ba5db247d0440cf266a876757d47c52519c240db3475e794d7deb0d6b1af23328e02879be368ad0e26b20c0f0865dba
-  languageName: node
-  linkType: hard
-
 "@types/dotenv@npm:8.2.3":
   version: 8.2.3
   resolution: "@types/dotenv@npm:8.2.3"
@@ -2436,7 +2427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/trusted-types@npm:*, @types/trusted-types@npm:^2.0.2":
+"@types/trusted-types@npm:^2.0.2, @types/trusted-types@npm:^2.0.7":
   version: 2.0.7
   resolution: "@types/trusted-types@npm:2.0.7"
   checksum: 10c0/4c4855f10de7c6c135e0d32ce462419d8abbbc33713b31d294596c0cc34ae1fa6112a2f9da729c8f7a20707782b0d69da3b1f8df6645b0366d08825ca1522e0c
@@ -2544,7 +2535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/types@npm:8.18.1, @typescript-eslint/types@npm:^8.2.0":
+"@typescript-eslint/types@npm:8.18.1":
   version: 8.18.1
   resolution: "@typescript-eslint/types@npm:8.18.1"
   checksum: 10c0/0a2ca5f7cdebcc844b6bc1e5afc5d83b563f55917d20e3fea3a17ed39c54b003178e26b5ec535113f45c93c569b46628d9a67defa70c01cbdfa801573fed69a2
@@ -4203,10 +4194,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.1.7":
-  version: 3.1.7
-  resolution: "dompurify@npm:3.1.7"
-  checksum: 10c0/fcceef2e9f824d712a056fa699b0538f3337f5cf00ccb7227bdc7eba5463823e15d9aecc00a2fd81c726b28a71e7b09f0eb8a2fde1021c40e35f12dc67b66394
+"dompurify@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "dompurify@npm:3.2.3"
+  dependencies:
+    "@types/trusted-types": "npm:^2.0.7"
+  dependenciesMeta:
+    "@types/trusted-types":
+      optional: true
+  checksum: 10c0/0ce5cb89b76f396d800751bcb48e0d137792891d350ccc049f1bc9a5eca7332cc69030c25007ff4962e0824a5696904d4d74264df9277b5ad955642dfb6f313f
   languageName: node
   linkType: hard
 
@@ -4464,8 +4460,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-functional@npm:^7.1.0":
-  version: 7.1.0
-  resolution: "eslint-plugin-functional@npm:7.1.0"
+  version: 7.2.0
+  resolution: "eslint-plugin-functional@npm:7.2.0"
   dependencies:
     "@typescript-eslint/utils": "npm:^8.10.0"
     deepmerge-ts: "npm:^7.1.3"
@@ -4479,7 +4475,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/877c24fc98ef0579f1e8b144bd41fc2b6284bfc9440a191bc3e43b957ea0f2b2aa2d2d3ba9bd644a9a01b563e578b094dfb35c99d8d8e2596f2fed345eb99734
+  checksum: 10c0/638c648154299853f7abe6693acc42d3d5ff735152b7cf79f75f7f293d59a9c302e001ab1e8af15f7131fb684e4b67e320999bdeb7c0df1285bc87d4eec7c778
   languageName: node
   linkType: hard
 
@@ -4593,13 +4589,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esrap@npm:^1.3.1":
-  version: 1.3.1
-  resolution: "esrap@npm:1.3.1"
+"esrap@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "esrap@npm:1.3.2"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.4.15"
-    "@typescript-eslint/types": "npm:^8.2.0"
-  checksum: 10c0/00656c5b0b4036332344cc2aad11c6207e72ec30071abc6e6a33799da0efcde7879e28045a00347418b544ca23ceca7d86dc4fb1687fde86090ad134f7574dd4
+  checksum: 10c0/0d79db203ae439b4601cede1d885c5d36f5184b8055683c128cc99a832aa72586a11d8ee0ff4013a37d0c9d4857bb1ecc6b835fa4c2276538b684183423445a2
   languageName: node
   linkType: hard
 
@@ -5616,14 +5611,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isomorphic-dompurify@npm:2.16.0":
-  version: 2.16.0
-  resolution: "isomorphic-dompurify@npm:2.16.0"
+"isomorphic-dompurify@npm:2.18.0":
+  version: 2.18.0
+  resolution: "isomorphic-dompurify@npm:2.18.0"
   dependencies:
-    "@types/dompurify": "npm:^3.0.5"
-    dompurify: "npm:^3.1.7"
+    dompurify: "npm:^3.2.2"
     jsdom: "npm:^25.0.1"
-  checksum: 10c0/fe667c4e418a3c4cb4e44804db6d93cc087952039b51e2e21ea82ee536d3e3e20f96677d0edfeb7e927cccb4cd02d8c00c52adf52a9e289d514369e0f1d7f51d
+  checksum: 10c0/8befe0ffb64b21e20c0ee1bc27321f9d3db5d952318e93532a151c353ec282987a773a8230938c172b3033cfc9e792118b978e7936c025b641ad67bf5124819c
   languageName: node
   linkType: hard
 
@@ -8806,8 +8800,8 @@ __metadata:
   linkType: hard
 
 "svelte@npm:^5.0.0":
-  version: 5.14.4
-  resolution: "svelte@npm:5.14.4"
+  version: 5.15.0
+  resolution: "svelte@npm:5.15.0"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -8817,12 +8811,12 @@ __metadata:
     aria-query: "npm:^5.3.1"
     axobject-query: "npm:^4.1.0"
     esm-env: "npm:^1.2.1"
-    esrap: "npm:^1.3.1"
+    esrap: "npm:^1.3.2"
     is-reference: "npm:^3.0.3"
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/c2a7e5bea9bfd1371b1dc0f0f4d28b7893edb8af4c064cb4770bb2cb309fbaddb391179d3eb4388d21d158a73af3711c3340919e43b126e2fdd74d287194269e
+  checksum: 10c0/715423922f4a5aa59abd0cf8ea84fc3514d62ac01ae5e592bc57f805e31be4babca78377ac68e64a17e504f31b19c612ded979e22773776e36e10f69e36a3213
   languageName: node
   linkType: hard
 
@@ -10134,7 +10128,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:2.6.0, yaml@npm:^2.3.4, yaml@npm:^2.5.0":
+"yaml@npm:2.6.1":
+  version: 2.6.1
+  resolution: "yaml@npm:2.6.1"
+  bin:
+    yaml: bin.mjs
+  checksum: 10c0/aebf07f61c72b38c74d2b60c3a3ccf89ee4da45bcd94b2bfb7899ba07a5257625a7c9f717c65a6fc511563d48001e01deb1d9e55f0133f3e2edf86039c8c1be7
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.3.4, yaml@npm:^2.5.0":
   version: 2.6.0
   resolution: "yaml@npm:2.6.0"
   bin:
