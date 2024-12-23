@@ -126,7 +126,7 @@ export const checkoutPassportItemForPayload = async (
 				description: offering.description,
 				itemImageSrc: video
 					? undefined
-					: (offering.previewImageSrc ?? offering.imageSrc),
+					: (offering.previewImageSrc ?? offering.passportItem.itemAssetValue),
 				itemVideoSrc: video,
 				itemName: offering.name,
 				feePercentage: offering.fee?.percentage,
