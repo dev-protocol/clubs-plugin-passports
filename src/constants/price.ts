@@ -1,11 +1,5 @@
-import type { PassportItemAssetType } from '../types'
-
-export enum PassportCurrency {
-	Yen = 'yen',
-	Usdc = 'usdc',
-}
-
-export type Price = Record<PassportCurrency, number>
+import type { PassportItemAssetType, Price } from '../types'
+import { PassportCurrency } from '../types'
 
 const tiers = {
 	t_static_clip: {
