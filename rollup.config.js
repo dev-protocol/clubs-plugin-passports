@@ -84,6 +84,16 @@ export default [
 		plugins: [typescript()],
 	},
 	{
+		input: 'src/constants/index.ts',
+		output: [
+			{
+				file: 'dist/constants.js',
+				format: 'es',
+			},
+		],
+		plugins: [typescript()],
+	},
+	{
 		input: 'dist/src/components/index.d.ts',
 		output: [{ file: 'components.d.ts', format: 'es' }],
 		plugins: [
@@ -98,6 +108,11 @@ export default [
 	{
 		input: 'dist/src/utils/index.d.ts',
 		output: [{ file: 'utils.d.ts', format: 'es' }],
+		plugins: [dts()],
+	},
+	{
+		input: 'dist/src/constants/index.d.ts',
+		output: [{ file: 'constants.d.ts', format: 'es' }],
 		plugins: [dts()],
 	},
 ]
