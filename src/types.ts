@@ -3,7 +3,7 @@ import type { ReadonlyDeep } from 'type-fest'
 import type { getDefaultClient } from './db/redis'
 import type { CheckoutOptions } from '@devprotocol/clubs-core/ui/components'
 import type { Override } from '@devprotocol/clubs-plugin-payments'
-import type { Price } from './constants/price'
+
 import type {
 	ClubsConfiguration,
 	ClubsOffering,
@@ -103,3 +103,10 @@ export type PassportOptionsDiscounts = ReadonlyArray<PassportOptionsDiscount>
 export type PassportOffering = ClubsOffering<
 	Membership & { previewImageSrc?: string }
 >
+
+export enum PassportCurrency {
+	Yen = 'yen',
+	Usdc = 'usdc',
+}
+
+export type Price = Record<PassportCurrency, number>
