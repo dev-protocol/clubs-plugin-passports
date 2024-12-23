@@ -97,6 +97,14 @@ export const checkoutPassportItemForPayload = async (
 			whenDefined(discount, (dis) => {
 				return now >= dis.start_utc && now <= dis.end_utc
 			}) ?? false
+		const type = offering.passportItem.itemAssetType
+		const video =
+			type === 'short-video' ||
+			type === 'short-video-link' ||
+			type === 'video' ||
+			type === 'video-link'
+				? offering.passportItem.itemAssetValue
+				: undefined
 
 		return {
 			payload: offering.payload,
@@ -116,7 +124,10 @@ export const checkoutPassportItemForPayload = async (
 				rpcUrl: config.rpcUrl,
 				payload: offering.payload,
 				description: offering.description,
-				itemImageSrc: offering.previewImageSrc ?? offering.imageSrc,
+				itemImageSrc: video
+					? undefined
+					: (offering.previewImageSrc ?? offering.imageSrc),
+				itemVideoSrc: video,
 				itemName: offering.name,
 				feePercentage: offering.fee?.percentage,
 				feeBeneficiary: offering.fee?.beneficiary,
