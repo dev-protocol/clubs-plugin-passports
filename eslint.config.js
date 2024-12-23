@@ -39,6 +39,7 @@ export default tseslint.config(
 			'components.d.ts',
 			'constants.d.ts',
 			'utils.d.ts',
+			'types.d.ts',
 			'.yarn',
 			'.preview',
 			'.astro',
