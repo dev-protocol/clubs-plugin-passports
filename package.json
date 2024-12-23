@@ -1,6 +1,6 @@
 {
 	"name": "@devprotocol/clubs-plugin-passports",
-	"version": "0.1.0-beta.40",
+	"version": "0.1.0-beta.41",
 	"type": "module",
 	"description": "Passports plugin for clubs",
 	"main": "dist/index.js",
@@ -25,6 +25,10 @@
 		"./utils": {
 			"default": "./dist/utils.js",
 			"types": "./utils.d.ts"
+		},
+		"./constants": {
+			"default": "./dist/constants.js",
+			"types": "./constants.d.ts"
 		},
 		"./package.json": "./package.json"
 	},

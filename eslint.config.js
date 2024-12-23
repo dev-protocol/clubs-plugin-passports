@@ -37,6 +37,7 @@ export default tseslint.config(
 		ignores: [
 			'dist',
 			'components.d.ts',
+			'constants.d.ts',
 			'utils.d.ts',
 			'.yarn',
 			'.preview',

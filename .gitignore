@@ -97,6 +97,7 @@ typings/
 dist
 components.d.ts
 utils.d.ts
+constants.d.ts
 
 # Azure Functions artifacts
 bin
