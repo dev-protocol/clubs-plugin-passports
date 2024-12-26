@@ -561,8 +561,8 @@ __metadata:
   linkType: hard
 
 "@devprotocol/clubs-core@npm:^3.22.1":
-  version: 3.22.14
-  resolution: "@devprotocol/clubs-core@npm:3.22.14"
+  version: 3.22.15
+  resolution: "@devprotocol/clubs-core@npm:3.22.15"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/elements": "npm:1.5.3"
@@ -610,7 +610,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10c0/dae5997add657a60d45dee05c8e6e36a10a196b7805d04837b81afec31adc981ae8bbb9d1e9b6bacf2ab31955f5a364835dec0855c98957f262129b8099f598b
+  checksum: 10c0/995596e30e9d39eb4808f1c26bf6ddcb728efbca616ae6a4962028708f2ed40969025780a9b9b4f7374f3e3cd89e62ea2d77d96899af2ec171885524f68f6a26
   languageName: node
   linkType: hard
 
