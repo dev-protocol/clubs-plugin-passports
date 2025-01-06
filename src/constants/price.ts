@@ -37,4 +37,6 @@ export const Prices: Record<PassportItemAssetType, Price> = {
 	'video-link': tiers.t2,
 	bgm: tiers.t2,
 	'bgm-link': tiers.t2,
+	'short-video-controlled': tiers.t_playable_clip,
+	'short-video-controlled-link': tiers.t_playable_clip,
 }

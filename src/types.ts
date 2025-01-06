@@ -63,6 +63,8 @@ export type PassportItemAssetType =
 	| 'video-link'
 	| 'bgm'
 	| 'bgm-link'
+	| 'short-video-controlled'
+	| 'short-video-controlled-link'
 
 export type PassportItemDocument = Readonly<{
 	id: string
