@@ -609,7 +609,7 @@ __metadata:
     "@astrojs/tailwind": "npm:^5.0.0"
     "@astrojs/vue": "npm:^5.0.0"
     "@devprotocol/clubs-core": "npm:^3.22.1"
-    "@devprotocol/clubs-plugin-payments": "npm:0.3.5"
+    "@devprotocol/clubs-plugin-payments": "npm:0.4.0-alpha.0"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@eslint/js": "npm:^9.14.0"
@@ -658,9 +658,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devprotocol/clubs-plugin-payments@npm:0.3.5":
-  version: 0.3.5
-  resolution: "@devprotocol/clubs-plugin-payments@npm:0.3.5"
+"@devprotocol/clubs-plugin-payments@npm:0.4.0-alpha.0":
+  version: 0.4.0-alpha.0
+  resolution: "@devprotocol/clubs-plugin-payments@npm:0.4.0-alpha.0"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
@@ -677,7 +677,7 @@ __metadata:
     "@devprotocol/clubs-core": ^3.22.1
     "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36
     ethers: ^6.0.0
-  checksum: 10c0/2f8e24ea28f7e23c6640a1442f92a680193732d6d6d323fe4c7fec427a9f3cfb3e1b41dedc96d099b56efe8f150a45434d2b927ff8b9ae170e2512d7e5413661
+  checksum: 10c0/2a25234286ae55f4cf4b7990c1dd08e55eea7f66f3772a9acedf1d79399c5e7e066956d8c496ba2a49c4c9462d6dd94e9401363d131139504671bc9044ccee57
   languageName: node
   linkType: hard
 

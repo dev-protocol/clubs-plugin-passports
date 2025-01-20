@@ -136,6 +136,7 @@ export const checkoutPassportItemForPayload = async (
 				chainId: config.chainId,
 				discount: underDiscount && discount ? discount : undefined,
 				debugMode: paymentsDebugMode,
+				base: config.url,
 			} satisfies ComposedCheckoutOptions,
 		}
 	})

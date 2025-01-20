@@ -73,6 +73,7 @@ onMounted(() => {
 					:chainId="chainId"
 					:rpcUrl="rpcUrl"
 					:debugMode="debugMode"
+					:base="props.base"
 				/>
 			</div>
 		</template>

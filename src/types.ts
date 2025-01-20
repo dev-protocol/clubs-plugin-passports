@@ -91,6 +91,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
 		chainId: ClubsConfiguration['chainId']
 		debugMode?: boolean
+		base: string
 	}>
 
 export type PassportOptionsDiscount = {

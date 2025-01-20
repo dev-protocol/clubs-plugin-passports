@@ -18,12 +18,16 @@ const {
 	accessControlUrl,
 	accessControlDescription,
 	chainId,
+	base,
+	offering,
 } = Astro.props
 ---
 
 <ComponentCheckout
 	client:load
 	{...{
+		destination: propertyAddress,
+		offering,
 		passportItem,
 		fiat,
 		amount,
@@ -37,5 +41,6 @@ const {
 		accessControlUrl,
 		accessControlDescription,
 		chainId,
+		base,
 	}}
 />
