@@ -22,6 +22,14 @@
 			"default": "./dist/components.js",
 			"types": "./components.d.ts"
 		},
+		"./vue": {
+			"default": "./dist/vue.js",
+			"types": "./vue.d.ts"
+		},
+		"./svelte": {
+			"default": "./dist/svelte.js",
+			"types": "./svelte.d.ts"
+		},
 		"./utils": {
 			"default": "./dist/utils.js",
 			"types": "./utils.d.ts"

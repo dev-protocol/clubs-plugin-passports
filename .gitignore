@@ -99,6 +99,8 @@ components.d.ts
 utils.d.ts
 constants.d.ts
 types.d.ts
+vue.d.ts
+svelte.d.ts
 
 # Azure Functions artifacts
 bin

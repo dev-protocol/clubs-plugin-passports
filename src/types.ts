@@ -112,3 +112,11 @@ export enum PassportCurrency {
 }
 
 export type Price = Record<PassportCurrency, number>
+
+export enum EmbeddableMediaType {
+	Instagram = 'instagram',
+	YouTube = 'youtube',
+	YouTubeShorts = 'youtube-shorts',
+	X = 'x',
+	TikTok = 'tiktok',
+}

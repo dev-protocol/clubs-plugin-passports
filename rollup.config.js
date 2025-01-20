@@ -104,6 +104,40 @@ export default [
 		plugins: [typescript()],
 	},
 	{
+		input: 'src/vue/index.ts',
+		output: [
+			{
+				file: 'dist/vue.js',
+				format: 'es',
+			},
+		],
+		plugins: [
+			typescript(),
+			useSrc({
+				ext: ['.astro', '.vue'],
+				dir,
+				out: (path) => path.replace('src/vue', 'dist'),
+			}),
+		],
+	},
+	{
+		input: 'src/svelte/index.ts',
+		output: [
+			{
+				file: 'dist/svelte.js',
+				format: 'es',
+			},
+		],
+		plugins: [
+			typescript(),
+			useSrc({
+				ext: ['.astro', '.svelte'],
+				dir,
+				out: (path) => path.replace('src/svelte', 'dist'),
+			}),
+		],
+	},
+	{
 		input: 'dist/src/components/index.d.ts',
 		output: [{ file: 'components.d.ts', format: 'es' }],
 		plugins: [
@@ -112,6 +146,30 @@ export default [
 				ext: ['.astro', '.vue'],
 				dir,
 				out: (path) => path.replace('dist/src/components', ''),
+			}),
+		],
+	},
+	{
+		input: 'dist/src/vue/index.d.ts',
+		output: [{ file: 'vue.d.ts', format: 'es' }],
+		plugins: [
+			dts(),
+			useSrc({
+				ext: ['.astro', '.vue'],
+				dir,
+				out: (path) => path.replace('dist/src/vue', ''),
+			}),
+		],
+	},
+	{
+		input: 'dist/src/svelte/index.d.ts',
+		output: [{ file: 'svelte.d.ts', format: 'es' }],
+		plugins: [
+			dts(),
+			useSrc({
+				ext: ['.astro', '.svelte'],
+				dir,
+				out: (path) => path.replace('dist/src/svelte', ''),
 			}),
 		],
 	},
