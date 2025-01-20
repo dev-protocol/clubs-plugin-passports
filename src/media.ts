@@ -1,5 +1,5 @@
 import { whenDefined } from '@devprotocol/util-ts'
-import { EmbeddableMediaType } from '../types'
+import { EmbeddableMediaType } from './types'
 
 export const mediaSource = (url?: string): EmbeddableMediaType | Error =>
 	whenDefined(url, (src) =>

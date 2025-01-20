@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { EmbeddableMediaType } from '../types'
-import { getMediaId, mediaSource } from '../utils/media'
+import { getMediaId, mediaSource } from '../media'
 
 const props = defineProps<{ src: string }>()
 

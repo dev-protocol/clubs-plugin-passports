@@ -34,6 +34,10 @@
 			"default": "./dist/utils.js",
 			"types": "./utils.d.ts"
 		},
+		"./media": {
+			"default": "./dist/media.js",
+			"types": "./media.d.ts"
+		},
 		"./constants": {
 			"default": "./dist/constants.js",
 			"types": "./constants.d.ts"

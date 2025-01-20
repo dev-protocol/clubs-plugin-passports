@@ -10,7 +10,6 @@ import {
 	checkoutPassportItems,
 	checkoutPassportItemForPayload,
 } from './checkoutPassportItems'
-import { mediaSource, getMediaId } from './media'
 
 export const PLUGIN_ID = 'devprotocol:clubs:plugin:passports'
 
@@ -34,13 +33,9 @@ export {
 	addPassportItemSetter,
 	checkoutPassportItems,
 	checkoutPassportItemForPayload,
-	mediaSource,
-	getMediaId,
 }
 
 export default {
 	headers,
 	getPassportItemForPayload,
-	mediaSource,
-	getMediaId,
 }

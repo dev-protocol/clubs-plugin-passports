@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { EmbeddableMediaType } from '../types'
-	import { getMediaId, mediaSource } from '../utils/media'
+	import { getMediaId, mediaSource } from '../media'
 
 	export let src: string
 

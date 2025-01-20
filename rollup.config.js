@@ -138,6 +138,16 @@ export default [
 		],
 	},
 	{
+		input: 'src/media.ts',
+		output: [
+			{
+				file: 'dist/media.js',
+				format: 'es',
+			},
+		],
+		plugins: [typescript()],
+	},
+	{
 		input: 'dist/src/components/index.d.ts',
 		output: [{ file: 'components.d.ts', format: 'es' }],
 		plugins: [
@@ -172,6 +182,11 @@ export default [
 				out: (path) => path.replace('dist/src/svelte', ''),
 			}),
 		],
+	},
+	{
+		input: 'dist/src/media.d.ts',
+		output: [{ file: 'media.d.ts', format: 'es' }],
+		plugins: [dts()],
 	},
 	{
 		input: 'dist/src/utils/index.d.ts',

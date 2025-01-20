@@ -42,6 +42,7 @@ export default tseslint.config(
 			'types.d.ts',
 			'vue.d.ts',
 			'svelte.d.ts',
+			'media.d.ts',
 			'.yarn',
 			'.preview',
 			'.astro',
