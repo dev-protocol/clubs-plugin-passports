@@ -2,8 +2,10 @@
 	import { onMount } from 'svelte'
 	import { EmbeddableMediaType } from '../types'
 	import { getMediaId, mediaSource } from '../media'
+	import { UndefinedOr } from '@devprotocol/util-ts'
 
 	export let src: string
+	export let className: UndefinedOr<string>
 
 	let type: EmbeddableMediaType | Error
 	let mediaId: string | undefined
@@ -45,7 +47,7 @@
 
 {#if type === EmbeddableMediaType.Instagram}
 	<blockquote
-		class="instagram-media"
+		class={`instagram-media ${className}`}
 		data-instgrm-permalink={`https://www.instagram.com/p/${mediaId}`}
 	></blockquote>
 {/if}
@@ -58,7 +60,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		style="width: 100%; aspect-ratio: 16/9"
+		class={`aspect-[16/9] w-full ${className}`}
 	></iframe>
 {/if}
 
@@ -70,7 +72,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		style="width: 100%; aspect-ratio: 9/16"
+		class={`aspect-[9/16] w-full ${className}`}
 	></iframe>
 {/if}
 
@@ -81,13 +83,17 @@
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		style="width: 100%; aspect-ratio: 9/16"
+		class={`aspect-[9/16] w-full ${className}`}
 		title=""
 	></iframe>
 {/if}
 
 {#if type === EmbeddableMediaType.X}
-	<blockquote class="twitter-tweet" bind:this={elmX} data-media-max-width="560">
+	<blockquote
+		class={`twitter-tweet ${className}`}
+		bind:this={elmX}
+		data-media-max-width="560"
+	>
 		<a
 			href={`https://twitter.com/milkynoe/status/${mediaId}`}
 			aria-label="from X"

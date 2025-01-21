@@ -3,7 +3,7 @@ import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 import { EmbeddableMediaType } from '../types'
 import { getMediaId, mediaSource } from '../media'
 
-const props = defineProps<{ src: string }>()
+const props = defineProps<{ src: string; class?: string }>()
 
 const type = computed<EmbeddableMediaType | Error>(() => mediaSource(props.src))
 const mediaId = computed<string | undefined>(() => getMediaId(props.src))
@@ -46,6 +46,7 @@ watch(props, ({ src }) => {
 	<blockquote
 		v-if="type === EmbeddableMediaType.Instagram"
 		class="instagram-media"
+		:class="props.class"
 		:data-instgrm-permalink="`https://www.instagram.com/p/${mediaId}`"
 	></blockquote>
 
@@ -56,7 +57,8 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		style="width: 100%; aspect-ratio: 16/9"
+		class="aspect-[16/9] w-full"
+		:class="props.class"
 	></iframe>
 
 	<iframe
@@ -66,7 +68,8 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		style="width: 100%; aspect-ratio: 9/16"
+		class="aspect-[9/16] w-full"
+		:class="props.class"
 	></iframe>
 
 	<iframe
@@ -76,13 +79,15 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		style="width: 100%; aspect-ratio: 9/16"
+		class="aspect-[9/16] w-full"
+		:class="props.class"
 	></iframe>
 
 	<blockquote
 		v-if="type === EmbeddableMediaType.X"
 		ref="twttr"
 		class="twitter-tweet"
+		:class="props.class"
 		data-media-max-width="560"
 	>
 		<a :href="`https://twitter.com/milkynoe/status/${mediaId}`"></a>
