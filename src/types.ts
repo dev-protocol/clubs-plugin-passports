@@ -121,3 +121,18 @@ export enum EmbeddableMediaType {
 	X = 'x',
 	TikTok = 'tiktok',
 }
+
+declare global {
+	interface Window {
+		instagram?: {
+			Embeds: {
+				process: () => null
+			}
+		}
+		twttr?: {
+			widgets: {
+				load: (arg: HTMLElement) => null
+			}
+		}
+	}
+}

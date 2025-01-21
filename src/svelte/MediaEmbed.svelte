@@ -7,13 +7,26 @@
 
 	let type: EmbeddableMediaType | Error
 	let mediaId: string | undefined
+	let mounted = false
+	let elmX: HTMLQuoteElement
 
 	$: {
 		type = mediaSource(src)
 		mediaId = getMediaId(src)
+		mounted && load(src)
 	}
 
+	const load = (src: string) => {
+		const type = mediaSource(src)
+		if (type === EmbeddableMediaType.Instagram) {
+			window.instagram?.Embeds.process()
+		}
+		if (type === EmbeddableMediaType.X && elmX) {
+			window.twttr?.widgets.load(elmX)
+		}
+	}
 	onMount(() => {
+		mounted = true
 		const sdks = [
 			'//www.instagram.com/embed.js',
 			'//platform.twitter.com/widgets.js',
@@ -26,6 +39,7 @@
 				document.body.append(script)
 			}
 		})
+		load(src)
 	})
 </script>
 
@@ -73,7 +87,7 @@
 {/if}
 
 {#if type === EmbeddableMediaType.X}
-	<blockquote class="twitter-tweet" data-media-max-width="560">
+	<blockquote class="twitter-tweet" bind:this={elmX} data-media-max-width="560">
 		<a
 			href={`https://twitter.com/milkynoe/status/${mediaId}`}
 			aria-label="from X"
