@@ -44,9 +44,9 @@ export const getMediaId = (url: string): string | undefined => {
 							? pathnames.at(1)
 							: _url.pathname.includes('/watch')
 								? _url.searchParams.get('v')
-								: _url.pathname.includes('/shorts')
-									? pathnames.at(2)
-									: undefined
-						: undefined
+								: undefined
+						: type === EmbeddableMediaType.YouTubeShorts
+							? pathnames.at(2)
+							: undefined
 	return typeof id === 'string' ? id : undefined
 }
