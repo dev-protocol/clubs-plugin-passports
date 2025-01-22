@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import { EmbeddableMediaType } from '../types'
 	import { getMediaId, mediaSource } from '../media'
-	import { UndefinedOr } from '@devprotocol/util-ts'
+	import type { UndefinedOr } from '@devprotocol/util-ts'
 
 	export let src: string
 	export let className: UndefinedOr<string>
