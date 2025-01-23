@@ -22,10 +22,15 @@ export enum SchemaKey {
 	PassportItem = 'scm::clubs:passportitem',
 }
 
-export type Option =
-	| Readonly<{ key: 'slug'; value?: string }>
-	| Readonly<{ key: 'rpc'; value?: string }>
-	| Readonly<{ key: 'maxpage'; value?: number }>
+export enum Payments {
+	CreditCard = 'credit-card',
+	Crypto = 'crypto',
+}
+
+export type Option = Readonly<{
+	key: 'acceptable-payments'
+	value: Payments[]
+}>
 
 export type TokenURIWithId = Readonly<{
 	id: number
@@ -91,6 +96,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
 		chainId: ClubsConfiguration['chainId']
 		debugMode?: boolean
+		acceptablePayments: Option['value']
 		base: string
 	}>
 

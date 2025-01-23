@@ -2,14 +2,14 @@ import type { ClubsConfiguration } from '@devprotocol/clubs-core'
 import { bytes32Hex } from '@devprotocol/clubs-core'
 import { PLUGIN_ID } from './index'
 import { getPassportItemForPayload as getPassportItemFromPayload } from './passportItem'
-import type { PassportItemDocument } from '../types'
+import { Payments, type Option, type PassportItemDocument } from '../types'
 import type {
 	ComposedCheckoutOptions,
 	PassportOffering,
 	PassportOptionsDiscounts,
 } from '../types'
 import { Prices } from '../constants/price'
-import { whenDefined } from '@devprotocol/util-ts'
+import { UndefinedOr, whenDefined } from '@devprotocol/util-ts'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { getDefaultClient } from '../db/redis'
@@ -82,6 +82,14 @@ export const checkoutPassportItemForPayload = async (
 			?.options?.find((o) => o.key === 'debug')?.value,
 	)
 
+	const acceptablePayments: Option['value'] = (
+		config.plugins
+			.find((p) => p.id === PLUGIN_ID)
+			?.options?.find(
+				(o) => o.key === 'acceptable-payments',
+			) as UndefinedOr<Option>
+	)?.value ?? [Payments.CreditCard, Payments.Crypto]
+
 	const discounts = (config.plugins
 		.find((p) => p.id === PLUGIN_ID)
 		?.options.find(({ key }) => key === 'discounts')?.value ??
@@ -136,6 +144,7 @@ export const checkoutPassportItemForPayload = async (
 				chainId: config.chainId,
 				discount: underDiscount && discount ? discount : undefined,
 				debugMode: paymentsDebugMode,
+				acceptablePayments,
 				base: config.url,
 			} satisfies ComposedCheckoutOptions,
 		}

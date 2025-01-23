@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../theme/Default.astro'
 import ComposedCheckout from '../../../../src/components/Checkout/ComposedCheckout.vue'
-import type { ComposedCheckoutOptions } from '../../../../src/types'
+import { Payments, type ComposedCheckoutOptions } from '../../../../src/types'
 
 const checkoutProps = {
 	offering: {
@@ -37,7 +37,8 @@ const checkoutProps = {
 			yen: 100,
 		},
 	},
-} satisfies ComposedCheckoutOptions
+	acceptablePayments: [Payments.CreditCard, Payments.Crypto],
+} as ComposedCheckoutOptions
 ---
 
 <Layout>
