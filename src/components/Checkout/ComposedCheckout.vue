@@ -5,6 +5,8 @@ import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
 import { ComposedCheckoutOptions } from '../../types.ts'
 import { ComposedItem } from '@devprotocol/clubs-plugin-payments'
+import { i18nFactory, ProseTextInherit } from '@devprotocol/clubs-core'
+import { Strings } from '../../i18n/index.ts'
 
 const props = defineProps<ComposedCheckoutOptions>()
 
@@ -13,6 +15,9 @@ const composedItem: ComposedItem = {
 	price: props.fiat.price,
 	source: props.offering,
 }
+
+const i18nBase = i18nFactory(Strings)
+const i18n = ref<ReturnType<typeof i18nBase>>(i18nBase(['en']))
 
 const { rpcUrl, chainId, debugMode, fiat } = props
 
@@ -42,13 +47,14 @@ const computedProps = computed(() => {
 })
 
 onMounted(() => {
+	i18n.value = i18nBase(navigator.languages)
 	loadLibrary({ clientKey: PUBLIC_POP_CLIENT_KEY })
 })
 </script>
 
 <template>
 	<Checkout v-bind="computedProps">
-		<template #after:transaction-form>
+		<template #main:transaction-form>
 			<div>
 				<div class="w-full text-right">
 					<label
@@ -77,7 +83,43 @@ onMounted(() => {
 				/>
 			</div>
 		</template>
+		<template #after:description>
+			<span
+				v-html="i18n('Copyrights')"
+				:class="ProseTextInherit"
+				class="after-description text-xs !text-black/50"
+			></span>
+		</template>
+		<template #after:sign-in-form>
+			<div class="my-6 flex flex-col gap-8">
+				<p class="text-sm">{{ i18n('SignInRequest') }}</p>
+				<a
+					href=""
+					target="_blank"
+					class="hs-link flex w-fit items-center gap-2 text-xs"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 16 16"
+						fill="currentColor"
+						class="size-4"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M15 8A7 7 0 1 1 1 8a7 7 0 0 1 14 0Zm-6 3.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7.293 5.293a1 1 0 1 1 .99 1.667c-.459.134-1.033.566-1.033 1.29v.25a.75.75 0 1 0 1.5 0v-.115a2.5 2.5 0 1 0-2.518-4.153.75.75 0 1 0 1.061 1.06Z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+					{{ i18n('GuideLink') }}
+				</a>
+			</div>
+		</template>
 	</Checkout>
 </template>
 
-<style scoped></style>
+<style scoped>
+.after-description * {
+	color: inherit;
+	font-size: inherit;
+}
+</style>
