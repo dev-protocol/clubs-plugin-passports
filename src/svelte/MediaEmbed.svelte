@@ -72,7 +72,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		class={`aspect-[4/5] w-full ${className}`}
+		class={`aspect-[1/1.391] w-full ${className}`}
 	></iframe>
 {/if}
 
@@ -83,7 +83,7 @@
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class={`aspect-[4/5] w-full ${className}`}
+		class={`aspect-[1/1.391] w-full ${className}`}
 		title=""
 	></iframe>
 {/if}

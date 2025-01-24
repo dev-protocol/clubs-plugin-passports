@@ -68,7 +68,7 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class="aspect-[4/5] w-full"
+		class="aspect-[1/1.391] w-full"
 		:class="props.class"
 	></iframe>
 
@@ -79,7 +79,7 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class="aspect-[4/5] w-full"
+		class="aspect-[1/1.391] w-full"
 		:class="props.class"
 	></iframe>
 
