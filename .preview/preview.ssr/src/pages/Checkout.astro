@@ -11,6 +11,16 @@ const checkoutProps = {
 		imageSrc: 'https://picsum.photos/600',
 		payload: new Uint8Array([235, 38, 15, 156, 87, 195, 242, 73]),
 		managedBy: 'xxxxxxxxx',
+		i18n: {
+			name: {
+				en: 'FooBar',
+				ja: 'ほげほげ',
+			},
+			description: {
+				en: 'AAA',
+				ja: 'あああ',
+			},
+		},
 	},
 	passportItem: {
 		id: 'xxxxxxxxx',
@@ -37,6 +47,7 @@ const checkoutProps = {
 			yen: 100,
 		},
 	},
+	base: 'http://localhost:4321',
 	acceptablePayments: [Payments.CreditCard, Payments.Crypto],
 } as ComposedCheckoutOptions
 ---

@@ -17,7 +17,11 @@ const composedItem: ComposedItem = {
 }
 
 const i18nBase = i18nFactory(Strings)
+const i18nItemBase = i18nFactory(
+	props.offering.i18n ?? { name: {}, description: {} },
+)
 const i18n = ref<ReturnType<typeof i18nBase>>(i18nBase(['en']))
+const i18nItem = ref<ReturnType<typeof i18nItemBase>>(i18nItemBase(['en']))
 
 const { rpcUrl, chainId, debugMode, fiat } = props
 
@@ -41,6 +45,8 @@ const computedProps = computed(() => {
 	if (isUsingCreditCard.value) {
 		return {
 			...props,
+			itemName: i18nItem.value('name') ?? props.itemName,
+			description: i18nItem.value('description') ?? props.description,
 			amount: fiat.price.yen,
 			fiatCurrency: '¥',
 			useDiscretePaymentFlow: isUsingCreditCard,
@@ -50,6 +56,8 @@ const computedProps = computed(() => {
 	} else {
 		return {
 			...props,
+			itemName: i18nItem.value('name') ?? props.itemName,
+			description: i18nItem.value('description') ?? props.description,
 			fiatCurrency: undefined,
 			uiMode: 'embed',
 		}
@@ -58,6 +66,7 @@ const computedProps = computed(() => {
 
 onMounted(() => {
 	i18n.value = i18nBase(navigator.languages)
+	i18nItem.value = i18nItemBase(navigator.languages)
 	loadLibrary({ clientKey: PUBLIC_POP_CLIENT_KEY })
 })
 </script>
