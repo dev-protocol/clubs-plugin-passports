@@ -43,7 +43,8 @@ export const checkoutPassportItemForPayload = async (
 	},
 ) => {
 	const _passportOfferings = (
-		config?.offerings ?? ([] as PassportOffering[])
+		(config?.offerings as UndefinedOr<PassportOffering[]>) ??
+		([] as PassportOffering[])
 	)?.find(
 		(offering) =>
 			offering.managedBy === PLUGIN_ID &&

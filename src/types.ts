@@ -6,6 +6,7 @@ import type { Override } from '@devprotocol/clubs-plugin-payments'
 
 import type {
 	ClubsConfiguration,
+	ClubsI18nParts,
 	ClubsOffering,
 	Membership,
 } from '@devprotocol/clubs-core'
@@ -89,7 +90,7 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
-		offering: ClubsOffering
+		offering: PassportOffering
 		destination: string
 		passportItem: PassportItemDocument
 		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
@@ -110,7 +111,13 @@ export type PassportOptionsDiscount = {
 export type PassportOptionsDiscounts = ReadonlyArray<PassportOptionsDiscount>
 
 export type PassportOffering = ClubsOffering<
-	Membership & { previewImageSrc?: string }
+	Membership & {
+		previewImageSrc?: string
+		i18n: {
+			name: ClubsI18nParts
+			description: ClubsI18nParts
+		}
+	}
 >
 
 export enum PassportCurrency {
