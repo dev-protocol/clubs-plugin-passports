@@ -6,7 +6,7 @@ import type { Override } from '@devprotocol/clubs-plugin-payments'
 
 import type {
 	ClubsConfiguration,
-	ClubsI18nParts,
+	ClubsI18nLocale,
 	ClubsOffering,
 	Membership,
 } from '@devprotocol/clubs-core'
@@ -114,8 +114,8 @@ export type PassportOffering = ClubsOffering<
 	Membership & {
 		previewImageSrc?: string
 		i18n: {
-			name: ClubsI18nParts
-			description: ClubsI18nParts
+			name: ClubsI18nLocale
+			description: ClubsI18nLocale
 		}
 	}
 >
