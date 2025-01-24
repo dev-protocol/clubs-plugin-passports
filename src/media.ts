@@ -1,19 +1,33 @@
 import { whenDefined } from '@devprotocol/util-ts'
 import { EmbeddableMediaType } from './types'
+import { tryCatch } from 'ramda'
 
 export const mediaSource = (url?: string): EmbeddableMediaType | Error =>
-	whenDefined(url, (src) =>
-		src.includes('instagram.com')
-			? EmbeddableMediaType.Instagram
-			: src.includes('youtu.be') || src.includes('youtube.com/watch')
-				? EmbeddableMediaType.YouTube
-				: src.includes('youtube.com/shorts')
-					? EmbeddableMediaType.YouTubeShorts
-					: src.includes('tiktok.com')
-						? EmbeddableMediaType.TikTok
-						: src.includes('x.com') || src.includes('twitter.com')
-							? EmbeddableMediaType.X
-							: undefined,
+	whenDefined(
+		tryCatch(
+			(val?: string) => (val ? new URL(val) : undefined),
+			() => undefined,
+		)(url),
+		(src) =>
+			src.host.includes('instagram.com')
+				? EmbeddableMediaType.Instagram
+				: src.host.includes('youtu.be') ||
+					  src.href.includes('youtube.com/watch')
+					? EmbeddableMediaType.YouTube
+					: src.href.includes('youtube.com/shorts')
+						? EmbeddableMediaType.YouTubeShorts
+						: src.host.includes('tiktok.com')
+							? EmbeddableMediaType.TikTok
+							: src.host.includes('x.com') || src.host.includes('twitter.com')
+								? EmbeddableMediaType.X
+								: src.pathname.endsWith('.jpg') ||
+									  src.pathname.endsWith('.jpeg') ||
+									  src.pathname.endsWith('.png') ||
+									  src.pathname.endsWith('.webp') ||
+									  src.pathname.endsWith('.avif') ||
+									  src.pathname.endsWith('.gif')
+									? EmbeddableMediaType.Image
+									: undefined,
 	) ?? new Error('Unexpected URL is passed.')
 
 /**

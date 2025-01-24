@@ -57,7 +57,7 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class="aspect-[16/9] w-full"
+		class="aspect-[1/1] w-full"
 		:class="props.class"
 	></iframe>
 
@@ -68,7 +68,7 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class="aspect-[9/16] w-full"
+		class="aspect-[4/5] w-full"
 		:class="props.class"
 	></iframe>
 
@@ -79,7 +79,7 @@ watch(props, ({ src }) => {
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class="aspect-[9/16] w-full"
+		class="aspect-[4/5] w-full"
 		:class="props.class"
 	></iframe>
 
@@ -92,4 +92,12 @@ watch(props, ({ src }) => {
 	>
 		<a :href="`https://twitter.com/milkynoe/status/${mediaId}`"></a>
 	</blockquote>
+
+	<img
+		v-if="type === EmbeddableMediaType.Image"
+		:src="props.src"
+		alt=""
+		class="aspect-[1/1] w-full object-contain"
+		:class="props.class"
+	/>
 </template>

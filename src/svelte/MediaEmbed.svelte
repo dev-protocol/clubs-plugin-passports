@@ -60,7 +60,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		class={`aspect-[16/9] w-full ${className}`}
+		class={`aspect-[1/1] w-full ${className}`}
 	></iframe>
 {/if}
 
@@ -72,7 +72,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		class={`aspect-[9/16] w-full ${className}`}
+		class={`aspect-[4/5] w-full ${className}`}
 	></iframe>
 {/if}
 
@@ -83,7 +83,7 @@
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class={`aspect-[9/16] w-full ${className}`}
+		class={`aspect-[4/5] w-full ${className}`}
 		title=""
 	></iframe>
 {/if}
@@ -99,4 +99,12 @@
 			aria-label="from X"
 		></a>
 	</blockquote>
+{/if}
+
+{#if type === EmbeddableMediaType.Image}
+	<img
+		src="props.src"
+		alt=""
+		class={`aspect-[1/1] w-full object-contain ${className}`}
+	/>
 {/if}

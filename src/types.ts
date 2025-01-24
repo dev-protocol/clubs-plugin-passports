@@ -126,6 +126,7 @@ export enum EmbeddableMediaType {
 	YouTubeShorts = 'youtube-shorts',
 	X = 'x',
 	TikTok = 'tiktok',
+	Image = 'image',
 }
 
 declare global {
