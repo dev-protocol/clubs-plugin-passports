@@ -6,7 +6,7 @@
 
 	export let src: string
 	export let className: UndefinedOr<string>
-	export let autoplay = false
+	export let autoplay = true
 
 	let type: EmbeddableMediaType | Error
 	let mediaId: string | undefined
@@ -55,7 +55,7 @@
 
 {#if type === EmbeddableMediaType.YouTube}
 	<iframe
-		src={`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay !== false ? 1 : 0}&mute=1&loop=1`}
+		src={`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=1&loop=1`}
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -67,7 +67,7 @@
 
 {#if type === EmbeddableMediaType.YouTubeShorts}
 	<iframe
-		src={`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay !== false ? 1 : 0}&&mute=1&loop=1`}
+		src={`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&&mute=1&loop=1`}
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -79,7 +79,7 @@
 
 {#if type === EmbeddableMediaType.TikTok}
 	<iframe
-		src={`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay !== false ? 1 : 0}&&controls=0&play_button=0&loop=1&timestamp=0`}
+		src={`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay ? 1 : 0}&&controls=0&play_button=0&loop=1&timestamp=0`}
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen

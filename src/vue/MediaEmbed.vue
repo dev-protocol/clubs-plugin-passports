@@ -9,6 +9,7 @@ const type = computed<EmbeddableMediaType | Error>(() => mediaSource(props.src))
 const mediaId = computed<string | undefined>(() => getMediaId(props.src))
 const mounted = ref(false)
 const elmX = useTemplateRef('twttr')
+const autoplay = computed(() => props.autoplay ?? true)
 
 const load = (src: string) => {
 	const type = mediaSource(src)
@@ -52,7 +53,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTube"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${props.autoplay !== false ? 1 : 0}&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=1&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -63,7 +64,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTubeShorts"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${props.autoplay !== false ? 1 : 0}&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=1&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -74,7 +75,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.TikTok"
-		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${props.autoplay !== false ? 1 : 0}&controls=0&play_button=0&loop=1&timestamp=0`"
+		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay ? 1 : 0}&controls=0&play_button=0&loop=1&timestamp=0`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
