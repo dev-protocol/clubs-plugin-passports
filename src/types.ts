@@ -105,7 +105,7 @@ export type PassportOptionsDiscount = {
 	payload: string | Uint8Array
 	start_utc: number
 	end_utc: number
-	price: Price
+	price: Record<PassportCurrency.Yen, number>
 }
 
 export type PassportOptionsDiscounts = ReadonlyArray<PassportOptionsDiscount>
