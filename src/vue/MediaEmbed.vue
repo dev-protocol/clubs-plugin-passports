@@ -9,7 +9,7 @@ const type = computed<EmbeddableMediaType | Error>(() => mediaSource(props.src))
 const mediaId = computed<string | undefined>(() => getMediaId(props.src))
 const mounted = ref(false)
 const elmX = useTemplateRef('twttr')
-const autoplay = computed(() => props.autoplay ?? true)
+const autoplay = computed(() => (props.autoplay === false ? false : true))
 
 const load = (src: string) => {
 	const type = mediaSource(src)
