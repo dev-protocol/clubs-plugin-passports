@@ -18,7 +18,7 @@ const tiers = {
 		[PassportCurrency.Yen]: 800,
 		[PassportCurrency.Usdc]: 5.2,
 	},
-	t_skin: {
+	t4: {
 		[PassportCurrency.Yen]: 2900,
 		[PassportCurrency.Usdc]: 18.8,
 	},
@@ -31,8 +31,8 @@ export const Prices: Record<PassportItemAssetType, Price> = {
 	'image-playable-link': tiers.t_playable_clip,
 	'short-video': tiers.t_playable_clip,
 	'short-video-link': tiers.t_playable_clip,
-	css: tiers.t_skin,
-	'stylesheet-link': tiers.t_skin,
+	css: tiers.t4,
+	'stylesheet-link': tiers.t4,
 	video: tiers.t2,
 	'video-link': tiers.t2,
 	bgm: tiers.t2,

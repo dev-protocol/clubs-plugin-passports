@@ -3,7 +3,7 @@ import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 import { EmbeddableMediaType } from '../types'
 import { getMediaId, mediaSource } from '../media'
 
-const props = defineProps<{ src: string; class?: string }>()
+const props = defineProps<{ src: string; class?: string; autoplay?: boolean }>()
 
 const type = computed<EmbeddableMediaType | Error>(() => mediaSource(props.src))
 const mediaId = computed<string | undefined>(() => getMediaId(props.src))
@@ -52,7 +52,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTube"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=1&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${props.autoplay ? 1 : 0}&mute=1&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -63,7 +63,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTubeShorts"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=1&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${props.autoplay ? 1 : 0}&mute=1&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -74,7 +74,7 @@ watch(props, ({ src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.TikTok"
-		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=1&controls=0&play_button=0&loop=1&timestamp=0`"
+		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${props.autoplay ? 1 : 0}&controls=0&play_button=0&loop=1&timestamp=0`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
