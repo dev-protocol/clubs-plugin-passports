@@ -20,14 +20,16 @@ export const mediaSource = (url?: string): EmbeddableMediaType | Error =>
 							? EmbeddableMediaType.TikTok
 							: src.host.includes('x.com') || src.host.includes('twitter.com')
 								? EmbeddableMediaType.X
-								: src.pathname.endsWith('.jpg') ||
-									  src.pathname.endsWith('.jpeg') ||
-									  src.pathname.endsWith('.png') ||
-									  src.pathname.endsWith('.webp') ||
-									  src.pathname.endsWith('.avif') ||
-									  src.pathname.endsWith('.gif')
-									? EmbeddableMediaType.Image
-									: undefined,
+								: src.host.includes('pinterest.com')
+									? EmbeddableMediaType.Pinterest
+									: src.pathname.endsWith('.jpg') ||
+										  src.pathname.endsWith('.jpeg') ||
+										  src.pathname.endsWith('.png') ||
+										  src.pathname.endsWith('.webp') ||
+										  src.pathname.endsWith('.avif') ||
+										  src.pathname.endsWith('.gif')
+										? EmbeddableMediaType.Image
+										: undefined,
 	) ?? new Error('Unexpected URL is passed.')
 
 /**
@@ -61,6 +63,8 @@ export const getMediaId = (url: string): string | undefined => {
 								: undefined
 						: type === EmbeddableMediaType.YouTubeShorts
 							? pathnames.at(2)
-							: undefined
+							: type === EmbeddableMediaType.Pinterest
+								? pathnames.at(2)
+								: undefined
 	return typeof id === 'string' ? id : undefined
 }

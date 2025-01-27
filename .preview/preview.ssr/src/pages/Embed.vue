@@ -12,5 +12,5 @@ const url = ref<string>()
 	<MediaEmbed v-if="url" :src="url" />
 
 	<h2>SSR Content</h2>
-	<MediaEmbed src="https://www.youtube.com/watch?v=lJ2Ao1suBSw" />
+	<MediaEmbed src="https://jp.pinterest.com/pin/9992430417515382/" />
 </template>

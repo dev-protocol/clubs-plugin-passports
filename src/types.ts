@@ -133,10 +133,12 @@ export enum EmbeddableMediaType {
 	YouTubeShorts = 'youtube-shorts',
 	X = 'x',
 	TikTok = 'tiktok',
+	Pinterest = 'pinterest',
 	Image = 'image',
 }
 
 declare global {
+	// eslint-disable-next-line functional/no-mixed-types
 	interface Window {
 		instagram?: {
 			Embeds: {
@@ -148,5 +150,6 @@ declare global {
 				load: (arg: HTMLElement) => null
 			}
 		}
+		doBuild?: (arg: HTMLElement) => null
 	}
 }

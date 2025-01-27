@@ -5,7 +5,7 @@
 	import type { UndefinedOr } from '@devprotocol/util-ts'
 
 	export let src: string
-	export let className: UndefinedOr<string>
+	export let className: UndefinedOr<string> = undefined
 	export let autoplay = true
 
 	let type: EmbeddableMediaType | Error
@@ -100,6 +100,16 @@
 			aria-label="from X"
 		></a>
 	</blockquote>
+{/if}
+
+{#if type === EmbeddableMediaType.Pinterest}
+	<iframe
+		src={`https://assets.pinterest.com/ext/embed.html?id=${mediaId}`}
+		frameborder="0"
+		scrolling="no"
+		class={`mx-auto aspect-[1/2] w-full max-w-[300px] ${className}`}
+		title=""
+	></iframe>
 {/if}
 
 {#if type === EmbeddableMediaType.Image}
