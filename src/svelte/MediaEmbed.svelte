@@ -107,7 +107,7 @@
 		src={`https://assets.pinterest.com/ext/embed.html?id=${mediaId}`}
 		frameborder="0"
 		scrolling="no"
-		class={`mx-auto aspect-[1/2] w-full max-w-[300px] ${className}`}
+		class={`aspect-[1/1.391] w-full ${className}`}
 		title=""
 	></iframe>
 {/if}
