@@ -27,7 +27,8 @@ export const mediaSource = (url?: string): EmbeddableMediaType | Error =>
 										  src.pathname.endsWith('.png') ||
 										  src.pathname.endsWith('.webp') ||
 										  src.pathname.endsWith('.avif') ||
-										  src.pathname.endsWith('.gif')
+										  src.pathname.endsWith('.gif') ||
+										  src.pathname.endsWith('.gifv')
 										? EmbeddableMediaType.Image
 										: undefined,
 	) ?? new Error('Unexpected URL is passed.')
