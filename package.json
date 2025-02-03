@@ -78,7 +78,7 @@
 	},
 	"peerDependencies": {
 		"@devprotocol/clubs-core": "^3.18.0",
-		"@devprotocol/clubs-plugin-payments": "^0.2.3 || ^0.3.0",
+		"@devprotocol/clubs-plugin-payments": "^0.2.3 || ^0.3.0 || ^0.4.0",
 		"ethers": "^6.0.0"
 	},
 	"devDependencies": {
@@ -87,7 +87,7 @@
 		"@astrojs/tailwind": "6.0.0",
 		"@astrojs/vue": "5.0.6",
 		"@devprotocol/clubs-core": "3.24.1",
-		"@devprotocol/clubs-plugin-payments": "0.4.0-alpha.0",
+		"@devprotocol/clubs-plugin-payments": "0.4.0",
 		"@eslint/js": "^9.14.0",
 		"@rollup/plugin-typescript": "12.1.2",
 		"@tailwindcss/typography": "^0.5.16",
