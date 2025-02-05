@@ -92,7 +92,7 @@
 
 {#if type === EmbeddableMediaType.X}
 	<div
-		class={`flex aspect-[1/1.391] items-end justify-center overflow-hidden rounded-md bg-black/2 shadow-[0_0_0_1px_rgb(0_0_0_/_6%)] backdrop-blur-md [&>*]:mt-1! [&>*]:-mb-[89px]! [&>*]:flex! [&>*]:min-w-auto! [&>*]:justify-center! ${lock ? 'pointer-events-none' : ''} ${className}`}
+		class={`flex aspect-[1/1.391] items-end justify-center overflow-hidden bg-black/2 backdrop-blur-md *:!mt-1 *:mt-1! *:!-mb-[89px] *:-mb-[89px]! *:!flex *:flex! *:!min-w-auto *:min-w-auto! *:!justify-center *:justify-center! ${lock ? 'pointer-events-none' : ''} ${className}`}
 	>
 		<blockquote class="twitter-tweet" bind:this={elmX}>
 			<a
