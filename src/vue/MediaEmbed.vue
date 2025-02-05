@@ -95,7 +95,7 @@ watch({ src }, ({ src: _src }) => {
 
 	<div
 		v-if="type === EmbeddableMediaType.X"
-		class="flex aspect-[1/1.391] items-end justify-center overflow-hidden bg-black/2 backdrop-blur-md *:!mt-1 *:mt-1! *:!-mb-[89px] *:-mb-[89px]! *:!flex *:flex! *:!min-w-auto *:min-w-auto! *:!justify-center *:justify-center!"
+		class="flex aspect-[1/1.391] items-end justify-center overflow-hidden bg-black/2 backdrop-blur-md *:!mt-1 *:mt-1! *:!-mb-[119px] *:-mb-[119px]! *:!flex *:flex! *:!min-w-auto *:min-w-auto! *:!justify-center *:justify-center!"
 		:class="[className, { 'pointer-events-none': lock }]"
 	>
 		<blockquote ref="twttr" class="twitter-tweet">
