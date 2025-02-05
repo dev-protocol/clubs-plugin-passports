@@ -84,7 +84,7 @@ watch({ src }, ({ src: _src }) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.TikTok"
-		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay ? 1 : 0}&controls=0&play_button=0&loop=1&timestamp=0`"
+		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay ? 1 : 0}&loop=1&timestamp=0`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
