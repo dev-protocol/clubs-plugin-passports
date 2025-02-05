@@ -26,16 +26,12 @@ onMounted(() => {
 	const sdks = [
 		'//www.instagram.com/embed.js',
 		'//platform.twitter.com/widgets.js',
-		// '//assets.pinterest.com/js/pinit.js',
 	]
 	sdks.forEach((sdk) => {
 		if (document.querySelector(`script[src*='${sdk}']`) === null) {
 			const script = document.createElement('script')
 			script.setAttribute('src', sdk)
 			script.setAttribute('async', 'async')
-			// if (sdk.includes('pinterest')) {
-			// 	script.setAttribute('data-pin-build', 'doBuild')
-			// }
 			document.body.append(script)
 		}
 	})
@@ -88,15 +84,19 @@ watch(props, ({ src }) => {
 		:class="props.class"
 	></iframe>
 
-	<blockquote
+	<div
 		v-if="type === EmbeddableMediaType.X"
-		ref="twttr"
-		class="twitter-tweet"
-		:class="props.class"
-		data-media-max-width="560"
+		class="flex aspect-[1/1.391] items-end justify-center overflow-hidden"
 	>
-		<a :href="`https://twitter.com/milkynoe/status/${mediaId}`"></a>
-	</blockquote>
+		<blockquote
+			ref="twttr"
+			class="twitter-tweet"
+			:class="props.class"
+			data-media-max-width="560"
+		>
+			<a :href="`https://twitter.com/milkynoe/status/${mediaId}`"></a>
+		</blockquote>
+	</div>
 
 	<iframe
 		v-if="type === EmbeddableMediaType.Pinterest"

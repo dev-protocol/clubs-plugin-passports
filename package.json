@@ -69,7 +69,6 @@
 	"dependencies": {
 		"@devprotocol/dev-kit": "8.7.0",
 		"@devprotocol/util-ts": "4.0.0",
-		"@tailwindcss/vite": "^4.0.3",
 		"bignumber.js": "9.1.2",
 		"dayjs": "^1.11.13",
 		"nanoid": "^5.0.7",
@@ -91,6 +90,7 @@
 		"@eslint/js": "^9.14.0",
 		"@rollup/plugin-typescript": "12.1.2",
 		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.0.3",
 		"@types/dotenv": "8.2.3",
 		"@types/eslint-config-prettier": "^6.11.3",
 		"@types/eslint__js": "^8.42.3",
