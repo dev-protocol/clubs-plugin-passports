@@ -9,5 +9,8 @@ config({ path: './.env' })
 
 export default defineConfig({
 	output: 'server',
-	integrations: [clubs(), vue(), svelte(), tailwindcss()],
+	integrations: [clubs(), vue(), svelte()],
+	vite: {
+		plugins: [tailwindcss()],
+	},
 })

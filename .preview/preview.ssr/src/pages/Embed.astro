@@ -1,11 +1,12 @@
 ---
 import Layout from '../../../theme/Default.astro'
-import Embed_ from './Embed.vue'
-// import Embed_ from './Embed.svelte'
+import EmbedVue from './Embed.vue'
+import EmbedSvelte from './Embed.svelte'
 ---
 
 <Layout>
 	<div class="mx-auto max-w-xl">
-		<Embed_ client:load />
+		<EmbedVue client:load />
+		<EmbedSvelte client:load />
 	</div>
 </Layout>

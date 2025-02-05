@@ -7,6 +7,7 @@
 	export let src: string
 	export let className: UndefinedOr<string> = undefined
 	export let autoplay = true
+	export let lock = false
 
 	let type: EmbeddableMediaType | Error
 	let mediaId: string | undefined
@@ -48,7 +49,7 @@
 
 {#if type === EmbeddableMediaType.Instagram}
 	<blockquote
-		class={`instagram-media ${className}`}
+		class={`instagram-media ${lock ? 'pointer-events-none' : ''} ${className}`}
 		data-instgrm-permalink={`https://www.instagram.com/p/${mediaId}`}
 	></blockquote>
 {/if}
@@ -61,7 +62,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		class={`aspect-[1/1] w-full ${className}`}
+		class={`aspect-[1/1] w-full ${lock ? 'pointer-events-none' : ''} ${className}`}
 	></iframe>
 {/if}
 
@@ -73,7 +74,7 @@
 		allowfullscreen
 		frameborder="0"
 		title=""
-		class={`aspect-[1/1.391] w-full ${className}`}
+		class={`aspect-[1/1.391] w-full ${lock ? 'pointer-events-none' : ''} ${className}`}
 	></iframe>
 {/if}
 
@@ -84,22 +85,22 @@
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
 		frameborder="0"
-		class={`aspect-[1/1.391] w-full ${className}`}
+		class={`aspect-[1/1.391] w-full ${lock ? 'pointer-events-none' : ''} ${className}`}
 		title=""
 	></iframe>
 {/if}
 
 {#if type === EmbeddableMediaType.X}
-	<blockquote
-		class={`twitter-tweet ${className}`}
-		bind:this={elmX}
-		data-media-max-width="560"
+	<div
+		class={`flex aspect-[1/1.391] items-end justify-center overflow-hidden rounded-md bg-black/2 shadow-[0_0_0_1px_rgb(0_0_0_/_6%)] backdrop-blur-md [&>*]:mt-1! [&>*]:-mb-[89px]! [&>*]:flex! [&>*]:min-w-auto! [&>*]:justify-center! ${lock ? 'pointer-events-none' : ''} ${className}`}
 	>
-		<a
-			href={`https://twitter.com/milkynoe/status/${mediaId}`}
-			aria-label="from X"
-		></a>
-	</blockquote>
+		<blockquote class="twitter-tweet" bind:this={elmX}>
+			<a
+				href={`https://twitter.com/milkynoe/status/${mediaId}`}
+				aria-label="from X"
+			></a>
+		</blockquote>
+	</div>
 {/if}
 
 {#if type === EmbeddableMediaType.Pinterest}
@@ -107,11 +108,15 @@
 		src={`https://assets.pinterest.com/ext/embed.html?id=${mediaId}`}
 		frameborder="0"
 		scrolling="no"
-		class={`aspect-[1/1.391] w-full ${className}`}
+		class={`aspect-[1/1.391] w-full ${lock ? 'pointer-events-none' : ''} ${className}`}
 		title=""
 	></iframe>
 {/if}
 
 {#if type === EmbeddableMediaType.Image}
-	<img {src} alt="" class={`aspect-[1/1] w-full object-contain ${className}`} />
+	<img
+		{src}
+		alt=""
+		class={`aspect-[1/1] w-full object-contain ${lock ? 'pointer-events-none' : ''} ${className}`}
+	/>
 {/if}

@@ -3,13 +3,22 @@ import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 import { EmbeddableMediaType } from '../types'
 import { getMediaId, mediaSource } from '../media'
 
-const props = defineProps<{ src: string; class?: string; autoplay?: boolean }>()
+const {
+	src,
+	class: className,
+	autoplay = true,
+	lock = false,
+} = defineProps<{
+	src: string
+	class?: string
+	autoplay?: boolean
+	lock?: boolean
+}>()
 
-const type = computed<EmbeddableMediaType | Error>(() => mediaSource(props.src))
-const mediaId = computed<string | undefined>(() => getMediaId(props.src))
+const type = computed<EmbeddableMediaType | Error>(() => mediaSource(src))
+const mediaId = computed<string | undefined>(() => getMediaId(src))
 const mounted = ref(false)
 const elmX = useTemplateRef('twttr')
-const autoplay = computed(() => (props.autoplay === false ? false : true))
 
 const load = (src: string) => {
 	const type = mediaSource(src)
@@ -35,11 +44,11 @@ onMounted(() => {
 			document.body.append(script)
 		}
 	})
-	load(props.src)
+	load(src)
 })
 
-watch(props, ({ src }) => {
-	mounted.value && load(src)
+watch({ src }, ({ src: _src }) => {
+	mounted.value && load(_src)
 })
 </script>
 
@@ -47,7 +56,7 @@ watch(props, ({ src }) => {
 	<blockquote
 		v-if="type === EmbeddableMediaType.Instagram"
 		class="instagram-media"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 		:data-instgrm-permalink="`https://www.instagram.com/p/${mediaId}`"
 	></blockquote>
 
@@ -59,7 +68,7 @@ watch(props, ({ src }) => {
 		allowfullscreen
 		frameborder="0"
 		class="aspect-[1/1] w-full"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 	></iframe>
 
 	<iframe
@@ -70,7 +79,7 @@ watch(props, ({ src }) => {
 		allowfullscreen
 		frameborder="0"
 		class="aspect-[1/1.391] w-full"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 	></iframe>
 
 	<iframe
@@ -81,19 +90,15 @@ watch(props, ({ src }) => {
 		allowfullscreen
 		frameborder="0"
 		class="aspect-[1/1.391] w-full"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 	></iframe>
 
 	<div
 		v-if="type === EmbeddableMediaType.X"
-		class="flex aspect-[1/1.391] items-end justify-center overflow-hidden"
+		class="flex aspect-[1/1.391] items-end justify-center overflow-hidden rounded-md bg-black/2 shadow-[0_0_0_1px_rgb(0_0_0_/_6%)] backdrop-blur-md [&>*]:mt-1! [&>*]:-mb-[89px]! [&>*]:flex! [&>*]:min-w-auto! [&>*]:justify-center!"
+		:class="[className, { 'pointer-events-none': lock }]"
 	>
-		<blockquote
-			ref="twttr"
-			class="twitter-tweet"
-			:class="props.class"
-			data-media-max-width="560"
-		>
+		<blockquote ref="twttr" class="twitter-tweet">
 			<a :href="`https://twitter.com/milkynoe/status/${mediaId}`"></a>
 		</blockquote>
 	</div>
@@ -104,14 +109,14 @@ watch(props, ({ src }) => {
 		frameborder="0"
 		scrolling="no"
 		class="aspect-[1/1.391] w-full"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 	></iframe>
 
 	<img
 		v-if="type === EmbeddableMediaType.Image"
-		:src="props.src"
+		:src="src"
 		alt=""
 		class="aspect-[1/1] w-full object-contain"
-		:class="props.class"
+		:class="[className, { 'pointer-events-none': lock }]"
 	/>
 </template>

@@ -9,7 +9,7 @@ const url = ref<string>()
 	<input type="text" v-model="url" />
 
 	<h2>Dynamic Content</h2>
-	<MediaEmbed v-if="url" :src="url" />
+	<MediaEmbed v-if="url" :src="url" class="xyz" />
 
 	<h2>SSR Content</h2>
 	<MediaEmbed src="https://x.com/ArknightsEN/status/1880102923491049584/" />

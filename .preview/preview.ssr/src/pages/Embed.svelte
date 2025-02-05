@@ -12,4 +12,5 @@
 {/if}
 
 <h2>SSR Content</h2>
+<MediaEmbed src="https://x.com/ArknightsEN/status/1880102923491049584/" />
 <MediaEmbed src="https://www.youtube.com/watch?v=lJ2Ao1suBSw" />
