@@ -113,9 +113,5 @@
 {/if}
 
 {#if type === EmbeddableMediaType.Image}
-	<img
-		src="props.src"
-		alt=""
-		class={`aspect-[1/1] w-full object-contain ${className}`}
-	/>
+	<img {src} alt="" class={`aspect-[1/1] w-full object-contain ${className}`} />
 {/if}
