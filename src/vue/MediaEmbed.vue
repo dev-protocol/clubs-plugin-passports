@@ -19,6 +19,7 @@ const type = computed<EmbeddableMediaType | Error>(() => mediaSource(src))
 const mediaId = computed<string | undefined>(() => getMediaId(src))
 const mounted = ref(false)
 const elmX = useTemplateRef('twttr')
+const _src = computed(() => src)
 
 const load = (src: string) => {
 	const type = mediaSource(src)
@@ -47,8 +48,8 @@ onMounted(() => {
 	load(src)
 })
 
-watch({ src }, ({ src: _src }) => {
-	mounted.value && load(_src)
+watch(_src, (__src) => {
+	mounted.value && load(__src)
 })
 </script>
 
