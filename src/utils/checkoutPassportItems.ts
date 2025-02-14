@@ -7,6 +7,7 @@ import type {
 	ComposedCheckoutOptions,
 	PassportOffering,
 	PassportOptionsDiscounts,
+	PassportOptionsOverrides,
 } from '../types'
 import { Prices } from '../constants/price'
 import { UndefinedOr, whenDefined } from '@devprotocol/util-ts'
@@ -95,13 +96,21 @@ export const checkoutPassportItemForPayload = async (
 		.find((p) => p.id === PLUGIN_ID)
 		?.options.find(({ key }) => key === 'discounts')?.value ??
 		[]) as PassportOptionsDiscounts
+	const overrides = (config.plugins
+		.find((p) => p.id === PLUGIN_ID)
+		?.options.find(({ key }) => key === 'overrides')?.value ??
+		[]) as PassportOptionsOverrides
 	const now = currentTime ? currentTime : dayjs().utc().toDate().getTime()
 
 	const returnObject = whenDefined(passportOfferingWithItemData, (offering) => {
-		const price = Prices[offering.passportItem.itemAssetType]
+		const predefinedPrice = Prices[offering.passportItem.itemAssetType]
 		const discount = discounts.find(
 			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
 		)
+		const override = overrides.find(
+			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
+		)
+		const price = override ? override.price : predefinedPrice
 		const underDiscount =
 			whenDefined(discount, (dis) => {
 				return now >= dis.start_utc && now <= dis.end_utc

@@ -101,6 +101,13 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		base: string
 	}>
 
+export type PassportOptionsOverride = {
+	payload: string | Uint8Array
+	price: Record<PassportCurrency.Yen, number>
+}
+
+export type PassportOptionsOverrides = ReadonlyArray<PassportOptionsOverride>
+
 export type PassportOptionsDiscount = {
 	payload: string | Uint8Array
 	start_utc: number
