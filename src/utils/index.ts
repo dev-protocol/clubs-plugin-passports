@@ -4,6 +4,7 @@ import headers from './headers'
 import {
 	getPassportItemForPayload,
 	addPassportItemSetter,
+	patchPassportItemValue,
 } from './passportItem'
 
 import {
@@ -31,6 +32,7 @@ export {
 	headers,
 	getPassportItemForPayload,
 	addPassportItemSetter,
+	patchPassportItemValue,
 	checkoutPassportItems,
 	checkoutPassportItemForPayload,
 }

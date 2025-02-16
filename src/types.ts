@@ -88,6 +88,14 @@ export type CreatePassportItemReq = ReadonlyDeep<{
 	passportItem: Omit<PassportItemDocument, 'id' | 'clubsUrl'>
 }>
 
+export type PatchPassportItemValueReq = ReadonlyDeep<{
+	site: string
+	message: string
+	signature: string
+	sTokenPayload: string
+	passportItemValue: string
+}>
+
 export type ComposedCheckoutOptions = CheckoutOptions &
 	Readonly<{
 		offering: PassportOffering

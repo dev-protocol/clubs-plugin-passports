@@ -8,6 +8,7 @@ import {
 	CreatePassportItemReq,
 	Index,
 	PassportItemDocument,
+	PatchPassportItemValueReq,
 } from '../types'
 import {
 	passportItemDocument,
@@ -42,6 +43,35 @@ export const addPassportItemSetter = async ({
 	)
 
 	return passportSkinCreationStatus
+}
+
+export const patchPassportItemValue = async ({
+	client,
+	data,
+}: {
+	client: AwaitedDefaultClient
+	data: PatchPassportItemValueReq
+}) => {
+	const source = await client.json
+		.get(generatePassportItemKey(data.sTokenPayload))
+		.catch((err: Error) => err)
+
+	const passportItemDoc = whenNotErrorAll([source, data], ([origin, info]) =>
+		passportItemDocument({
+			...(origin as PassportItemDocument),
+			itemAssetValue: info.passportItemValue,
+		}),
+	)
+
+	const status = await whenNotErrorAll(
+		[passportItemDoc, client],
+		([info, redis]) =>
+			redis.json
+				.set(generatePassportItemKey(info.sTokenPayload), '$', info)
+				.catch((err: Error) => err),
+	)
+
+	return status
 }
 
 export const getPassportItemForPayload = async (props: {

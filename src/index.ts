@@ -14,6 +14,7 @@ import addPassportItem from './handlers/addPassportItem'
 import getPassportItemForPayload from './handlers/getPassportItemForPayload'
 import {
 	addPassportItemSetter,
+	patchPassportItemValue,
 	getPassportItemForPayload as getPassportItemFromPayload,
 	PLUGIN_ID,
 	checkoutPassportItems,
@@ -28,6 +29,7 @@ import {
 	type CreatePassportItemReq,
 	type PassportItemAssetType,
 	type PassportItemDocument,
+	type PatchPassportItemValueReq,
 } from './types'
 import type {
 	PassportItemData,
@@ -80,10 +82,12 @@ export {
 	generatePassportItemKey,
 	getPassportItemFromPayload,
 	addPassportItemSetter,
+	patchPassportItemValue,
 	Prices,
 	type CheckoutFromPassportOffering,
 	type ComposedCheckoutOptions,
 	type PassportItemData,
+	type PatchPassportItemValueReq,
 }
 
 export default {
