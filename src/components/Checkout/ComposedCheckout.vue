@@ -12,7 +12,7 @@ const props = defineProps<ComposedCheckoutOptions>()
 
 const composedItem: ComposedItem = {
 	payload: props.payload ?? '',
-	price: props.fiat.price,
+	price: props.discount?.price ?? props.fiat.price,
 	source: props.offering,
 }
 
@@ -47,7 +47,7 @@ const computedProps = computed(() => {
 			...props,
 			itemName: i18nItem.value('name') ?? props.itemName,
 			description: i18nItem.value('description') ?? props.description,
-			amount: fiat.price.yen,
+			amount: props.discount?.price.yen ?? fiat.price.yen,
 			fiatCurrency: '¥',
 			useDiscretePaymentFlow: isUsingCreditCard,
 			useInjectedTransactionForm: isUsingCreditCard,
