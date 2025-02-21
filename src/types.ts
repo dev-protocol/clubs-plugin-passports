@@ -135,6 +135,27 @@ export type PassportOffering = ClubsOffering<
 	}
 >
 
+export type MediaProps = {
+	item?: {
+		link?: string
+		itemAssetType?: PassportItemDocument['itemAssetType']
+		itemAssetValue?: PassportItemDocument['itemAssetValue']
+		previewImageSrc?: PassportOffering['previewImageSrc']
+	}
+	embedOptions?: {
+		autoplay?: boolean
+		lock?: boolean
+	}
+	videoOptions?: {
+		autoplay?: boolean
+		lock?: boolean
+	}
+	class?: string
+	imageClass?: string
+	videoClass?: string
+	embedClass?: string
+}
+
 export enum PassportCurrency {
 	Yen = 'yen',
 	Usdc = 'usdc',

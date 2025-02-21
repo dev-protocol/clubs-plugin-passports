@@ -1,3 +1,4 @@
+import Media from './Media.svelte'
 import MediaEmbed from './MediaEmbed.svelte'
 
-export { MediaEmbed }
+export { Media, MediaEmbed }

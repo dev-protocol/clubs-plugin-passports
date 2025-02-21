@@ -30,6 +30,7 @@ import {
 	type PassportItemAssetType,
 	type PassportItemDocument,
 	type PatchPassportItemValueReq,
+	type MediaProps,
 } from './types'
 import type {
 	PassportItemData,
@@ -88,6 +89,7 @@ export {
 	type ComposedCheckoutOptions,
 	type PassportItemData,
 	type PatchPassportItemValueReq,
+	type MediaProps,
 }
 
 export default {
