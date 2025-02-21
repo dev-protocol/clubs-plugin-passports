@@ -146,10 +146,6 @@ export type MediaProps = {
 		autoplay?: boolean
 		lock?: boolean
 	}
-	videoOptions?: {
-		autoplay?: boolean
-		lock?: boolean
-	}
 	class?: string
 	imageClass?: string
 	videoClass?: string
