@@ -45,6 +45,7 @@
 				const blobDataUrl = URL.createObjectURL(blob)
 				if (imageRef) {
 					imageRef.src = blobDataUrl
+					imageLoaded = true
 				}
 			} catch (error) {
 				console.error('Error loading video:', error)
