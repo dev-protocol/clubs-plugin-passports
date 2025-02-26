@@ -129,7 +129,7 @@ onMounted(() => {
 			<div class="my-6 flex flex-col gap-8">
 				<p class="text-sm">{{ i18n('SignInRequest') }}</p>
 				<a
-					href=""
+					:href="i18n('GuideLinkHref')"
 					target="_blank"
 					class="hs-link flex w-fit items-center gap-2 text-xs"
 				>

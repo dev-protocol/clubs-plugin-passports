@@ -15,7 +15,11 @@ export const Strings = {
 		ja: `購入を続けるためにログインまたは会員登録をお願いします。`,
 	},
 	GuideLink: {
-		en: `Open a guide in a new tab`,
+		en: `Open a guide in a new tab (Japanese)`,
 		ja: `使い方ガイドを新しいタブで開く`,
+	},
+	GuideLinkHref: {
+		en: `https://www.youtube.com/watch?v=fVjIUc0WV8c`,
+		ja: `https://www.youtube.com/watch?v=fVjIUc0WV8c`,
 	},
 } satisfies ClubsI18nParts
