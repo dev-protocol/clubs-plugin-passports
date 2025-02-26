@@ -79,14 +79,14 @@ onMounted(() => {
 				<Media
 					:item="{ ...computedProps.passportItem, ...computedProps.offering }"
 					image-class="h-auto w-full rounded-lg object-cover object-center"
-					video-class="w-full rounded-md [&>video]:rounded-md aspect-square"
+					video-class="aspect-square w-full rounded-md [&>video]:rounded-md"
 			/></span>
 		</template>
 		<template #result:preview>
 			<Media
 				:item="{ ...computedProps.passportItem, ...computedProps.offering }"
-				image-class="z-10 max-h-60 min-h-full max-w-60 rounded-md object-contain @xl/clb_result_modal:max-h-none @xl/clb_result_modal:max-w-xl"
-				video-class="rounded-md [&>video]:rounded-md aspect-square max-w-60"
+				image-class="z-10 max-h-60 min-h-full !w-auto max-w-60 rounded-md !object-scale-down @xl/clb_result_modal:max-h-none @xl/clb_result_modal:max-w-xl"
+				video-class="aspect-square max-w-60 rounded-md [&>video]:rounded-md"
 			/>
 		</template>
 		<template #before:transaction-form>
