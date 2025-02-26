@@ -7,6 +7,7 @@ import { ComposedCheckoutOptions, Payments } from '../../types.ts'
 import { ComposedItem } from '@devprotocol/clubs-plugin-payments'
 import { i18nFactory, ProseTextInherit } from '@devprotocol/clubs-core'
 import { Strings } from '../../i18n/index.ts'
+import Media from '../../vue/Media.vue'
 
 const props = defineProps<ComposedCheckoutOptions>()
 
@@ -73,6 +74,21 @@ onMounted(() => {
 
 <template>
 	<Checkout v-bind="computedProps">
+		<template #preview>
+			<span class="w-36 rounded-lg border border-black/20 bg-black/10 p-1">
+				<Media
+					:item="{ ...computedProps.passportItem, ...computedProps.offering }"
+					image-class="h-auto w-full rounded-lg object-cover object-center"
+					video-class="w-full rounded-md [&>video]:rounded-md aspect-square"
+			/></span>
+		</template>
+		<template #result:preview>
+			<Media
+				:item="{ ...computedProps.passportItem, ...computedProps.offering }"
+				image-class="z-10 max-h-60 min-h-full max-w-60 rounded-md object-contain @xl/clb_result_modal:max-h-none @xl/clb_result_modal:max-w-xl"
+				video-class="rounded-md [&>video]:rounded-md aspect-square max-w-60"
+			/>
+		</template>
 		<template #before:transaction-form>
 			<div v-if="acceptAllPayments" class="w-full text-right">
 				<label
