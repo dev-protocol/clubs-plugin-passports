@@ -3341,9 +3341,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/language-core@npm:2.2.2":
-  version: 2.2.2
-  resolution: "@vue/language-core@npm:2.2.2"
+"@vue/language-core@npm:2.2.6":
+  version: 2.2.6
+  resolution: "@vue/language-core@npm:2.2.6"
   dependencies:
     "@volar/language-core": "npm:~2.4.11"
     "@vue/compiler-dom": "npm:^3.5.0"
@@ -3358,7 +3358,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/4d2172f74063c330fb8ec9d435687ac4c70ca7a78dac48c5e69eeed2d4d62c2ce61c7cc6e350670fadfec7877b9597743773c3d16d16b07ce2dd9ecc44ccad4c
+  checksum: 10c0/80e5339e462334e70f846159158caea72ea3eb6160a55fdae7249f9d0c2af089862eb10c90e365377cee9aa6f766a3c87543ecb5fbd5d5f8234a56ad6f1100d7
   languageName: node
   linkType: hard
 
@@ -10434,16 +10434,16 @@ __metadata:
   linkType: hard
 
 "vue-tsc@npm:^2.0.0":
-  version: 2.2.2
-  resolution: "vue-tsc@npm:2.2.2"
+  version: 2.2.6
+  resolution: "vue-tsc@npm:2.2.6"
   dependencies:
     "@volar/typescript": "npm:~2.4.11"
-    "@vue/language-core": "npm:2.2.2"
+    "@vue/language-core": "npm:2.2.6"
   peerDependencies:
     typescript: ">=5.0.0"
   bin:
     vue-tsc: ./bin/vue-tsc.js
-  checksum: 10c0/3ad596d3556019347840b05a248bb6c0204a0b8c010de09324d0cce69301fba289bca3eb7ae82378e5b7ffbbf90e37819630087e3d1cf3a4323bab64f50219b6
+  checksum: 10c0/425683e07e9a55ff85b001c22e6a306cea6bf0af4bd2a79f4cad9c73cf61eba12d3d12d650bb2af7f6fca4f9589fa13733a3e88b4ff66e9c15ddc4b62a16a72f
   languageName: node
   linkType: hard
 
