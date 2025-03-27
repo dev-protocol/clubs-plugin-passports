@@ -111,6 +111,7 @@ export const checkoutPassportItemForPayload = async (
 			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
 		)
 		const price = override ? override.price : predefinedPrice
+		const notForSale = price === 'not-for-sale'
 		const underDiscount =
 			whenDefined(discount, (dis) => {
 				return now >= dis.start_utc && now <= dis.end_utc
@@ -129,11 +130,14 @@ export const checkoutPassportItemForPayload = async (
 			props: {
 				offering,
 				passportItem: offering.passportItem,
-				fiat: {
-					price: {
-						yen: price.yen,
-					},
-				},
+				notForSale,
+				fiat: notForSale
+					? undefined
+					: {
+							price: {
+								yen: price.yen,
+							},
+						},
 				fiatCurrency: 'YEN',
 				amount: offering.price,
 				propertyAddress: config.propertyAddress,

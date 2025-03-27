@@ -1,6 +1,7 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
+		"module": "ESNext",
 		"outDir": "dist",
 		"declaration": true,
 		"skipLibCheck": true,

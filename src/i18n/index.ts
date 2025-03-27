@@ -22,4 +22,12 @@ export const Strings = {
 		en: `https://www.youtube.com/watch?v=fVjIUc0WV8c`,
 		ja: `https://www.youtube.com/watch?v=fVjIUc0WV8c`,
 	},
+	NotForSale: {
+		en: 'Not For Sale',
+		ja: '非売品',
+	},
+	NotForSaleDetail: {
+		en: 'This item is not for sale. Read the description for more information.',
+		ja: 'このアイテムは非売品です。詳しくは概要欄をお読みください。',
+	},
 } satisfies ClubsI18nParts

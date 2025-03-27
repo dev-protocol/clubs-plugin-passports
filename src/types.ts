@@ -101,7 +101,8 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		offering: PassportOffering
 		destination: string
 		passportItem: PassportItemDocument
-		fiat: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
+		fiat?: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
+		notForSale: boolean
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
 		chainId: ClubsConfiguration['chainId']
 		debugMode?: boolean
@@ -111,7 +112,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 
 export type PassportOptionsOverride = {
 	payload: string | Uint8Array
-	price: Record<PassportCurrency.Yen, number>
+	price: Record<PassportCurrency.Yen, number> | 'not-for-sale'
 }
 
 export type PassportOptionsOverrides = ReadonlyArray<PassportOptionsOverride>

@@ -3,17 +3,18 @@ import { Checkout } from '@devprotocol/clubs-core/ui/vue'
 import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
-import { ComposedCheckoutOptions, Payments } from '../../types.ts'
+import { ComposedCheckoutOptions, Payments } from '../../types'
 import { ComposedItem } from '@devprotocol/clubs-plugin-payments'
 import { i18nFactory, ProseTextInherit } from '@devprotocol/clubs-core'
-import { Strings } from '../../i18n/index.ts'
+import { Strings } from '../../i18n/index'
 import Media from '../../vue/Media.vue'
 
 const props = defineProps<ComposedCheckoutOptions>()
 
 const composedItem: ComposedItem = {
 	payload: props.payload ?? '',
-	price: props.discount?.price ?? props.fiat.price,
+	price: props.discount?.price ??
+		props.fiat?.price ?? { yen: Number.MAX_SAFE_INTEGER },
 	source: props.offering,
 }
 
@@ -48,7 +49,7 @@ const computedProps = computed(() => {
 			...props,
 			itemName: i18nItem.value('name') ?? props.itemName,
 			description: i18nItem.value('description') ?? props.description,
-			amount: props.discount?.price.yen ?? fiat.price.yen,
+			amount: props.discount?.price.yen ?? fiat?.price.yen,
 			fiatCurrency: '¥',
 			useDiscretePaymentFlow: isUsingCreditCard,
 			useInjectedTransactionForm: isUsingCreditCard,
@@ -60,6 +61,8 @@ const computedProps = computed(() => {
 			itemName: i18nItem.value('name') ?? props.itemName,
 			description: i18nItem.value('description') ?? props.description,
 			fiatCurrency: undefined,
+			useDiscretePaymentFlow: props.notForSale,
+			useInjectedTransactionForm: props.notForSale,
 			uiMode: 'embed',
 		}
 	}
@@ -90,7 +93,10 @@ onMounted(() => {
 			/>
 		</template>
 		<template #before:transaction-form>
-			<div v-if="acceptAllPayments" class="w-full text-right">
+			<div
+				v-if="acceptAllPayments && !computedProps.notForSale"
+				class="w-full text-right"
+			>
 				<label
 					class="inline-flex cursor-pointer items-center justify-end gap-1 p-3"
 				>
@@ -110,13 +116,23 @@ onMounted(() => {
 		</template>
 		<template #main:transaction-form>
 			<TransactionForm
-				v-if="isUsingCreditCard"
+				v-if="isUsingCreditCard && !computedProps.notForSale"
 				:item="composedItem"
 				:chainId="chainId"
 				:rpcUrl="rpcUrl"
 				:debugMode="debugMode"
 				:base="props.base"
 			/>
+			<div v-if="computedProps.notForSale" class="p-3">
+				<p
+					class="mb-3 rounded-full bg-black p-2 text-center font-bold text-white"
+				>
+					{{ i18n('NotForSale') }}
+				</p>
+				<p class="text-sm">
+					{{ i18n('NotForSaleDetail') }}
+				</p>
+			</div>
 		</template>
 		<template #after:description>
 			<span
