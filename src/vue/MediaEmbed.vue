@@ -21,6 +21,7 @@ const type = computed<EmbeddableMediaType | Error>(() => mediaSource(src))
 const mediaId = computed<string | undefined>(() => getMediaId(src))
 const mounted = ref(false)
 const elmX = useTemplateRef('twttr')
+const tiktokRef = useTemplateRef<HTMLIFrameElement>('tiktok-player')
 const _src = computed(() => src)
 
 const load = (src: string) => {
@@ -48,6 +49,21 @@ onMounted(() => {
 		}
 	})
 	load(src)
+
+	window.addEventListener('message', (event) => {
+		if (
+			event.data &&
+			event.data["x-tiktok-player"] &&
+			event.data.type === "onReady" &&
+			!mute &&
+			type.value === EmbeddableMediaType.TikTok
+		) {
+			tiktokRef.value?.contentWindow?.postMessage(
+				{ type: "onMute", value: false, "x-tiktok-player": true },
+				'*'
+			);
+		}
+	});
 })
 
 watch(_src, (__src) => {
@@ -87,6 +103,7 @@ watch(_src, (__src) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.TikTok"
+		ref="tiktok-player"
 		:src="`https://www.tiktok.com/player/v1/${mediaId}?autoplay=${autoplay ? 1 : 0}&controls=0&play_button=0&loop=1&timestamp=0`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
