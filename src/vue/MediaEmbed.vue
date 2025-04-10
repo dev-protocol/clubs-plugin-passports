@@ -54,13 +54,13 @@ onMounted(() => {
 		if (
 			event.data &&
 			event.data['x-tiktok-player'] &&
-			event.data.type === 'onReady' &&
+			event.data.type === 'onPlayerReady' &&
 			!mute &&
 			type.value === EmbeddableMediaType.TikTok
 		) {
 			tiktokRef.value?.contentWindow?.postMessage(
-				{ type: 'onMute', value: false, 'x-tiktok-player': true },
-				'*',
+				{ type: 'unMute', 'x-tiktok-player': true },
+				'*'
 			)
 		}
 	})
