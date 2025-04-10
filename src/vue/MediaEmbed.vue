@@ -53,17 +53,17 @@ onMounted(() => {
 	window.addEventListener('message', (event) => {
 		if (
 			event.data &&
-			event.data["x-tiktok-player"] &&
-			event.data.type === "onReady" &&
+			event.data['x-tiktok-player'] &&
+			event.data.type === 'onReady' &&
 			!mute &&
 			type.value === EmbeddableMediaType.TikTok
 		) {
 			tiktokRef.value?.contentWindow?.postMessage(
-				{ type: "onMute", value: false, "x-tiktok-player": true },
-				'*'
-			);
+				{ type: 'onMute', value: false, 'x-tiktok-player': true },
+				'*',
+			)
 		}
-	});
+	})
 })
 
 watch(_src, (__src) => {
