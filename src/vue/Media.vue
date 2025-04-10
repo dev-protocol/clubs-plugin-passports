@@ -91,6 +91,7 @@ async function updateImageIfNeeded() {
 			:class="`${className ? className : ''} ${embedClass ? embedClass : ''}`"
 			:autoplay="embedOptions?.autoplay"
 			:lock="embedOptions?.lock"
+			:mute="embedOptions?.mute"
 		/>
 		<div
 			v-if="image && !imageLoaded"

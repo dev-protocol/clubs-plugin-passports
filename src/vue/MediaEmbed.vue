@@ -8,11 +8,13 @@ const {
 	class: className,
 	autoplay = true,
 	lock = false,
+	mute = true,
 } = defineProps<{
 	src: string
 	class?: string
 	autoplay?: boolean
 	lock?: boolean
+	mute?: boolean
 }>()
 
 const type = computed<EmbeddableMediaType | Error>(() => mediaSource(src))
@@ -63,7 +65,7 @@ watch(_src, (__src) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTube"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=${mute ? 1 : 0}&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
@@ -74,7 +76,7 @@ watch(_src, (__src) => {
 
 	<iframe
 		v-if="type === EmbeddableMediaType.YouTubeShorts"
-		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=1&loop=1`"
+		:src="`https://www.youtube.com/embed/${mediaId}?playlist=${mediaId}&autoplay=${autoplay ? 1 : 0}&mute=${mute ? 1 : 0}&loop=1`"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 		referrerpolicy="strict-origin-when-cross-origin"
 		allowfullscreen
