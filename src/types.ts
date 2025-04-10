@@ -146,6 +146,7 @@ export type MediaProps = {
 	embedOptions?: {
 		autoplay?: boolean
 		lock?: boolean
+		mute?: boolean
 	}
 	class?: string
 	imageClass?: string

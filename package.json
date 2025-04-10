@@ -69,7 +69,7 @@
 	"dependencies": {
 		"@devprotocol/dev-kit": "8.7.0",
 		"@devprotocol/util-ts": "4.0.0",
-		"bignumber.js": "9.1.2",
+		"bignumber.js": "9.2.1",
 		"dayjs": "^1.11.13",
 		"nanoid": "^5.0.7",
 		"ramda": "0.30.1",
@@ -96,8 +96,8 @@
 		"@types/eslint__js": "^9.0.0",
 		"@types/node": "22.14.0",
 		"@types/ramda": "0.30.2",
-		"@typescript-eslint/eslint-plugin": "8.28.0",
-		"@typescript-eslint/parser": "8.28.0",
+		"@typescript-eslint/eslint-plugin": "8.29.1",
+		"@typescript-eslint/parser": "8.29.1",
 		"astro": "5.6.1",
 		"dotenv": "16.4.7",
 		"eslint": "^9.14.0",
@@ -122,5 +122,5 @@
 		"vue": "3.5.13",
 		"vue-tsc": "^2.0.0"
 	},
-	"packageManager": "yarn@4.8.1"
+	"packageManager": "yarn@4.9.0"
 }
