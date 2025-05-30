@@ -873,9 +873,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devprotocol/clubs-core@npm:3.26.7-beta.4":
-  version: 3.26.7-beta.4
-  resolution: "@devprotocol/clubs-core@npm:3.26.7-beta.4"
+"@devprotocol/clubs-core@npm:3.26.7":
+  version: 3.26.7
+  resolution: "@devprotocol/clubs-core@npm:3.26.7"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/elements": "npm:1.6.0"
@@ -923,7 +923,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10c0/b666cdb0f48210436e5ea58547db1b19343ec52b65f688f89d9e503888f8c6b42a2b63deef05b478492144b5f4fe78cbcd82260ed3f0d08210fc6f33acb08dbb
+  checksum: 10c0/e9c0644fa8beb3ccf3eb3f76a5a9a2a6ca4ade530dfc0c047816411ac28b05a17f87a69f9a7280b8b827c9f3583a69994d655db8adef16d16b2a8a18b8aa00cf
   languageName: node
   linkType: hard
 
@@ -934,7 +934,7 @@ __metadata:
     "@astrojs/check": "npm:0.9.4"
     "@astrojs/svelte": "npm:7.1.0"
     "@astrojs/vue": "npm:5.1.0"
-    "@devprotocol/clubs-core": "npm:3.26.7-beta.4"
+    "@devprotocol/clubs-core": "npm:3.26.7"
     "@devprotocol/clubs-plugin-payments": "npm:0.4.5"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
