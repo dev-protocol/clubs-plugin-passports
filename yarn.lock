@@ -967,7 +967,7 @@ __metadata:
     "@types/eslint-config-prettier": "npm:^6.11.3"
     "@types/eslint__js": "npm:^9.0.0"
     "@types/node": "npm:22.17.1"
-    "@types/ramda": "npm:0.30.2"
+    "@types/ramda": "npm:0.31.0"
     "@typescript-eslint/eslint-plugin": "npm:8.38.0"
     "@typescript-eslint/parser": "npm:8.38.0"
     astro: "npm:5.12.9"
@@ -3179,7 +3179,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:0.30.2, @types/ramda@npm:^0.30.2":
+"@types/ramda@npm:0.31.0":
+  version: 0.31.0
+  resolution: "@types/ramda@npm:0.31.0"
+  dependencies:
+    types-ramda: "npm:^0.31.0"
+  checksum: 10c0/d979b1eb08e7b614369622675c6c0c5dde6e7c232c0fbff1b6975a771a2ea2e663ccad27779486b4942e29a832f10da7afd53994c4638559ecdd69ea8d4fd35b
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.30.2":
   version: 0.30.2
   resolution: "@types/ramda@npm:0.30.2"
   dependencies:
@@ -10447,6 +10456,15 @@ __metadata:
   dependencies:
     ts-toolbelt: "npm:^9.6.0"
   checksum: 10c0/4a8b230ae9772e6534f65b1a154dd5604bcd1d74e27b49686337a215e83aa8fc93e49f8c49af395418d2950cb9fb9b900662077c1d4b73ff6fe4f4bcb83ab2d6
+  languageName: node
+  linkType: hard
+
+"types-ramda@npm:^0.31.0":
+  version: 0.31.0
+  resolution: "types-ramda@npm:0.31.0"
+  dependencies:
+    ts-toolbelt: "npm:^9.6.0"
+  checksum: 10c0/fcdd4673fb9a08f82e5f72071200c662cdeb5b785556186645af0c43f9ab999de64c110c4f2a83b508aae985f014839799d2e3c552473543e8458733e6d0174a
   languageName: node
   linkType: hard
 
