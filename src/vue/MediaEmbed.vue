@@ -60,7 +60,7 @@ onMounted(() => {
 		) {
 			tiktokRef.value?.contentWindow?.postMessage(
 				{ type: 'unMute', 'x-tiktok-player': true },
-				'*'
+				'*',
 			)
 		}
 	})
