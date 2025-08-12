@@ -133,6 +133,12 @@ export type PassportOffering = ClubsOffering<
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale
 		}
+		appearance?: {
+			grid?: {
+				width: 1 | 2 | 3
+				height: 1 | 2 | 3
+			}
+		}
 	}
 >
 
