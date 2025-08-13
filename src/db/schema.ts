@@ -46,6 +46,20 @@ export const itemAssetValue = {
 	},
 } satisfies RediSearchSchema
 
+export const appearanceGridW = {
+	'$.appearance.grid.w': {
+		type: SchemaFieldTypes.NUMERIC,
+		AS: 'appearanceGridW',
+	},
+} satisfies RediSearchSchema
+
+export const appearanceGridH = {
+	'$.appearance.grid.h': {
+		type: SchemaFieldTypes.NUMERIC,
+		AS: 'appearanceGridH',
+	},
+} satisfies RediSearchSchema
+
 export const passportItemDocument = (doc: {
 	id: string | bigint | number
 	sTokenId?: string | bigint | number
@@ -53,6 +67,12 @@ export const passportItemDocument = (doc: {
 	clubsUrl: string
 	itemAssetType: PassportItemAssetType
 	itemAssetValue: string
+	appearance?: {
+		grid?: {
+			w: 1 | 2 | 3
+			h: 1 | 2 | 3
+		}
+	}
 }): PassportItemDocument => ({
 	id: doc.id.toString(),
 	sTokenId: doc.sTokenId?.toString() ?? undefined,
@@ -60,6 +80,7 @@ export const passportItemDocument = (doc: {
 	clubsUrl: doc.clubsUrl,
 	itemAssetType: doc.itemAssetType,
 	itemAssetValue: doc.itemAssetValue,
+	appearance: doc.appearance,
 })
 
 export const PASSPORTITEM_SCHEMA = {
@@ -69,6 +90,8 @@ export const PASSPORTITEM_SCHEMA = {
 	...clubsUrl,
 	...itemAssetType,
 	...itemAssetValue,
+	...appearanceGridW,
+	...appearanceGridH,
 }
 
 export const PASSPORTITEM_SCHEMA_ID = keccak256(
