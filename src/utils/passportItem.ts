@@ -1,4 +1,10 @@
-import { whenNotError, whenNotErrorAll } from '@devprotocol/util-ts'
+import {
+	isNotError,
+	UndefinedOr,
+	whenDefinedAll,
+	whenNotError,
+	whenNotErrorAll,
+} from '@devprotocol/util-ts'
 import { always } from 'ramda'
 import { createClient } from 'redis'
 import { nanoid } from 'nanoid'
@@ -8,6 +14,7 @@ import {
 	CreatePassportItemReq,
 	Index,
 	PassportItemDocument,
+	PassportOffering,
 	PatchPassportItemValueReq,
 } from '../types'
 import {
@@ -15,6 +22,8 @@ import {
 	sTokenPayload as sTokenPayloadSchema,
 } from '../db/schema'
 import { generatePassportItemKey, getDefaultClient } from '../db/redis'
+import { bytes32Hex, type ClubsOffering } from '@devprotocol/clubs-core'
+import { PLUGIN_ID } from '../utils'
 
 const { REDIS_URL, REDIS_USERNAME, REDIS_PASSWORD } = import.meta.env
 
@@ -77,6 +86,7 @@ export const patchPassportItemValue = async ({
 export const getPassportItemForPayload = async (props: {
 	sTokenPayload: string
 	client?: Awaited<ReturnType<typeof getDefaultClient>>
+	offerings?: ClubsOffering[]
 }) => {
 	const redis = props.client
 		? props.client
@@ -115,17 +125,26 @@ export const getPassportItemForPayload = async (props: {
 				.catch((err) => new Error(err)),
 	)
 
-	const result = await whenNotErrorAll(
-		[passportItem, redis],
-		([res, client]) => {
-			return props.client === undefined
-				? client
-						.quit()
-						.then(always(res))
-						.catch((err) => new Error(err))
-				: res
-		},
+	const offering: UndefinedOr<PassportOffering> = whenDefinedAll(
+		[props.offerings, isNotError(passportItem) ? passportItem : undefined],
+		([offerings, item]) =>
+			offerings.find(
+				(offering) =>
+					offering.managedBy === PLUGIN_ID &&
+					bytes32Hex(offering.payload) === bytes32Hex(item.sTokenPayload),
+			) as UndefinedOr<PassportOffering>,
 	)
+
+	const data = whenNotError(passportItem, (item) => ({ ...item, offering }))
+
+	const result = await whenNotErrorAll([data, redis], ([res, client]) => {
+		return props.client === undefined
+			? client
+					.quit()
+					.then(always(res))
+					.catch((err) => new Error(err))
+			: res
+	})
 
 	return result
 }

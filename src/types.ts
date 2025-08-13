@@ -135,8 +135,8 @@ export type PassportOffering = ClubsOffering<
 		}
 		appearance?: {
 			grid?: {
-				width: 1 | 2 | 3
-				height: 1 | 2 | 3
+				w: 1 | 2 | 3
+				h: 1 | 2 | 3
 			}
 		}
 	}
