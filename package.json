@@ -85,7 +85,7 @@
 		"@astrojs/check": "0.9.4",
 		"@astrojs/svelte": "7.1.0",
 		"@astrojs/vue": "5.1.0",
-		"@devprotocol/clubs-core": "3.26.7",
+		"@devprotocol/clubs-core": "3.27.0",
 		"@devprotocol/clubs-plugin-payments": "0.4.5",
 		"@eslint/js": "^9.14.0",
 		"@rollup/plugin-typescript": "12.1.4",
