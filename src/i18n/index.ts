@@ -30,4 +30,12 @@ export const Strings = {
 		en: 'This item is not for sale. Read the description for more information.',
 		ja: 'このアイテムは非売品です。詳しくは概要欄をお読みください。',
 	},
+	Cart: {
+		en: 'Go to Cart',
+		ja: 'カートに進む',
+	},
+	ContinueShopping: {
+		en: 'Continue Shopping',
+		ja: 'ショッピングを続ける',
+	},
 } satisfies ClubsI18nParts

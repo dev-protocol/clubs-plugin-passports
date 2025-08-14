@@ -43,12 +43,12 @@ const checkoutProps = {
 	accessControlDescription:
 		'accessControlDescriptionaccessControlDescriptionaccessControlDescription',
 	chainId: 137,
-	notForSale: true,
-	// fiat: {
-	// 	price: {
-	// 		yen: 100,
-	// 	},
-	// },
+	notForSale: false,
+	fiat: {
+		price: {
+			yen: 100,
+		},
+	},
 	base: 'http://localhost:4321',
 	acceptablePayments: [Payments.CreditCard, Payments.Crypto],
 } as ComposedCheckoutOptions

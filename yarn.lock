@@ -956,7 +956,7 @@ __metadata:
     "@astrojs/svelte": "npm:7.1.0"
     "@astrojs/vue": "npm:5.1.0"
     "@devprotocol/clubs-core": "npm:3.26.7"
-    "@devprotocol/clubs-plugin-payments": "npm:0.4.5"
+    "@devprotocol/clubs-plugin-payments": "npm:0.5.0-alpha.6"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@eslint/js": "npm:^9.14.0"
@@ -1006,26 +1006,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devprotocol/clubs-plugin-payments@npm:0.4.5":
-  version: 0.4.5
-  resolution: "@devprotocol/clubs-plugin-payments@npm:0.4.5"
+"@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.6":
+  version: 0.5.0-alpha.6
+  resolution: "@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.6"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@types/jsonwebtoken": "npm:^9.0.7"
-    "@types/ramda": "npm:^0.30.2"
-    bignumber.js: "npm:9.1.2"
+    "@types/ramda": "npm:^0.31.0"
+    bignumber.js: "npm:9.3.1"
     cross-fetch: "npm:^4.0.0"
     crypto-hash: "npm:^3.0.0"
     jsonwebtoken: "npm:^9.0.2"
-    ramda: "npm:0.30.1"
+    ramda: "npm:0.31.3"
     redis: "npm:4.7.0"
     rimraf: "npm:^6.0.1"
   peerDependencies:
-    "@devprotocol/clubs-core": ^3.22.1
-    "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36 || ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0
+    "@devprotocol/clubs-core": ^3.27.0
+    "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36 || ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0
     ethers: ^6.0.0
-  checksum: 10c0/e345432188cb780c02c3ff94aea129bb975ce2b37a5db59944f1438ba5af4feea9fecca17326baa73a2f5cdb5930d285ea6d7db317cb9919e045c74b620099bf
+  checksum: 10c0/9340a04d0fd9c69a41064b408370bb77ea1c028d1f37a374ee500fa8eab3dbc4a3e9fa7acfbdccfe100e177067ab0decf5ab71c01be3fbe9f9dceb93552c663c
   languageName: node
   linkType: hard
 
@@ -3189,21 +3189,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:0.31.0":
+"@types/ramda@npm:0.31.0, @types/ramda@npm:^0.31.0":
   version: 0.31.0
   resolution: "@types/ramda@npm:0.31.0"
   dependencies:
     types-ramda: "npm:^0.31.0"
   checksum: 10c0/d979b1eb08e7b614369622675c6c0c5dde6e7c232c0fbff1b6975a771a2ea2e663ccad27779486b4942e29a832f10da7afd53994c4638559ecdd69ea8d4fd35b
-  languageName: node
-  linkType: hard
-
-"@types/ramda@npm:^0.30.2":
-  version: 0.30.2
-  resolution: "@types/ramda@npm:0.30.2"
-  dependencies:
-    types-ramda: "npm:^0.30.1"
-  checksum: 10c0/dda95008860f594eb7b4fd9819adeb2dcd4d4e2baca6cb33f692f6f8ea76d04a7fd81f9a057c5c67555612769e5592cb15f91de6c9f8b619b8b1d806d19dc9ea
   languageName: node
   linkType: hard
 
@@ -9013,13 +9004,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ramda@npm:0.30.1, ramda@npm:^0.30.0, ramda@npm:^0.30.1":
-  version: 0.30.1
-  resolution: "ramda@npm:0.30.1"
-  checksum: 10c0/3ea3e35c80e1a1b78c23de0c72d3382c3446f42052b113b851f1b7fc421e33a45ce92e7aef3c705cc6de3812a209d03417af5c264f67126cda539fd66c8bea71
-  languageName: node
-  linkType: hard
-
 "ramda@npm:0.31.3":
   version: 0.31.3
   resolution: "ramda@npm:0.31.3"
@@ -9031,6 +9015,13 @@ __metadata:
   version: 0.29.1
   resolution: "ramda@npm:0.29.1"
   checksum: 10c0/5de53a07400959c1a704c366ec52b1b8cd9a444dc1f9cdf17d607e0b9eeaa38cbaea309d43e59dbd7f36731ba977a64d40092555c0e7c2d4a41e8e922239c0ba
+  languageName: node
+  linkType: hard
+
+"ramda@npm:^0.30.0, ramda@npm:^0.30.1":
+  version: 0.30.1
+  resolution: "ramda@npm:0.30.1"
+  checksum: 10c0/3ea3e35c80e1a1b78c23de0c72d3382c3446f42052b113b851f1b7fc421e33a45ce92e7aef3c705cc6de3812a209d03417af5c264f67126cda539fd66c8bea71
   languageName: node
   linkType: hard
 
@@ -10457,15 +10448,6 @@ __metadata:
   version: 4.26.1
   resolution: "type-fest@npm:4.26.1"
   checksum: 10c0/d2719ff8d380befe8a3c61068f37f28d6fa2849fd140c5d2f0f143099e371da6856aad7c97e56b83329d45bfe504afe9fd936a7cff600cc0d46aa9ffb008d6c6
-  languageName: node
-  linkType: hard
-
-"types-ramda@npm:^0.30.1":
-  version: 0.30.1
-  resolution: "types-ramda@npm:0.30.1"
-  dependencies:
-    ts-toolbelt: "npm:^9.6.0"
-  checksum: 10c0/4a8b230ae9772e6534f65b1a154dd5604bcd1d74e27b49686337a215e83aa8fc93e49f8c49af395418d2950cb9fb9b900662077c1d4b73ff6fe4f4bcb83ab2d6
   languageName: node
   linkType: hard
 
