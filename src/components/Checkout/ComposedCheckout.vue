@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { Checkout } from '@devprotocol/clubs-core/ui/vue'
-import { TransactionForm } from '@devprotocol/clubs-plugin-payments/components'
+import {
+	TransactionForm,
+	CartButton,
+} from '@devprotocol/clubs-plugin-payments/components'
 import { loadLibrary } from '@devprotocol/clubs-plugin-payments/utils'
 import { computed, onMounted, ref } from 'vue'
 import { ComposedCheckoutOptions, Payments } from '../../types'
@@ -8,6 +11,8 @@ import { ComposedItem } from '@devprotocol/clubs-plugin-payments'
 import { i18nFactory, ProseTextInherit } from '@devprotocol/clubs-core'
 import { Strings } from '../../i18n/index'
 import Media from '../../vue/Media.vue'
+
+const emit = defineEmits(['cart-add-complete', 'go-to-cart', 'close'])
 
 const props = defineProps<ComposedCheckoutOptions>()
 
@@ -24,6 +29,7 @@ const i18nItemBase = i18nFactory(
 )
 const i18n = ref<ReturnType<typeof i18nBase>>(i18nBase(['en']))
 const i18nItem = ref<ReturnType<typeof i18nItemBase>>(i18nItemBase(['en']))
+const isCartCompleted = ref<boolean>(false)
 
 const { rpcUrl, chainId, debugMode, fiat } = props
 
@@ -67,6 +73,19 @@ const computedProps = computed(() => {
 		}
 	}
 })
+
+const onCompleteAddCart = () => {
+	emit('cart-add-complete')
+	isCartCompleted.value = true
+}
+
+const onClickClose = () => {
+	emit('close')
+}
+
+const onClickGoToCart = () => {
+	emit('go-to-cart')
+}
 
 onMounted(() => {
 	i18n.value = i18nBase(navigator.languages)
@@ -115,14 +134,24 @@ onMounted(() => {
 			</div>
 		</template>
 		<template #main:transaction-form>
-			<TransactionForm
+			<CartButton
 				v-if="isUsingCreditCard && !computedProps.notForSale"
-				:item="composedItem"
-				:chainId="chainId"
-				:rpcUrl="rpcUrl"
-				:debugMode="debugMode"
+				:payload="computedProps.payload"
+				:quantity="1"
 				:base="props.base"
+				:on-complete="onCompleteAddCart"
 			/>
+			<div v-if="isCartCompleted" class="mt-2 flex flex-col gap-1">
+				<button
+					@click="onClickGoToCart"
+					class="hs-button is-large is-filled relative border-green-700! bg-green-600! hover:bg-green-500!"
+				>
+					{{ i18n('Cart') }}
+				</button>
+				<button @click="onClickClose" class="hs-button is-filled relative">
+					{{ i18n('ContinueShopping') }}
+				</button>
+			</div>
 			<div v-if="computedProps.notForSale" class="p-3">
 				<p
 					class="mb-3 rounded-full bg-black p-2 text-center font-bold text-white"
