@@ -46,13 +46,33 @@ export const itemAssetValue = {
 	},
 } satisfies RediSearchSchema
 
+export const appearanceGridWidth = {
+	'$.appearance.grid.w': {
+		type: SchemaFieldTypes.NUMERIC,
+		AS: 'appearanceGridWidth',
+	},
+} satisfies RediSearchSchema
+
+export const appearanceGridHeight = {
+	'$.appearance.grid.h': {
+		type: SchemaFieldTypes.NUMERIC,
+		AS: 'appearanceGridHeight',
+	},
+} satisfies RediSearchSchema
+
 export const passportItemDocument = (doc: {
-	id: string | bigint | number
-	sTokenId?: string | bigint | number
-	sTokenPayload: string
-	clubsUrl: string
-	itemAssetType: PassportItemAssetType
-	itemAssetValue: string
+	readonly id: string | bigint | number
+	readonly sTokenId?: string | bigint | number
+	readonly sTokenPayload: string
+	readonly clubsUrl: string
+	readonly itemAssetType: PassportItemAssetType
+	readonly itemAssetValue: string
+	readonly appearance?: {
+		grid?: {
+			w: 1 | 2 | 3
+			h: 1 | 2 | 3
+		}
+	}
 }): PassportItemDocument => ({
 	id: doc.id.toString(),
 	sTokenId: doc.sTokenId?.toString() ?? undefined,
@@ -60,6 +80,7 @@ export const passportItemDocument = (doc: {
 	clubsUrl: doc.clubsUrl,
 	itemAssetType: doc.itemAssetType,
 	itemAssetValue: doc.itemAssetValue,
+	appearance: doc.appearance,
 })
 
 export const PASSPORTITEM_SCHEMA = {
@@ -69,6 +90,8 @@ export const PASSPORTITEM_SCHEMA = {
 	...clubsUrl,
 	...itemAssetType,
 	...itemAssetValue,
+	...appearanceGridWidth,
+	...appearanceGridHeight,
 }
 
 export const PASSPORTITEM_SCHEMA_ID = keccak256(
