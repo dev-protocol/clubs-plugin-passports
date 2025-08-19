@@ -79,6 +79,12 @@ export type PassportItemDocument = Readonly<{
 	clubsUrl: string
 	itemAssetType: PassportItemAssetType
 	itemAssetValue: string
+	appearance?: {
+		grid?: {
+			w: 1 | 2 | 3
+			h: 1 | 2 | 3
+		}
+	}
 }>
 
 export type CreatePassportItemReq = ReadonlyDeep<{
@@ -132,12 +138,6 @@ export type PassportOffering = ClubsOffering<
 		i18n: {
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale
-		}
-		appearance?: {
-			grid?: {
-				width: 1 | 2 | 3
-				height: 1 | 2 | 3
-			}
 		}
 	}
 >
