@@ -34,6 +34,7 @@ import {
 } from './types'
 import type {
 	PassportItemData,
+	CheckoutItemPassportOffering,
 	CheckoutFromPassportOffering,
 } from './utils/checkoutPassportItems'
 
@@ -85,6 +86,7 @@ export {
 	addPassportItemSetter,
 	patchPassportItemValue,
 	Prices,
+	type CheckoutItemPassportOffering,
 	type CheckoutFromPassportOffering,
 	type ComposedCheckoutOptions,
 	type PassportItemData,
