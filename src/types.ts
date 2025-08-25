@@ -140,7 +140,9 @@ export type PassportOffering = ClubsOffering<
 		i18n: {
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale
+			groupVar?: ClubsI18nLocale
 		}
+		groupOf?: string
 	}
 >
 
