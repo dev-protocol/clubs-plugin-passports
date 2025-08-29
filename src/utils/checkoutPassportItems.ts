@@ -24,12 +24,12 @@ export type PassportItemData = PassportOffering &
 		passportItem: PassportItemDocument
 	}>
 
-export type CheckoutFromPassportOffering = Readonly<
-	{
-		payload: string
-		props: ComposedCheckoutOptions
-	}[]
->
+export type CheckoutItemPassportOffering = Readonly<{
+	payload: string
+	props: ComposedCheckoutOptions
+}>
+
+export type CheckoutFromPassportOffering = CheckoutItemPassportOffering[]
 
 export const checkoutPassportItemForPayload = async (
 	payload: Uint8Array | string,
@@ -103,12 +103,13 @@ export const checkoutPassportItemForPayload = async (
 	const now = currentTime ? currentTime : dayjs().utc().toDate().getTime()
 
 	const returnObject = whenDefined(passportOfferingWithItemData, (offering) => {
+		const stringifiedPayload = bytes32Hex(offering.payload)
 		const predefinedPrice = Prices[offering.passportItem.itemAssetType]
 		const discount = discounts.find(
-			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
+			({ payload }) => bytes32Hex(payload) === stringifiedPayload,
 		)
 		const override = overrides.find(
-			({ payload }) => bytes32Hex(payload) === bytes32Hex(offering.payload),
+			({ payload }) => bytes32Hex(payload) === stringifiedPayload,
 		)
 		const price = override ? override.price : predefinedPrice
 		const notForSale = price === 'not-for-sale'
@@ -126,7 +127,7 @@ export const checkoutPassportItemForPayload = async (
 				: undefined
 
 		return {
-			payload: offering.payload,
+			payload: stringifiedPayload,
 			props: {
 				offering,
 				passportItem: offering.passportItem,
@@ -161,7 +162,7 @@ export const checkoutPassportItemForPayload = async (
 				acceptablePayments,
 				base: config.url,
 			} satisfies ComposedCheckoutOptions,
-		}
+		} satisfies CheckoutItemPassportOffering
 	})
 
 	return returnObject
