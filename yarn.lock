@@ -956,7 +956,7 @@ __metadata:
     "@astrojs/svelte": "npm:7.1.0"
     "@astrojs/vue": "npm:5.1.0"
     "@devprotocol/clubs-core": "npm:3.27.1"
-    "@devprotocol/clubs-plugin-payments": "npm:0.5.0-alpha.7"
+    "@devprotocol/clubs-plugin-payments": "npm:0.5.0-alpha.9"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@eslint/js": "npm:^9.14.0"
@@ -1006,9 +1006,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.7":
-  version: 0.5.0-alpha.7
-  resolution: "@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.7"
+"@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.9":
+  version: 0.5.0-alpha.9
+  resolution: "@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.9"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
@@ -1025,7 +1025,7 @@ __metadata:
     "@devprotocol/clubs-core": ^3.27.0
     "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36 || ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0
     ethers: ^6.0.0
-  checksum: 10c0/455c893f9f8ee1d78be059fd71864bfff69251f4d0db97e99f179b983932361223d15488c338dfd1283c5eb0181604afbc0a584fa449351230c1e4f0a097c384
+  checksum: 10c0/c16d942b04b050e6d969126b3fe1dce69ec65aee522d761891673be0ccf727ef97fb5094717154bbac0f94a473a145a8563e82bd5407b9d37eef682e1848c08e
   languageName: node
   linkType: hard
 
