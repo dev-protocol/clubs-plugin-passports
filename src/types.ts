@@ -134,11 +134,15 @@ export type PassportOptionsDiscounts = ReadonlyArray<PassportOptionsDiscount>
 
 export type PassportOffering = ClubsOffering<
 	Membership & {
+		bundle?: ReadonlyArray<ClubsOffering['payload']>
 		previewImageSrc?: string
+		previewImages?: ReadonlyArray<string>
 		i18n: {
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale
+			groupVar?: ClubsI18nLocale
 		}
+		groupOf?: string
 	}
 >
 
