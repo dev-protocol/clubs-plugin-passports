@@ -15,6 +15,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { getDefaultClient } from '../db/redis'
 import { isNil } from 'ramda'
+import { toSize } from './variants'
 
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
@@ -104,7 +105,11 @@ export const checkoutPassportItemForPayload = async (
 
 	const returnObject = whenDefined(passportOfferingWithItemData, (offering) => {
 		const stringifiedPayload = bytes32Hex(offering.payload)
-		const predefinedPrice = Prices[offering.passportItem.itemAssetType]
+		const priceTable = Prices[offering.passportItem.itemAssetType]
+		const predefinedPrice =
+			'usdc' in priceTable
+				? priceTable
+				: priceTable[toSize(offering.passportItem.appearance?.grid)]
 		const discount = discounts.find(
 			({ payload }) => bytes32Hex(payload) === stringifiedPayload,
 		)

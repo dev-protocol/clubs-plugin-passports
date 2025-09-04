@@ -6,6 +6,7 @@ import {
 	addPassportItemSetter,
 	patchPassportItemValue,
 } from './passportItem'
+import { toSize } from './variants'
 
 import {
 	checkoutPassportItems,
@@ -35,6 +36,7 @@ export {
 	patchPassportItemValue,
 	checkoutPassportItems,
 	checkoutPassportItemForPayload,
+	toSize,
 }
 
 export default {
