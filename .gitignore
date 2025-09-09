@@ -97,6 +97,7 @@ typings/
 dist
 components.d.ts
 utils.d.ts
+libs.d.ts
 constants.d.ts
 types.d.ts
 vue.d.ts

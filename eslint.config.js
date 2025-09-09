@@ -39,6 +39,7 @@ export default tseslint.config(
 			'components.d.ts',
 			'constants.d.ts',
 			'utils.d.ts',
+			'libs.d.ts',
 			'types.d.ts',
 			'vue.d.ts',
 			'svelte.d.ts',

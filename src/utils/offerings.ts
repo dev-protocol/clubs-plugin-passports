@@ -1,6 +1,6 @@
 import { bytes32Hex, ClubsOffering } from '@devprotocol/clubs-core'
 import { PassportOffering } from '../types'
-import { PLUGIN_ID } from '../constants'
+import { PLUGIN_ID } from '../constants/plugin'
 
 export const isPassportOffering = (
 	offering: ClubsOffering,
