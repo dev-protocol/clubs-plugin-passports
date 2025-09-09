@@ -13,7 +13,10 @@ import {
 	checkoutPassportItemForPayload,
 } from './checkoutPassportItems'
 
-export const PLUGIN_ID = 'devprotocol:clubs:plugin:passports'
+import { PLUGIN_ID as _PLUGIN_ID } from '../constants'
+import { isPassportOffering, isPassportOfferingOf } from './offerings'
+
+export const PLUGIN_ID = _PLUGIN_ID
 
 /**
  * Returns sToken payload from the url
@@ -37,6 +40,8 @@ export {
 	checkoutPassportItems,
 	checkoutPassportItemForPayload,
 	toSize,
+	isPassportOffering,
+	isPassportOfferingOf,
 }
 
 export default {
