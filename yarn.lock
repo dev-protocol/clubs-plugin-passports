@@ -894,9 +894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@devprotocol/clubs-core@npm:3.27.1":
-  version: 3.27.1
-  resolution: "@devprotocol/clubs-core@npm:3.27.1"
+"@devprotocol/clubs-core@npm:3.28.0":
+  version: 3.28.0
+  resolution: "@devprotocol/clubs-core@npm:3.28.0"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/elements": "npm:1.6.0"
@@ -944,7 +944,7 @@ __metadata:
       optional: true
     vue:
       optional: true
-  checksum: 10c0/b40c956fc0262351da4e38f3c15bc57f42af588876f78a10c6840dfeb9ceb2da023353c6cce60b305a4ca02201077b979eda199610b9e4cdd2ff51739c92c3e1
+  checksum: 10c0/c6eab5c96e5aeb62416467200e3a58fa33bf0da4828a43b95c4b428fd924c66e595fa6fecf04486ce4e197f24fda19479fb5f0de56f3b16aa9d986c1152323ee
   languageName: node
   linkType: hard
 
@@ -955,8 +955,8 @@ __metadata:
     "@astrojs/check": "npm:0.9.4"
     "@astrojs/svelte": "npm:7.1.1"
     "@astrojs/vue": "npm:5.1.1"
-    "@devprotocol/clubs-core": "npm:3.27.1"
-    "@devprotocol/clubs-plugin-payments": "npm:0.5.0-alpha.10"
+    "@devprotocol/clubs-core": "npm:3.28.0"
+    "@devprotocol/clubs-plugin-payments": "npm:0.5.1"
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
     "@eslint/js": "npm:^9.14.0"
@@ -967,7 +967,7 @@ __metadata:
     "@types/eslint-config-prettier": "npm:^6.11.3"
     "@types/eslint__js": "npm:^9.0.0"
     "@types/node": "npm:22.18.1"
-    "@types/ramda": "npm:0.31.0"
+    "@types/ramda": "npm:0.31.1"
     "@typescript-eslint/eslint-plugin": "npm:8.43.0"
     "@typescript-eslint/parser": "npm:8.43.0"
     astro: "npm:5.13.7"
@@ -1001,14 +1001,14 @@ __metadata:
     vue-tsc: "npm:^3.0.0"
   peerDependencies:
     "@devprotocol/clubs-core": ^3.18.0
-    "@devprotocol/clubs-plugin-payments": ^0.2.3 || ^0.3.0 || ^0.4.0
+    "@devprotocol/clubs-plugin-payments": ^0.2.3 || ^0.3.0 || ^0.4.0 || ^0.5.0
     ethers: ^6.0.0
   languageName: unknown
   linkType: soft
 
-"@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.10":
-  version: 0.5.0-alpha.10
-  resolution: "@devprotocol/clubs-plugin-payments@npm:0.5.0-alpha.10"
+"@devprotocol/clubs-plugin-payments@npm:0.5.1":
+  version: 0.5.1
+  resolution: "@devprotocol/clubs-plugin-payments@npm:0.5.1"
   dependencies:
     "@devprotocol/dev-kit": "npm:8.7.0"
     "@devprotocol/util-ts": "npm:4.0.0"
@@ -1025,7 +1025,7 @@ __metadata:
     "@devprotocol/clubs-core": ^3.27.0
     "@devprotocol/clubs-plugin-passports": ^0.1.0-beta.36 || ^0.2.0 || ^0.3.0 || ^0.4.0 || ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0 || ^0.9.0
     ethers: ^6.0.0
-  checksum: 10c0/13455e052541f2f3f33652089ed1b96805d989efa01574b9ebc2e3739fec553076783371ce1df1b4cdd049b93d42ccdfa76c53a8f3f7d8a69e7b2e7f3222598a
+  checksum: 10c0/7f521bba09e01bd91c3f8bec4623717d71ba33f67100495daeeb2fe2461a700c1996c5f9d5936b5c0532227ff1d5f9868e11811bf93616482e4bcb54e0eee0b4
   languageName: node
   linkType: hard
 
@@ -3329,7 +3329,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:0.31.0, @types/ramda@npm:^0.31.0":
+"@types/ramda@npm:0.31.1":
+  version: 0.31.1
+  resolution: "@types/ramda@npm:0.31.1"
+  dependencies:
+    types-ramda: "npm:^0.31.0"
+  checksum: 10c0/60c11e66730e2d1c96d480a9e4474be0ae82a84700a34937032c1e46147b8625e1a977361c37ca65e8b29d4368dc942354c7942aebda91b0fd416beac87646d6
+  languageName: node
+  linkType: hard
+
+"@types/ramda@npm:^0.31.0":
   version: 0.31.0
   resolution: "@types/ramda@npm:0.31.0"
   dependencies:
