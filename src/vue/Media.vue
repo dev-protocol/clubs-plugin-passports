@@ -96,6 +96,10 @@ async function updateImageIfNeeded() {
 				:is-controlled="true"
 				:muted="false"
 			/>
+			<div
+				v-if="image && !imageLoaded"
+				class="aspect-[var(--itemAspect)] h-full animate-pulse rounded bg-gray-500/50"
+			/>
 		</div>
 		<template v-else>
 			<img
@@ -125,7 +129,7 @@ async function updateImageIfNeeded() {
 			/>
 			<div
 				v-if="image && !imageLoaded"
-				class="aspect-square h-full animate-pulse rounded bg-gray-500/50"
+				class="aspect-[var(--itemAspect)] h-full animate-pulse rounded bg-gray-500/50"
 			/>
 		</template>
 	</div>
