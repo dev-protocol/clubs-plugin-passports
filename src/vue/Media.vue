@@ -79,7 +79,7 @@ async function updateImageIfNeeded() {
 	>
 		<div
 			v-if="item?.itemAssetType === 'image-media-controlled-link'"
-			class="relative"
+			class="relative aspect-[var(--itemAspect)]"
 			:class="className"
 		>
 			<img
