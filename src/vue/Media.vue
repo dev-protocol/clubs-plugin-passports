@@ -77,37 +77,57 @@ async function updateImageIfNeeded() {
 		onmousedown="return false"
 		:style="aspect ? { '--itemAspect': aspect } : undefined"
 	>
-		<img
-			v-if="image"
-			ref="imageRef"
-			alt="Clip"
-			class="aspect-[var(--itemAspect)] w-full object-contain [&:not([src])]:hidden"
-			:class="[className, imageClass]"
-		/>
-		<VideoFetch
-			v-if="video"
-			:videoClass="`aspect-[var(--itemAspect)] ${className ? className : ''} ${videoClass ? videoClass : ''} ${item?.itemAssetType === 'image-media-controlled-link' ? 'hidden' : ''}`"
-			:url="video"
-			alt="Clip"
-			:is-controlled="
-				item?.itemAssetType === 'short-video-controlled' ||
-				item?.itemAssetType === 'short-video-controlled-link' ||
-				item?.itemAssetType === 'image-media-controlled-link'
-			"
-			:muted="item?.itemAssetType === 'image-media-controlled-link'"
-		/>
-		<MediaEmbed
-			v-if="typeof item?.link === 'string'"
-			:src="item.link"
-			:class="`${className ? className : ''} ${embedClass ? embedClass : ''}`"
-			:autoplay="embedOptions?.autoplay"
-			:lock="embedOptions?.lock"
-			:mute="embedOptions?.mute"
-		/>
 		<div
-			v-if="image && !imageLoaded"
-			class="aspect-square h-full animate-pulse rounded bg-gray-500/50"
-		/>
+			v-if="item?.itemAssetType === 'image-media-controlled-link'"
+			class="relative"
+			:class="className"
+		>
+			<img
+				ref="imageRef"
+				alt="Clip"
+				class="aspect-[var(--itemAspect)] w-full object-contain [&:not([src])]:hidden"
+				:class="imageClass"
+			/>
+			<VideoFetch
+				v-if="video"
+				videoClass="!hidden"
+				:url="video"
+				alt="Clip"
+				:is-controlled="true"
+				:muted="false"
+			/>
+		</div>
+		<template v-else>
+			<img
+				v-if="image"
+				ref="imageRef"
+				alt="Clip"
+				class="aspect-[var(--itemAspect)] w-full object-contain [&:not([src])]:hidden"
+				:class="[className, imageClass]"
+			/>
+			<VideoFetch
+				v-if="video"
+				:videoClass="`aspect-[var(--itemAspect)] ${className ? className : ''} ${videoClass ? videoClass : ''}`"
+				:url="video"
+				alt="Clip"
+				:is-controlled="
+					item?.itemAssetType === 'short-video-controlled' ||
+					item?.itemAssetType === 'short-video-controlled-link'
+				"
+			/>
+			<MediaEmbed
+				v-if="typeof item?.link === 'string'"
+				:src="item.link"
+				:class="`${className ? className : ''} ${embedClass ? embedClass : ''}`"
+				:autoplay="embedOptions?.autoplay"
+				:lock="embedOptions?.lock"
+				:mute="embedOptions?.mute"
+			/>
+			<div
+				v-if="image && !imageLoaded"
+				class="aspect-square h-full animate-pulse rounded bg-gray-500/50"
+			/>
+		</template>
 	</div>
 </template>
 
