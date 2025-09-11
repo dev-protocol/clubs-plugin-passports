@@ -5,6 +5,7 @@ export const ImageTypes: PassportItemAssetType[] = [
 	'image-link',
 	'image-playable',
 	'image-playable-link',
+	'image-media-controlled-link',
 ]
 
 export const CSSTypes: PassportItemAssetType[] = ['css', 'stylesheet-link']

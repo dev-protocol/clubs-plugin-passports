@@ -46,6 +46,20 @@ export const itemAssetValue = {
 	},
 } satisfies RediSearchSchema
 
+export const itemAssetValueAudio = {
+	'$.itemAssetValue:audio': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueAudio',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueVideo = {
+	'$.itemAssetValue:video': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueVideo',
+	},
+} satisfies RediSearchSchema
+
 export const appearanceGridWidth = {
 	'$.appearance.grid.w': {
 		type: SchemaFieldTypes.NUMERIC,
@@ -90,6 +104,8 @@ export const PASSPORTITEM_SCHEMA = {
 	...clubsUrl,
 	...itemAssetType,
 	...itemAssetValue,
+	...itemAssetValueAudio,
+	...itemAssetValueVideo,
 	...appearanceGridWidth,
 	...appearanceGridHeight,
 }

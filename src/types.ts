@@ -71,6 +71,7 @@ export type PassportItemAssetType =
 	| 'bgm-link'
 	| 'short-video-controlled'
 	| 'short-video-controlled-link'
+	| 'image-media-controlled-link'
 
 export type PassportItemDocument = Readonly<{
 	id: string
@@ -79,6 +80,8 @@ export type PassportItemDocument = Readonly<{
 	clubsUrl: string
 	itemAssetType: PassportItemAssetType
 	itemAssetValue: string
+	'itemAssetValue:audio'?: string
+	'itemAssetValue:video'?: string
 	appearance?: {
 		grid?: {
 			w: 1 | 2 | 3
@@ -151,6 +154,8 @@ export type MediaProps = {
 		link?: string
 		itemAssetType?: PassportItemDocument['itemAssetType']
 		itemAssetValue?: PassportItemDocument['itemAssetValue']
+		'itemAssetValue:audio'?: PassportItemDocument['itemAssetValue:audio']
+		'itemAssetValue:video'?: PassportItemDocument['itemAssetValue:video']
 		previewImageSrc?: PassportOffering['previewImageSrc']
 		appearance?: PassportItemDocument['appearance']
 	}

@@ -30,7 +30,11 @@ const image = computed(() => {
 
 const video = computed(() => {
 	return whenDefined(item?.itemAssetType, (type) =>
-		VideoTypes.includes(type) ? item?.itemAssetValue : undefined,
+		VideoTypes.includes(type)
+			? item?.itemAssetValue
+			: type === 'image-media-controlled-link' && item?.['itemAssetValue:video']
+				? item['itemAssetValue:video']
+				: undefined,
 	)
 })
 
@@ -82,13 +86,15 @@ async function updateImageIfNeeded() {
 		/>
 		<VideoFetch
 			v-if="video"
-			:videoClass="`aspect-[var(--itemAspect)] ${className ? className : ''} ${videoClass ? videoClass : ''}`"
+			:videoClass="`aspect-[var(--itemAspect)] ${className ? className : ''} ${videoClass ? videoClass : ''} ${item?.itemAssetType === 'image-media-controlled-link' ? 'hidden' : ''}`"
 			:url="video"
 			alt="Clip"
 			:is-controlled="
 				item?.itemAssetType === 'short-video-controlled' ||
-				item?.itemAssetType === 'short-video-controlled-link'
+				item?.itemAssetType === 'short-video-controlled-link' ||
+				item?.itemAssetType === 'image-media-controlled-link'
 			"
+			:muted="item?.itemAssetType === 'image-media-controlled-link'"
 		/>
 		<MediaEmbed
 			v-if="typeof item?.link === 'string'"
