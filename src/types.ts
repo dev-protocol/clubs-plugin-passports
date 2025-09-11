@@ -152,6 +152,7 @@ export type MediaProps = {
 		itemAssetType?: PassportItemDocument['itemAssetType']
 		itemAssetValue?: PassportItemDocument['itemAssetValue']
 		previewImageSrc?: PassportOffering['previewImageSrc']
+		appearance?: PassportItemDocument['appearance']
 	}
 	embedOptions?: {
 		autoplay?: boolean

@@ -34,6 +34,10 @@ const video = computed(() => {
 	)
 })
 
+const aspect = computed(() =>
+	whenDefined(item?.appearance?.grid, (grid) => `${grid.w} / ${grid.h}`),
+)
+
 onMounted(() => {
 	updateImageIfNeeded()
 })
@@ -67,17 +71,18 @@ async function updateImageIfNeeded() {
 		oncontextmenu="return false"
 		onselectstart="return false"
 		onmousedown="return false"
+		:style="aspect ? { '--itemAspect': aspect } : undefined"
 	>
 		<img
 			v-if="image"
 			ref="imageRef"
 			alt="Clip"
-			class="w-full object-cover [&:not([src])]:hidden"
+			class="aspect-[var(--itemAspect)] w-full object-contain [&:not([src])]:hidden"
 			:class="[className, imageClass]"
 		/>
 		<VideoFetch
 			v-if="video"
-			:videoClass="`${className ? className : ''} ${videoClass ? videoClass : ''}`"
+			:videoClass="`aspect-[var(--itemAspect)] ${className ? className : ''} ${videoClass ? videoClass : ''}`"
 			:url="video"
 			alt="Clip"
 			:is-controlled="
