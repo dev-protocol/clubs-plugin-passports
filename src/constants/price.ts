@@ -95,6 +95,11 @@ export const Prices = {
 		m: tiers.t_controllable_clip_M,
 		l: tiers.t_controllable_clip_L,
 	},
+	'image-media-controlled-link': {
+		s: tiers.t_controllable_clip_S,
+		m: tiers.t_controllable_clip_M,
+		l: tiers.t_controllable_clip_L,
+	},
 } satisfies Record<
 	PassportItemAssetType,
 	Price | Record<'s' | 'm' | 'l', Price>
