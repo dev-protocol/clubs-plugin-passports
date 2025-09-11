@@ -81,6 +81,8 @@ export const passportItemDocument = (doc: {
 	readonly clubsUrl: string
 	readonly itemAssetType: PassportItemAssetType
 	readonly itemAssetValue: string
+	readonly 'itemAssetValue:audio'?: string
+	readonly 'itemAssetValue:video'?: string
 	readonly appearance?: {
 		grid?: {
 			w: 1 | 2 | 3
@@ -94,6 +96,8 @@ export const passportItemDocument = (doc: {
 	clubsUrl: doc.clubsUrl,
 	itemAssetType: doc.itemAssetType,
 	itemAssetValue: doc.itemAssetValue,
+	'itemAssetValue:audio': doc['itemAssetValue:audio'],
+	'itemAssetValue:video': doc['itemAssetValue:video'],
 	appearance: doc.appearance,
 })
 
