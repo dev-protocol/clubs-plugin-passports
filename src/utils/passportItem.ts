@@ -4,7 +4,6 @@ import { createClient } from 'redis'
 import { nanoid } from 'nanoid'
 
 import {
-	AwaitedDefaultClient,
 	CreatePassportItemReq,
 	Index,
 	PassportItemDocument,
@@ -23,7 +22,7 @@ export const addPassportItemSetter = async ({
 	data,
 	url,
 }: {
-	client: AwaitedDefaultClient
+	client: Awaited<ReturnType<typeof getDefaultClient>>
 	data: CreatePassportItemReq
 	url: string
 }) => {
@@ -49,7 +48,7 @@ export const patchPassportItemValue = async ({
 	client,
 	data,
 }: {
-	client: AwaitedDefaultClient
+	client: Awaited<ReturnType<typeof getDefaultClient>>
 	data: PatchPassportItemValueReq
 }) => {
 	const source = await client.json

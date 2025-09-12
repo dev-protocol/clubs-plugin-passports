@@ -60,7 +60,7 @@ export const getMediaId = (url: string): string | undefined => {
 						? _url.host.includes('youtu.be')
 							? pathnames.at(1)
 							: _url.pathname.includes('/watch')
-								? _url.searchParams.get('v').replace(/\//g, '')
+								? _url.searchParams.get('v')!.replace(/\//g, '')
 								: undefined
 						: type === EmbeddableMediaType.YouTubeShorts
 							? pathnames.at(2)
