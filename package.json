@@ -90,7 +90,7 @@
 		"@astrojs/svelte": "7.1.1",
 		"@astrojs/vue": "5.1.1",
 		"@devprotocol/clubs-core": "3.28.0",
-		"@devprotocol/clubs-plugin-payments": "0.5.1",
+		"@devprotocol/clubs-plugin-payments": "0.5.2",
 		"@eslint/js": "^9.14.0",
 		"@rollup/plugin-typescript": "12.1.4",
 		"@tailwindcss/typography": "^0.5.16",
