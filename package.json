@@ -1,6 +1,6 @@
 {
 	"name": "@devprotocol/clubs-plugin-passports",
-	"version": "0.11.5",
+	"version": "0.11.6",
 	"type": "module",
 	"description": "Passports plugin for clubs",
 	"main": "dist/index.js",
