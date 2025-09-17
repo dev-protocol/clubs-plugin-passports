@@ -104,7 +104,6 @@ export const Prices = {
 		m: tiers.t_controllable_clip_M,
 		l: tiers.t_controllable_clip_L,
 	},
-	set: tiers.t_unknown,
 } satisfies Record<
 	PassportItemAssetType,
 	Price | Record<'s' | 'm' | 'l', Price>
