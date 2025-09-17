@@ -14,6 +14,7 @@ import {
 	sTokenPayload as sTokenPayloadSchema,
 } from '../db/schema'
 import { generatePassportItemKey, getDefaultClient } from '../db/redis'
+import { withCheckingIndex } from '../db/reindex'
 
 const { REDIS_URL, REDIS_USERNAME, REDIS_PASSWORD } = import.meta.env
 
@@ -34,7 +35,7 @@ export const addPassportItemSetter = async ({
 	})
 
 	const passportSkinCreationStatus = await whenNotErrorAll(
-		[passportSkinDoc, client],
+		[passportSkinDoc, await withCheckingIndex(() => Promise.resolve(client))],
 		([info, redis]) =>
 			redis.json
 				.set(generatePassportItemKey(info.sTokenPayload), '$', info)
@@ -63,7 +64,7 @@ export const patchPassportItemValue = async ({
 	)
 
 	const status = await whenNotErrorAll(
-		[passportItemDoc, client],
+		[passportItemDoc, await withCheckingIndex(() => Promise.resolve(client))],
 		([info, redis]) =>
 			redis.json
 				.set(generatePassportItemKey(info.sTokenPayload), '$', info)

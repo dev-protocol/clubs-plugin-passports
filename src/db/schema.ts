@@ -152,9 +152,9 @@ export const passportItemDocument = (doc: {
 	itemAssetValue: doc.itemAssetValue,
 	'itemAssetValue:audio': doc['itemAssetValue:audio'],
 	'itemAssetValue:video': doc['itemAssetValue:video'],
-	'itemAssetValue:i18n': doc['itemAssetValue:i18n'],
-	'itemAssetValue:audio:i18n': doc['itemAssetValue:audio:i18n'],
-	'itemAssetValue:video:i18n': doc['itemAssetValue:video:i18n'],
+	'itemAssetValue:i18n': [...(doc['itemAssetValue:i18n'] ?? [])],
+	'itemAssetValue:audio:i18n': [...(doc['itemAssetValue:audio:i18n'] ?? [])],
+	'itemAssetValue:video:i18n': [...(doc['itemAssetValue:video:i18n'] ?? [])],
 	appearance: doc.appearance,
 })
 

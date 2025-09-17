@@ -78,18 +78,18 @@ export type PassportItemDocument = Readonly<{
 	itemAssetValue: string
 	'itemAssetValue:audio'?: string
 	'itemAssetValue:video'?: string
-	'itemAssetValue:i18n'?: ReadonlyArray<{
+	'itemAssetValue:i18n'?: {
 		locale: string
 		value: string
-	}>
-	'itemAssetValue:audio:i18n'?: ReadonlyArray<{
+	}[]
+	'itemAssetValue:audio:i18n'?: {
 		locale: string
 		value: string
-	}>
-	'itemAssetValue:video:i18n'?: ReadonlyArray<{
+	}[]
+	'itemAssetValue:video:i18n'?: {
 		locale: string
 		value: string
-	}>
+	}[]
 	appearance?: {
 		grid?: {
 			w: 1 | 2 | 3
