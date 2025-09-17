@@ -78,6 +78,18 @@ export type PassportItemDocument = Readonly<{
 	itemAssetValue: string
 	'itemAssetValue:audio'?: string
 	'itemAssetValue:video'?: string
+	'itemAssetValue:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
+	'itemAssetValue:audio:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
+	'itemAssetValue:video:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
 	appearance?: {
 		grid?: {
 			w: 1 | 2 | 3
@@ -135,7 +147,7 @@ export type PassportOffering = ClubsOffering<
 	Membership & {
 		bundle?: ReadonlyArray<ClubsOffering['payload']>
 		previewImageSrc?: string
-		previewImages?: ReadonlyArray<string>
+		previewImages?: ReadonlyArray<string | ClubsI18nLocale>
 		i18n: {
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale

@@ -60,6 +60,48 @@ export const itemAssetValueVideo = {
 	},
 } satisfies RediSearchSchema
 
+export const itemAssetValueI18NLocale = {
+	'$.itemAssetValue:i18n[*].locale': {
+		type: SchemaFieldTypes.TAG,
+		AS: 'itemAssetValueI18NLocale',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueI18NValue = {
+	'$.itemAssetValue:i18n[*].value': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueI18NValue',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueAudioI18NLocale = {
+	'$.itemAssetValue:audio:i18n[*].locale': {
+		type: SchemaFieldTypes.TAG,
+		AS: 'itemAssetValueAudioI18NLocale',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueAudioI18NValue = {
+	'$.itemAssetValue:audio:i18n[*].value': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueAudioI18NValue',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueVideoI18NLocale = {
+	'$.itemAssetValue:video:i18n[*].locale': {
+		type: SchemaFieldTypes.TAG,
+		AS: 'itemAssetValueVideoI18NLocale',
+	},
+} satisfies RediSearchSchema
+
+export const itemAssetValueVideoI18NValue = {
+	'$.itemAssetValue:video:i18n[*].value': {
+		type: SchemaFieldTypes.TEXT,
+		AS: 'itemAssetValueVideoI18NValue',
+	},
+} satisfies RediSearchSchema
+
 export const appearanceGridWidth = {
 	'$.appearance.grid.w': {
 		type: SchemaFieldTypes.NUMERIC,
@@ -83,6 +125,18 @@ export const passportItemDocument = (doc: {
 	readonly itemAssetValue: string
 	readonly 'itemAssetValue:audio'?: string
 	readonly 'itemAssetValue:video'?: string
+	readonly 'itemAssetValue:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
+	readonly 'itemAssetValue:audio:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
+	readonly 'itemAssetValue:video:i18n'?: ReadonlyArray<{
+		locale: string
+		value: string
+	}>
 	readonly appearance?: {
 		grid?: {
 			w: 1 | 2 | 3
@@ -98,6 +152,9 @@ export const passportItemDocument = (doc: {
 	itemAssetValue: doc.itemAssetValue,
 	'itemAssetValue:audio': doc['itemAssetValue:audio'],
 	'itemAssetValue:video': doc['itemAssetValue:video'],
+	'itemAssetValue:i18n': doc['itemAssetValue:i18n'],
+	'itemAssetValue:audio:i18n': doc['itemAssetValue:audio:i18n'],
+	'itemAssetValue:video:i18n': doc['itemAssetValue:video:i18n'],
 	appearance: doc.appearance,
 })
 
@@ -110,6 +167,12 @@ export const PASSPORTITEM_SCHEMA = {
 	...itemAssetValue,
 	...itemAssetValueAudio,
 	...itemAssetValueVideo,
+	...itemAssetValueI18NLocale,
+	...itemAssetValueI18NValue,
+	...itemAssetValueAudioI18NLocale,
+	...itemAssetValueAudioI18NValue,
+	...itemAssetValueVideoI18NLocale,
+	...itemAssetValueVideoI18NValue,
 	...appearanceGridWidth,
 	...appearanceGridHeight,
 }
