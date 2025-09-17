@@ -6,6 +6,10 @@ const toUSD = (yen: number) =>
 	((factor) => Math.round((yen / $1) * factor) / factor)(Math.pow(10, 2))
 
 const tiers = {
+	t_unknown: {
+		[PassportCurrency.Yen]: 0,
+		[PassportCurrency.Usdc]: toUSD(0),
+	},
 	t_static_clip_S: {
 		[PassportCurrency.Yen]: 200,
 		[PassportCurrency.Usdc]: toUSD(200),
@@ -100,6 +104,7 @@ export const Prices = {
 		m: tiers.t_controllable_clip_M,
 		l: tiers.t_controllable_clip_L,
 	},
+	set: tiers.t_unknown,
 } satisfies Record<
 	PassportItemAssetType,
 	Price | Record<'s' | 'm' | 'l', Price>
