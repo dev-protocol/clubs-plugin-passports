@@ -14,6 +14,7 @@ import {
 import { PLUGIN_ID as _PLUGIN_ID } from '../constants'
 import { isPassportOffering, isPassportOfferingOf } from './offerings'
 import { getPayloadFromURL } from './routes'
+import { toI18NDict } from './i18n'
 
 export const PLUGIN_ID = _PLUGIN_ID
 
@@ -28,6 +29,7 @@ export {
 	toSize,
 	isPassportOffering,
 	isPassportOfferingOf,
+	toI18NDict,
 }
 
 export default {
