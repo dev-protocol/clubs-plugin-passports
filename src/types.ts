@@ -164,6 +164,9 @@ export type MediaProps = {
 		itemAssetValue?: PassportItemDocument['itemAssetValue']
 		'itemAssetValue:audio'?: PassportItemDocument['itemAssetValue:audio']
 		'itemAssetValue:video'?: PassportItemDocument['itemAssetValue:video']
+		'itemAssetValue:i18n'?: PassportItemDocument['itemAssetValue:i18n']
+		'itemAssetValue:audio:i18n'?: PassportItemDocument['itemAssetValue:audio:i18n']
+		'itemAssetValue:video:i18n'?: PassportItemDocument['itemAssetValue:video:i18n']
 		previewImageSrc?: PassportOffering['previewImageSrc']
 		appearance?: PassportItemDocument['appearance']
 	}
@@ -176,6 +179,7 @@ export type MediaProps = {
 	imageClass?: string
 	videoClass?: string
 	embedClass?: string
+	langs?: string[]
 }
 
 export enum PassportCurrency {

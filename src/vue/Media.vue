@@ -5,6 +5,8 @@ import type { MediaProps } from '../types'
 import { CSSTypes, ImageTypes, VideoTypes } from '../utils/passportTypes'
 import { whenDefined } from '@devprotocol/util-ts'
 import MediaEmbed from './MediaEmbed.vue'
+import { i18nFactory } from '@devprotocol/clubs-core'
+import { toI18NDict } from '../utils/i18n'
 
 const {
 	item,
@@ -13,15 +15,19 @@ const {
 	embedClass,
 	imageClass,
 	videoClass,
+	langs: _langs,
 } = defineProps<MediaProps>()
 
 const imageRef = useTemplateRef(`imageRef`)
 const imageLoaded = ref(false)
+const langs = ref(_langs ?? ['en'])
 
 const image = computed(() => {
 	return whenDefined(item?.itemAssetType, (type) =>
 		ImageTypes.includes(type)
-			? item?.itemAssetValue
+			? (whenDefined(item?.['itemAssetValue:i18n'], (i18n) =>
+					i18nFactory({ i: toI18NDict(i18n) })(langs.value)('i'),
+				) ?? item?.itemAssetValue)
 			: CSSTypes.includes(type)
 				? item?.previewImageSrc
 				: undefined,
@@ -43,6 +49,7 @@ const aspect = computed(() =>
 )
 
 onMounted(() => {
+	langs.value = [...navigator.languages]
 	updateImageIfNeeded()
 })
 
