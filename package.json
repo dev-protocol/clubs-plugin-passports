@@ -77,7 +77,7 @@
 		"dayjs": "^1.11.13",
 		"nanoid": "^5.0.7",
 		"ramda": "0.31.3",
-		"redis": "^4.7.0",
+		"redis": "^5.0.0",
 		"sass": "1.93.0"
 	},
 	"peerDependencies": {
