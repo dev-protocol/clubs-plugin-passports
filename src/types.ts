@@ -9,6 +9,7 @@ import type {
 	ClubsOffering,
 	Membership,
 } from '@devprotocol/clubs-core'
+import { Reason } from './constants/reasons'
 
 export enum Index {
 	PassportItem = 'idx::clubs:passportitem',
@@ -120,6 +121,8 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 		passportItem: PassportItemDocument
 		fiat?: Omit<Override, 'id' | 'importFrom' | 'key' | 'payload'>
 		notForSale: boolean
+		reason: Reason
+		available: boolean
 		discount?: Omit<PassportOptionsDiscount, 'payload'>
 		chainId: ClubsConfiguration['chainId']
 		debugMode?: boolean
@@ -130,6 +133,7 @@ export type ComposedCheckoutOptions = CheckoutOptions &
 export type PassportOptionsOverride = {
 	payload: string | Uint8Array
 	price: Record<PassportCurrency.Yen, number> | 'not-for-sale'
+	reason?: Reason
 }
 
 export type PassportOptionsOverrides = ReadonlyArray<PassportOptionsOverride>
@@ -152,6 +156,10 @@ export type PassportOffering = ClubsOffering<
 			name: ClubsI18nLocale
 			description: ClubsI18nLocale
 			groupVar?: ClubsI18nLocale
+		}
+		availability?: {
+			start_utc: number
+			end_utc?: number
 		}
 		groupOf?: string
 	}

@@ -16,6 +16,7 @@ import utc from 'dayjs/plugin/utc'
 import { getDefaultClient } from '../db/redis'
 import { isNil } from 'ramda'
 import { toSize } from './variants'
+import { Reason } from '../constants/reasons'
 
 // eslint-disable-next-line functional/no-expression-statements
 dayjs.extend(utc)
@@ -130,6 +131,14 @@ export const checkoutPassportItemForPayload = async (
 			type === 'video-link'
 				? offering.passportItem.itemAssetValue
 				: undefined
+		const available = offering.availability
+			? now >= offering.availability.start_utc &&
+				(offering.availability.end_utc
+					? now <= offering.availability.end_utc
+					: true)
+			: true
+		const reason =
+			override?.reason ?? (available ? Reason.Available : Reason.Unavailable)
 
 		return {
 			payload: stringifiedPayload,
@@ -137,6 +146,8 @@ export const checkoutPassportItemForPayload = async (
 				offering,
 				passportItem: offering.passportItem,
 				notForSale,
+				available,
+				reason,
 				fiat: notForSale
 					? undefined
 					: {
