@@ -138,7 +138,7 @@ export const checkoutPassportItemForPayload = async (
 					: true)
 			: true
 		const reason =
-			override?.reason ?? (available ? Reason.Available : Reason.Unavailable)
+			override?.reason ?? (available ? Reason.Available : Reason.Unreleased)
 
 		return {
 			payload: stringifiedPayload,
