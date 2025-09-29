@@ -107,12 +107,12 @@
 			<img
 				bind:this={imageRef}
 				alt="Clip"
-				class={`w-full object-cover [&:not([src])]:hidden ${className} ${imageClass}`}
+				class={`aspect-[var(--itemAspect)] w-full object-cover [&:not([src])]:hidden ${className} ${imageClass}`}
 			/>
 		{/if}
 		{#if video}
 			<VideoFetch
-				videoClass={`${className ? className : ''} ${
+				videoClass={`aspect-[var(--itemAspect)]${className ? className : ''} ${
 					videoClass ? videoClass : ''
 				}`}
 				url={video}
@@ -130,7 +130,9 @@
 			/>
 		{/if}
 		{#if image && !imageLoaded}
-			<div class="aspect-square h-full animate-pulse rounded bg-gray-500/50" />
+			<div
+				class="aspect-[var(--itemAspect)] h-full animate-pulse rounded bg-gray-500/50"
+			/>
 		{/if}
 	{/if}
 </div>
