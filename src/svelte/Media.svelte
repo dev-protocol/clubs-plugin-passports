@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte'
 	import { i18nFactory } from '@devprotocol/clubs-core'
 	import { toI18NDict } from '../utils/i18n'
+	import { ImageCache } from '../cache'
 
 	let {
 		item,
@@ -21,6 +22,9 @@
 	let imageRef = $state<HTMLImageElement>()
 	let imageLoaded = $state(false)
 	let langs = $state<string[]>(_langs ?? ['en'])
+	let aspect = $derived(
+		whenDefined(item?.appearance?.grid, (grid) => `${grid.w} / ${grid.h}`),
+	)
 
 	let image = $derived(
 		whenDefined(item?.itemAssetType, (type) =>
@@ -51,11 +55,14 @@
 	async function updateImageIfNeeded() {
 		if (image && imageRef && imageRef.src !== image) {
 			try {
-				const response = await fetch(image)
-				const blob = await response.blob()
-				const blobDataUrl = URL.createObjectURL(blob)
+				const cachedBlob = ImageCache.get(image)
+				const blob =
+					whenDefined(cachedBlob, (cache) => cache) ??
+					(await fetch(image).then((res) => res.blob()))
+				if (!cachedBlob && blob) ImageCache.set(image, blob)
+				const blobDataUrl = whenDefined(blob, (b) => URL.createObjectURL(b))
 				if (imageRef) {
-					imageRef.src = blobDataUrl
+					imageRef.src = blobDataUrl ?? ''
 					imageLoaded = true
 				}
 			} catch (error) {
@@ -68,6 +75,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	class="touchCallout contents select-none"
+	style={`--itemAspect: ${aspect ?? '1 / 1'}`}
 	on:contextmenu|preventDefault={() => false}
 	on:selectstart|preventDefault={() => false}
 	on:mousedown|preventDefault={() => false}

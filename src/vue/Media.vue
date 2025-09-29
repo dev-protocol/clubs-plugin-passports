@@ -7,6 +7,7 @@ import { whenDefined } from '@devprotocol/util-ts'
 import MediaEmbed from './MediaEmbed.vue'
 import { i18nFactory } from '@devprotocol/clubs-core'
 import { toI18NDict } from '../utils/i18n'
+import { ImageCache } from '../cache'
 
 const {
 	item,
@@ -62,11 +63,14 @@ watch(image, async (newVal, oldVal) => {
 async function updateImageIfNeeded() {
 	if (image.value) {
 		try {
-			const response = await fetch(image.value)
-			const blob = await response.blob()
-			const blobDataUrl = URL.createObjectURL(blob)
+			const cachedBlob = ImageCache.get(image.value)
+			const blob =
+				whenDefined(cachedBlob, (cache) => cache) ??
+				(await fetch(image.value).then((res) => res.blob()))
+			if (!cachedBlob && blob) ImageCache.set(image.value, blob)
+			const blobDataUrl = whenDefined(blob, (b) => URL.createObjectURL(b))
 			if (imageRef.value) {
-				imageRef.value.src = blobDataUrl
+				imageRef.value.src = blobDataUrl ?? ''
 				imageLoaded.value = true
 			}
 		} catch (error) {
