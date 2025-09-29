@@ -75,7 +75,7 @@
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	class="touchCallout contents select-none"
-	style={`--itemAspect: ${aspect ?? '1 / 1'}`}
+	style={aspect ? `--itemAspect: ${aspect}` : undefined}
 	on:contextmenu|preventDefault={() => false}
 	on:selectstart|preventDefault={() => false}
 	on:mousedown|preventDefault={() => false}
