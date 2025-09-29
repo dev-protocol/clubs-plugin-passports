@@ -107,7 +107,7 @@
 			<img
 				bind:this={imageRef}
 				alt="Clip"
-				class={`aspect-[var(--itemAspect)] w-full object-cover [&:not([src])]:hidden ${className} ${imageClass}`}
+				class={`aspect-[var(--itemAspect)] w-full object-contain [&:not([src])]:hidden ${className} ${imageClass}`}
 			/>
 		{/if}
 		{#if video}
