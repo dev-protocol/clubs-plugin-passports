@@ -131,7 +131,7 @@
 		{/if}
 		{#if image && !imageLoaded}
 			<div
-				class="aspect-[var(--itemAspect)] h-full animate-pulse rounded bg-gray-500/50"
+				class={`aspect-[var(--itemAspect)] h-full animate-pulse rounded bg-gray-500/50 ${className}`}
 			/>
 		{/if}
 	{/if}
