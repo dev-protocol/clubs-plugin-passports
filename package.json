@@ -102,7 +102,7 @@
 		"@types/ramda": "0.31.1",
 		"@typescript-eslint/eslint-plugin": "8.53.1",
 		"@typescript-eslint/parser": "8.53.1",
-		"astro": "5.16.13",
+		"astro": "5.16.14",
 		"dotenv": "17.2.3",
 		"eslint": "^9.14.0",
 		"eslint-config-prettier": "^10.0.0",
