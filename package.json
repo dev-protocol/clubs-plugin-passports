@@ -73,7 +73,7 @@
 	"dependencies": {
 		"@devprotocol/dev-kit": "8.7.0",
 		"@devprotocol/util-ts": "4.0.0",
-		"bignumber.js": "10.0.0",
+		"bignumber.js": "10.0.2",
 		"dayjs": "^1.11.13",
 		"nanoid": "^5.0.7",
 		"ramda": "0.32.0",
