@@ -35,19 +35,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/check@npm:0.9.8":
-  version: 0.9.8
-  resolution: "@astrojs/check@npm:0.9.8"
+"@astrojs/check@npm:0.9.9":
+  version: 0.9.9
+  resolution: "@astrojs/check@npm:0.9.9"
   dependencies:
-    "@astrojs/language-server": "npm:^2.16.5"
+    "@astrojs/language-server": "npm:^2.16.7"
     chokidar: "npm:^4.0.3"
     kleur: "npm:^4.1.5"
     yargs: "npm:^17.7.2"
   peerDependencies:
-    typescript: ^5.0.0
+    typescript: ^5.0.0 || ^6.0.0
   bin:
     astro-check: bin/astro-check.js
-  checksum: 10c0/ff5d71a02ca0434e5c3b46907435fb152f9b0a36a1997ae17702232a49ae010cd255fc43af8ded06d1d99998f45b93386e94b5bda08bb04bc3829d11d6a8138e
+  checksum: 10c0/539dcb0f9d570ba5bebe3a2a44ebb0f31de1d9005f059049968cd1c10246d171139b025284e4b1e56e6460aeb75f2f3482be4fc35113c7601d78927a0c7b8a9a
   languageName: node
   linkType: hard
 
@@ -88,19 +88,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/language-server@npm:^2.16.5":
-  version: 2.16.5
-  resolution: "@astrojs/language-server@npm:2.16.5"
+"@astrojs/language-server@npm:^2.16.7":
+  version: 2.16.10
+  resolution: "@astrojs/language-server@npm:2.16.10"
   dependencies:
     "@astrojs/compiler": "npm:^2.13.1"
-    "@astrojs/yaml2ts": "npm:^0.2.3"
+    "@astrojs/yaml2ts": "npm:^0.2.4"
     "@jridgewell/sourcemap-codec": "npm:^1.5.5"
     "@volar/kit": "npm:~2.4.28"
     "@volar/language-core": "npm:~2.4.28"
     "@volar/language-server": "npm:~2.4.28"
     "@volar/language-service": "npm:~2.4.28"
     muggle-string: "npm:^0.4.1"
-    tinyglobby: "npm:^0.2.15"
+    tinyglobby: "npm:^0.2.16"
     volar-service-css: "npm:0.0.70"
     volar-service-emmet: "npm:0.0.70"
     volar-service-html: "npm:0.0.70"
@@ -119,8 +119,8 @@ __metadata:
     prettier-plugin-astro:
       optional: true
   bin:
-    astro-ls: bin/nodeServer.js
-  checksum: 10c0/3dfca1b7caf9ad53d55fa8939c6599d6d6d6c136993a2ea83a7339091539924c15b91dd90d46718cf9b5f5fd3cf755290065bd882da3beac93bcdf21d3947645
+    astro-ls: ./bin/nodeServer.js
+  checksum: 10c0/4f517467f676992d0e0eb3f2250ccef14e934ccb28c3ffe71612b7fbfd96a7087db5d6d76c4225a3e3e4bcf1fa458f942bd0352ca0da2722c5115be6b2f70601
   languageName: node
   linkType: hard
 
@@ -158,19 +158,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/svelte@npm:8.0.5":
-  version: 8.0.5
-  resolution: "@astrojs/svelte@npm:8.0.5"
+"@astrojs/svelte@npm:8.1.2":
+  version: 8.1.2
+  resolution: "@astrojs/svelte@npm:8.1.2"
   dependencies:
     "@sveltejs/vite-plugin-svelte": "npm:^6.2.4"
-    svelte2tsx: "npm:^0.7.52"
-    vite: "npm:^7.3.1"
+    svelte2tsx: "npm:^0.7.55"
+    vite: "npm:^7.3.2"
     vitefu: "npm:^1.1.2"
   peerDependencies:
     astro: ^6.0.0
     svelte: ^5.43.6
-    typescript: ^5.3.3
-  checksum: 10c0/1835e97364eae43ffdee95a8587e0a7e4f3febe104d75f0af7b1cc9024fc9b788981463fe85283b01d1823a0382f9de227b911ed444129b398dbf5780a3f73aa
+    typescript: ^5.3.3 || ^6.0.0
+  checksum: 10c0/67184f00fc5dc06cf6af7ee1b101229faebc695b66b00f7bddb0d934eb121d7013674bba16ee6440b4726ab4072bdfee62c5a02fcf31010ad54b65a658535fb6
   languageName: node
   linkType: hard
 
@@ -203,12 +203,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astrojs/yaml2ts@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "@astrojs/yaml2ts@npm:0.2.3"
+"@astrojs/yaml2ts@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "@astrojs/yaml2ts@npm:0.2.4"
   dependencies:
-    yaml: "npm:^2.8.2"
-  checksum: 10c0/75b0fb189e2d41ad321677223bb1dee61d90db69fc221d1a56c80ee9bd62bf5e4ba7676023e303f060da7a4b7dfde8438e484bed51750c9c710d63664aeaee8a
+    yaml: "npm:^2.8.3"
+  checksum: 10c0/bb0a25ae730ea2b8ba20da4626c9d023ba27898396c2ad71384e0aae10c4479bb5d6e9f4f27aad1f486f1d287200c4753ff949ab16af367788f085b078d4b4e6
   languageName: node
   linkType: hard
 
@@ -1060,8 +1060,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devprotocol/clubs-plugin-passports@workspace:."
   dependencies:
-    "@astrojs/check": "npm:0.9.8"
-    "@astrojs/svelte": "npm:8.0.5"
+    "@astrojs/check": "npm:0.9.9"
+    "@astrojs/svelte": "npm:8.1.2"
     "@astrojs/vue": "npm:6.0.1"
     "@devprotocol/clubs-core": "npm:3.28.0"
     "@devprotocol/clubs-plugin-payments": "npm:0.5.3"
@@ -1078,7 +1078,7 @@ __metadata:
     "@types/ramda": "npm:0.32.0"
     "@typescript-eslint/eslint-plugin": "npm:8.61.1"
     "@typescript-eslint/parser": "npm:8.61.1"
-    astro: "npm:6.4.6"
+    astro: "npm:6.4.8"
     bignumber.js: "npm:11.1.4"
     dayjs: "npm:^1.11.13"
     dotenv: "npm:17.4.2"
@@ -4663,9 +4663,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:6.4.6":
-  version: 6.4.6
-  resolution: "astro@npm:6.4.6"
+"astro@npm:6.4.8":
+  version: 6.4.8
+  resolution: "astro@npm:6.4.8"
   dependencies:
     "@astrojs/compiler": "npm:^4.0.0"
     "@astrojs/internal-helpers": "npm:0.10.0"
@@ -4728,7 +4728,7 @@ __metadata:
       optional: true
   bin:
     astro: ./bin/astro.mjs
-  checksum: 10c0/f66c80e88aa5338a7ed9dde2adb09e0fe7b1bad1bc1e282fb24cbbfd9b54727d16f06550e1870ee90532d1f638d47956fafaca8a7143e4d3ea466778da510777
+  checksum: 10c0/52cb75f1bf4acd9a6fba0e4f949411763bab6294b9a2d4c819334c0632e2194a13cb1a3f8a437b84862191c923f303ff421ec1fb7d0a5ac69feb51903bed1040
   languageName: node
   linkType: hard
 
@@ -10136,16 +10136,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte2tsx@npm:^0.7.52":
-  version: 0.7.52
-  resolution: "svelte2tsx@npm:0.7.52"
+"svelte2tsx@npm:^0.7.55":
+  version: 0.7.56
+  resolution: "svelte2tsx@npm:0.7.56"
   dependencies:
     dedent-js: "npm:^1.0.1"
     scule: "npm:^1.3.0"
   peerDependencies:
     svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
-    typescript: ^4.9.4 || ^5.0.0
-  checksum: 10c0/514ce6a48be8575518f8fd0f13e4547000a23731287136189c0bb663398da0f749e8702fd235b59af3e85a87ff3b961e80d2848b145066066bff2a0e6bac5a26
+    typescript: ^4.9.4 || ^5.0.0 || ^6.0.0
+  checksum: 10c0/e3788e16441f3ca23f815650bc949972f5053c592998431a97a49980a3b7f1d06b25d7b4b5ef95344b95c6f2107776d13bfdb4eb4b92e74c98133d13af1ccefe
   languageName: node
   linkType: hard
 
@@ -10281,6 +10281,16 @@ __metadata:
     fdir: "npm:^6.5.0"
     picomatch: "npm:^4.0.3"
   checksum: 10c0/869c31490d0d88eedb8305d178d4c75e7463e820df5a9b9d388291daf93e8b1eb5de1dad1c1e139767e4269fe75f3b10d5009b2cc14db96ff98986920a186844
+  languageName: node
+  linkType: hard
+
+"tinyglobby@npm:^0.2.16":
+  version: 0.2.17
+  resolution: "tinyglobby@npm:0.2.17"
+  dependencies:
+    fdir: "npm:^6.5.0"
+    picomatch: "npm:^4.0.4"
+  checksum: 10c0/7f7bb0f197c88bc4b20c231e0deca4240ca3bf313a88f5a7fee93a872b84966a4d50220947c0455ad07a60b3b360961c5b7fd979222aeb716a9f99b412002e4c
   languageName: node
   linkType: hard
 
@@ -11819,12 +11829,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.8.2":
-  version: 2.8.2
-  resolution: "yaml@npm:2.8.2"
+"yaml@npm:^2.8.3":
+  version: 2.9.0
+  resolution: "yaml@npm:2.9.0"
   bin:
     yaml: bin.mjs
-  checksum: 10c0/703e4dc1e34b324aa66876d63618dcacb9ed49f7e7fe9b70f1e703645be8d640f68ab84f12b86df8ac960bac37acf5513e115de7c970940617ce0343c8c9cd96
+  checksum: 10c0/f340718df45e97a9551b9bf9dac61c80050bc464513b710debfb5067c380c8472e3b67809cffacb4ab5ffb5e66ef9310816c88b05f371cec60abfedd8c88e0a2
   languageName: node
   linkType: hard
 
